@@ -8,97 +8,97 @@ PR, queue, manual and main contexts retain distinct histories. Unknown context r
 |---|---|---|---:|---:|---|
 | Report required job step changes / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 6 | 6 | [series](series-e1aa0159099025c2.md) |
 | Collect terminal Actions executions / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 0 | 9 | [series](series-0109083458cb9d60.md) |
-| Native CI history controls /  | unknown OS / unknown CPU | schedule / main | 0 | 41 | [series](series-e460ad260f8a45e8.md) |
-| Authentic desktop architecture execution joins /  | unknown OS / unknown CPU | schedule / main | 0 | 41 | [series](series-f666f9001ca74394.md) |
+| Native CI history controls /  | unknown OS / unknown CPU | schedule / main | 0 | 42 | [series](series-e460ad260f8a45e8.md) |
+| Authentic desktop architecture execution joins /  | unknown OS / unknown CPU | schedule / main | 0 | 42 | [series](series-f666f9001ca74394.md) |
 | Publish advisory CI history / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | schedule / main | 4 | 4 | [series](series-c76b1beb08b7806c.md) |
-| Reconcile trusted retirement requests / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 12 | 12 | [series](series-c1ede1978aed2092.md) |
 | watch-merge-group / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 13 | 13 | [series](series-b3d270346cdad83d.md) |
 | Reconcile trusted retirement requests / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | workflow&#95;run / main | 22 | 22 | [series](series-33ea968a7c5f4ce4.md) |
-| Open the native-retirement catch-up request / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 12 | 12 | [series](series-9d03e2991bd3143d.md) |
-| Reconcile exact-group admission / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 9 | 9 | [series](series-9e5432b30abe97dc.md) |
-| Exact merge-tree preflight / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 9V45 96-Core Processor | workflow&#95;run / main | 3 | 3 | [series](series-e2334d04533bab00.md) |
-| No-code plan /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 49 | [series](series-310307db3edca5aa.md) |
-| No-code plan / Classify no-code changes /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 6 | [series](series-e4a8d24afe8057c4.md) |
-| foundation / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V45 96-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 3 | 3 | [series](series-ec6d4dc2b7d3111e.md) |
-| No-code plan / Classify no-code changes /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 6 | [series](series-3a2b87ff2d42a892.md) |
-| harness &#40;windows-2025&#41; / unavailable-dynamic-or-reusable-matrix | Windows Server 2025 Datacenter / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 3 | 3 | [series](series-78beb8870965437d.md) |
-| harness &#40;ubuntu-26.04&#41; / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 3 | 3 | [series](series-4a9e575464957c45.md) |
-| direct-ssa-census / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V45 96-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 1 | 2 | [series](series-1867cff4753f3937.md) |
-| regression-guard / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V45 96-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 1 | 1 | [series](series-4cd8b72a09a07541.md) |
-| No-code plan / Classify no-code changes /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 6 | [series](series-d66cff8353707f7f.md) |
-| Hosted compiler closure Utility proof / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 2 | 3 | [series](series-6e97a397b39abaff.md) |
-| Hosted TCC native proofs / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 9V45 96-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 1 | 1 | [series](series-093fab6fa629cc14.md) |
-| Hosted ordinary compiler bridge proof / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 1 | 2 | [series](series-174415fb01b3e52b.md) |
-| Canonical TCC bootstrap / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 2 | 2 | [series](series-84c5b9ed9dd42ae3.md) |
-| No-code plan / Classify no-code changes /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 6 | [series](series-1583b5a93daef2dc.md) |
-| Main CI reuse decision /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 6 | [series](series-4cc67cb1874e4339.md) |
-| Clang analyzer shards / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 1 | 5 | [series](series-900aa75040cb98c2.md) |
-| UEFI firmware boot / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 2 | 3 | [series](series-84b8f9aa1ea60b1e.md) |
-| Linux AArch64 native / {"name":"Linux AArch64 native","runner":"ubuntu-26.04-arm","platform":"unix","os":"linux","arch":"aarch64"} | Ubuntu 26.04.1 LTS / 0xd49 | pull&#95;request / codex/4314-lower-x86-emms | 5 | 6 | [series](series-1853b147d62c40b6.md) |
-| Linux x86-64 release / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 1 | 3 | [series](series-1422b99e59edfa93.md) |
-| Linux x86-64 native / {"name":"Linux x86-64 native","runner":"ubuntu-26.04","platform":"unix","os":"linux","arch":"x86&#95;64"} | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 3 | 3 | [series](series-28157e7b0892289d.md) |
-| Windows x86-64 native / {"name":"Windows x86-64 native","platform":"windows","runner":"windows-2025","os":"windows","arch":"x86&#95;64","vs&#95;arch":"amd64","vs&#95;component":"Microsoft.VisualStudio.Component.VC.Tools.x86.x64","clang&#95;arch":"x86&#95;64"} | Windows Server 2025 Datacenter / AMD EPYC 9V45 96-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 2 | 2 | [series](series-4c3afa0b2b2a8eca.md) |
-| Windows AArch64 native / {"name":"Windows AArch64 native","platform":"windows","runner":"windows-11-arm","os":"windows","arch":"aarch64","vs&#95;arch":"arm64","vs&#95;component":"Microsoft.VisualStudio.Component.VC.Tools.ARM64","clang&#95;arch":"aarch64"} | Windows 10 Enterprise / Cobalt 100 | pull&#95;request / codex/4314-lower-x86-emms | 5 | 5 | [series](series-9e1b78984fdebbcb.md) |
-| Linux AArch64 release / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / 0xd49 | pull&#95;request / codex/4314-lower-x86-emms | 3 | 6 | [series](series-ae80982e1b367b66.md) |
-| macOS AArch64 native / {"name":"macOS AArch64 native","runner":"macos-26","platform":"unix","os":"macos","arch":"aarch64"} | macOS / Apple M1 &#40;Virtual&#41; | pull&#95;request / codex/4314-lower-x86-emms | 5 | 5 | [series](series-74c3073021e05053.md) |
-| Linux x86-64 sanitized-release / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / INTEL&#40;R&#41; XEON&#40;R&#41; PLATINUM 8573C | pull&#95;request / codex/4314-lower-x86-emms | 2 | 3 | [series](series-e75851d8d16e4685.md) |
-| Linux AArch64 portability / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / 0xd49 | pull&#95;request / codex/4314-lower-x86-emms | 5 | 6 | [series](series-e91ae582ebe3ffdb.md) |
-| Windows x86-64 portability / unavailable-dynamic-or-reusable-matrix | Windows Server 2025 Datacenter / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 3 | 3 | [series](series-01b31309e670cd61.md) |
-| macOS AArch64 portability / unavailable-dynamic-or-reusable-matrix | macOS / Apple M1 &#40;Virtual&#41; | pull&#95;request / codex/4314-lower-x86-emms | 1 | 1 | [series](series-34757e6cb4cc9c47.md) |
-| Linux x86-64 portability / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 3 | 4 | [series](series-e1a3ccb0b71d29e9.md) |
-| Windows x86-64 release / unavailable-dynamic-or-reusable-matrix | Windows Server 2025 Datacenter / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 0 | 1 | [series](series-2fdd5d96d89f8d70.md) |
-| macOS AArch64 release / unavailable-dynamic-or-reusable-matrix | macOS / Apple M1 &#40;Virtual&#41; | pull&#95;request / codex/4314-lower-x86-emms | 2 | 6 | [series](series-abd8ebf61e68e4e9.md) |
-| Linux AArch64 sanitized-release / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / 0xd49 | pull&#95;request / codex/4314-lower-x86-emms | 3 | 6 | [series](series-51a189351e6634ed.md) |
-| macOS AArch64 sanitized-release / unavailable-dynamic-or-reusable-matrix | macOS / Apple M1 &#40;Virtual&#41; | pull&#95;request / codex/4314-lower-x86-emms | 1 | 2 | [series](series-23140a6fb5c6f375.md) |
-| Windows AArch64 checks / unavailable-dynamic-or-reusable-matrix | Windows 10 Enterprise / Cobalt 100 | pull&#95;request / codex/4314-lower-x86-emms | 5 | 6 | [series](series-6469b63d64a4f728.md) |
-| Windows AArch64 release / unavailable-dynamic-or-reusable-matrix | Windows 10 Enterprise / Cobalt 100 | pull&#95;request / codex/4314-lower-x86-emms | 2 | 5 | [series](series-63130becef735e71.md) |
-| Windows x86-64 sanitized-release / unavailable-dynamic-or-reusable-matrix | Windows Server 2025 Datacenter / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 0 | 3 | [series](series-9ae1dc2a5ea56700.md) |
-| Workflow lint / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 4 | 4 | [series](series-ed56bc9dfaee0f38.md) |
-| github.event&#95;name == 'merge&#95;group' &#38;&#38; 'Workflow lint' &#124;&#124; 'Queue lint preflight &#40;inactive&#41;' /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 6 | [series](series-dab5eefc2e3c15d8.md) |
-| CI complete / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 1 | 3 | [series](series-fd59bc8bb6a3c115.md) |
-| Windows x86-64 fixture attribution /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 7 | [series](series-0b70a7ed434ab2d8.md) |
-| No-code plan / Classify no-code changes /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 7 | [series](series-fd4cd15e8d548d96.md) |
-| Reconstruct candidate closure ephemerally / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 2 | 2 | [series](series-03e93aa8433ab737.md) |
-| Rebind unit &#40;macos-26&#41; / unavailable-dynamic-or-reusable-matrix | macOS / Apple M1 &#40;Virtual&#41; | pull&#95;request / codex/4314-lower-x86-emms | 4 | 4 | [series](series-9353520f57faac97.md) |
-| Rebind unit &#40;ubuntu-26.04&#41; / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 6 | 6 | [series](series-ab98c19e8afc85a0.md) |
-| No-code plan / Classify no-code changes /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 6 | [series](series-afdfbb93623674d7.md) |
-| GPU Linux consumers / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 1 | 1 | [series](series-b97b9be25f7a39ec.md) |
-| GPU Metal consumer /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 6 | [series](series-8fdcfd41442e4346.md) |
-| No-code plan / Classify no-code changes /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 6 | [series](series-83f3ccb6c588d697.md) |
-| Benchmark service workflow policy / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 4 | 4 | [series](series-b0c764df81e7e1aa.md) |
-| Linux x86-64 investigation evidence / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 1 | 1 | [series](series-32455b5004b68184.md) |
-| Pinned baseline self-host fixed point / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 2 | 2 | [series](series-105db1b4933f2d3f.md) |
-| harness &#40;macos-26&#41; / non-matrix | macOS / Apple M1 &#40;Virtual&#41; | pull&#95;request / codex/4314-lower-x86-emms | 3 | 3 | [series](series-71996496dec7a7b9.md) |
-| informative timing &#40;macos-26&#41; /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 7 | [series](series-7351f1dfc7a8c6aa.md) |
-| file or update the macOS timing issue /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 7 | [series](series-4fa6e4557c4add7a.md) |
-| informative macOS timing report /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 7 | [series](series-539389ccb3cc5a42.md) |
-| No-code plan / Classify no-code changes /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 12 | [series](series-ecbf7aa2c2ed768d.md) |
-| Preflight regression tests / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 2 | 2 | [series](series-8a434c87e8bd5271.md) |
-| No-code plan / Classify no-code changes /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 7 | [series](series-fdb612fa92d2090e.md) |
-| API migration policy / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 3 | 3 | [series](series-a4e699d8fb99ab50.md) |
-| No-code plan / Classify no-code changes /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 7 | [series](series-1c80cdfcc6b96a3c.md) |
-| Pages validation and artifact /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 7 | [series](series-d5c43d7b3c72029d.md) |
-| Deploy GitHub Pages /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 7 | [series](series-f4d8a77324b0fa10.md) |
-| No-code plan / Classify no-code changes /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 7 | [series](series-b1e84089aea1f316.md) |
-| Main integration admission / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 4 | 4 | [series](series-b59fa5c5fcbbe8d7.md) |
-| No-code plan / Classify no-code changes /  | unknown OS / unknown CPU | pull&#95;request / codex/4314-lower-x86-emms | 0 | 6 | [series](series-6223363b4208ea3b.md) |
-| Native retirement merge admission / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 9V45 96-Core Processor | pull&#95;request / codex/4314-lower-x86-emms | 1 | 1 | [series](series-beeb7cab6bf1271c.md) |
-| Reconcile trusted retirement requests / non-matrix | Ubuntu 26.04.1 LTS / Intel&#40;R&#41; Xeon&#40;R&#41; 6973P-C | workflow&#95;run / main | 3 | 3 | [series](series-b1918d4b9da15b67.md) |
-| Reconcile the exact completed benchmark attempt /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 15 | [series](series-a9120f798a82407d.md) |
-| Authorize the main commit comparison / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 7763 64-Core Processor | workflow&#95;run / main | 4 | 4 | [series](series-8443e4d9d9b844be.md) |
-| authorize /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 9 | [series](series-c156c9f00b20eb15.md) |
-| Queue compiler closure utility /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 8 | [series](series-ccb8e91f6a129a8d.md) |
-| Show the pull request comparison check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 11 | [series](series-50baff2c13ddd2f1.md) |
-| bench /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 15 | [series](series-7ab221e1da782c9b.md) |
-| Queue sampling qualification packet /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 9 | [series](series-a3a275a63113929d.md) |
-| Queue compiler preparation qualification /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 10 | [series](series-e328d197372da940.md) |
-| Compare the pull request compiler /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 11 | [series](series-cc1fee6c86dace18.md) |
-| Publish the pull request compiler benchmark check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 11 | [series](series-f5dcc5ebd3d63de2.md) |
-| Sampling qualification packet /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 9 | [series](series-3acbed3014d226d5.md) |
-| Compiler closure utility /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 8 | [series](series-47d8008b1a41652b.md) |
-| Compiler preparation qualification /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 10 | [series](series-7a7f79b20fa8f00c.md) |
-| Validate compiler closure utility evidence /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 8 | [series](series-1eb740765c884543.md) |
-| Validate sampling packet evidence /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 9 | [series](series-7ce38cb824076d90.md) |
-| Validate compiler preparation evidence /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 10 | [series](series-142eeff8d9864caf.md) |
-| Compare the main commit compiler / non-matrix | Arch Linux / AMD Ryzen 7 9700X 8-Core Processor | workflow&#95;run / main | 0 | 7 | [series](series-adc528ad59a7d5e1.md) |
-| Show the main commit comparison check / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 7763 64-Core Processor | workflow&#95;run / main | 2 | 2 | [series](series-fa8552950576adb7.md) |
+| Open the native-retirement catch-up request / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 13 | 13 | [series](series-9d03e2991bd3143d.md) |
+| Reconcile trusted retirement requests / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | schedule / main | 4 | 4 | [series](series-81526bc99a167891.md) |
+| Reconcile exact-group admission / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 10 | 10 | [series](series-9e5432b30abe97dc.md) |
+| Preflight regression tests / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 2 | 2 | [series](series-e77ee4e38184b45a.md) |
+| Retirement authorization and controller regressions / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 2 | 2 | [series](series-acacc0979acfe34b.md) |
+| Collector tests &#40;windows-2025&#41; / unavailable-dynamic-or-reusable-matrix | Windows Server 2025 Datacenter / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-260de4463ff86d2e.md) |
+| Collector tests &#40;ubuntu-26.04&#41; / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-c42688bfe2fd139a.md) |
+| Offline materializer &#40;macos-26&#41; / unavailable-dynamic-or-reusable-matrix | macOS / Apple M1 &#40;Virtual&#41; | pull&#95;request / codex/2758-ci-machine-specifications | 2 | 2 | [series](series-ca2324250b24a3ec.md) |
+| Offline materializer &#40;ubuntu-26.04&#41; / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / Intel&#40;R&#41; Xeon&#40;R&#41; 6973P-C | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-17ac5597736f6c73.md) |
+| Native retirement merge admission / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 2 | 2 | [series](series-dbd73b1ddb3f058f.md) |
+| Rebind unit &#40;ubuntu-26.04&#41; / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-e06106ece28b7d42.md) |
+| Reconstruct candidate closure ephemerally / non-matrix | Ubuntu 26.04.1 LTS / INTEL&#40;R&#41; XEON&#40;R&#41; PLATINUM 8573C | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-c8e3bf512f541937.md) |
+| Rebind unit &#40;macos-26&#41; / unavailable-dynamic-or-reusable-matrix | macOS / Apple M1 &#40;Virtual&#41; | pull&#95;request / codex/2758-ci-machine-specifications | 2 | 2 | [series](series-09fd3d0231c64593.md) |
+| GPU Linux consumers / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-89c3eb49a5a98bfd.md) |
+| GPU Metal consumer /  | unknown OS / unknown CPU | pull&#95;request / codex/2758-ci-machine-specifications | 0 | 2 | [series](series-cbca9963799984da.md) |
+| XCB raster &#40;clang, Release, --no-sanitize&#41; / {"cc":"clang","config":"Release","unity":"ON","sanitize":"--no-sanitize"} | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 2 | 2 | [series](series-f73a329402f57ebe.md) |
+| XCB raster &#40;gcc, Release, --no-sanitize&#41; / {"cc":"gcc","config":"Release","unity":"OFF","sanitize":"--no-sanitize"} | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-fa3ef1893309bcb6.md) |
+| XCB raster &#40;clang, Debug, --sanitize&#41; / {"cc":"clang","config":"Debug","unity":"OFF","sanitize":"--sanitize"} | Ubuntu 26.04.1 LTS / Intel&#40;R&#41; Xeon&#40;R&#41; Platinum 8370C CPU @ 2.80GHz | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-4042cb2a0a7784f9.md) |
+| XCB raster &#40;clang, Debug, --no-sanitize&#41; / {"cc":"clang","config":"Debug","unity":"OFF","sanitize":"--no-sanitize"} | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 2 | 2 | [series](series-ad49dcfa07696721.md) |
+| test &#40;ubuntu-24.04&#41; / unavailable-dynamic-or-reusable-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 9V45 96-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-96e4fcc46f47ae49.md) |
+| test &#40;windows-2025&#41; / unavailable-dynamic-or-reusable-matrix | Windows Server 2025 Datacenter / INTEL&#40;R&#41; XEON&#40;R&#41; PLATINUM 8573C | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-c95093750cdc2398.md) |
+| Canonical TCC bootstrap / non-matrix | Ubuntu 24.04.5 LTS / Intel&#40;R&#41; Xeon&#40;R&#41; 6973P-C | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-bef291bd03e31524.md) |
+| Original identities and durable history bytes / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 0 | 1 | [series](series-3ee45a8aef3fe1eb.md) |
+| fake-tools &#40;macos-15&#41; / unavailable-dynamic-or-reusable-matrix | macOS / Apple M1 &#40;Virtual&#41; | pull&#95;request / codex/2758-ci-machine-specifications | 2 | 2 | [series](series-a0bd5674358e47b5.md) |
+| fake-tools &#40;ubuntu-26.04&#41; / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 2 | 2 | [series](series-ec56e3de82293128.md) |
+| native-probes / non-matrix | macOS / Apple M1 &#40;Virtual&#41; | pull&#95;request / codex/2758-ci-machine-specifications | 2 | 2 | [series](series-d4765f110fb8a782.md) |
+| Replay census archive &#40;2bb4ce9&#41; / {"label":"2bb4ce9","tag":"native-retirement-evidence-2bb4ce9","validation&#95;ref":"cfa63d6dd4ec60b32b7de29ba52b241181065dc5","candidate&#95;ref":"2bb4ce939d99c3956848ca7bc9c347f3ae8db231","validation&#95;asset":"buster-validation-source-cfa63d6.tar.gz","candidate&#95;asset":"buster-candidate-source-2bb4ce9.tar.gz","census&#95;asset":"native-retirement-2bb4ce9-34718946098.zip"} | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-80d5bc56255e5cac.md) |
+| Replay strict archive &#40;eb1bef2&#41; / {"label":"eb1bef2","tag":"native-retirement-evidence-eb1bef2","candidate&#95;asset":"buster-candidate-source-eb1bef2.tar.gz","strict&#95;pattern":"strict-retirement-eb1bef2-34714527496.zip.part-&#42;"} | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-e16e397a944c37d4.md) |
+| Replay census archive &#40;eb1bef2&#41; / {"label":"eb1bef2","tag":"native-retirement-evidence-eb1bef2","validation&#95;ref":"38f150f7affdf458a9b394961709d659cc738bf3","candidate&#95;ref":"eb1bef2f124c6a778a435ae1eda18ae489c489c5","validation&#95;asset":"buster-validation-source-38f150f.tar.gz","candidate&#95;asset":"buster-candidate-source-eb1bef2.tar.gz","census&#95;asset":"native-retirement-eb1bef2-34714527496.zip"} | Ubuntu 26.04.1 LTS / AMD EPYC 9V45 96-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-b6fd6f592551e8b7.md) |
+| Replay strict archive &#40;2bb4ce9&#41; / {"label":"2bb4ce9","tag":"native-retirement-evidence-2bb4ce9","candidate&#95;asset":"buster-candidate-source-2bb4ce9.tar.gz","strict&#95;pattern":"strict-retirement-2bb4ce9-34718946098.zip.part-&#42;"} | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-f9c1b3adb94b4153.md) |
+| harness &#40;windows-2025&#41; / unavailable-dynamic-or-reusable-matrix | Windows Server 2025 Datacenter / Intel&#40;R&#41; Xeon&#40;R&#41; 6973P-C | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-7f07d4c986291582.md) |
+| harness &#40;ubuntu-26.04&#41; / unavailable-dynamic-or-reusable-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-2daf97d9703109ee.md) |
+| direct-ssa-census / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-bbb61d3288d3636d.md) |
+| regression-guard / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-c3938d4167af66cb.md) |
+| production-profile / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-d98a27949181ee15.md) |
+| Exact merge-tree preflight /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 45 | [series](series-ea535b664ec3d589.md) |
+| Preflight regression tests /  | unknown OS / unknown CPU | pull&#95;request / codex/current-native-retirement-reader-bootstrap | 0 | 6 | [series](series-1ba894ad0af2da6a.md) |
+| authorize /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 9 | [series](series-974e42bddace4d7c.md) |
+| Authorize the main commit comparison /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 10 | [series](series-f3c9d7042e21edb3.md) |
+| Compare the main commit compiler /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 10 | [series](series-1f6260be31355292.md) |
+| Show the main commit comparison check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 10 | [series](series-fd9520dea7e6a343.md) |
+| Publish the compiler benchmark check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 10 | [series](series-1be8211ea92f5352.md) |
+| Publish the compiler benchmark commit report /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 10 | [series](series-568cee59811c9f4f.md) |
+| Show the pull request comparison check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 8 | [series](series-09ebae9d0d57cd60.md) |
+| Compare the pull request compiler /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 7 | [series](series-d8ce067a389e95bb.md) |
+| bench /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 19 | [series](series-7ab221e1da782c9b.md) |
+| Publish the pull request compiler benchmark check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 8 | [series](series-1fc7940ff060b185.md) |
+| Workflow lint /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-9b542bb3b88d7e8d.md) |
+| Linux x86-64 release /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-51c4aedb8045882f.md) |
+| Linux AArch64 release /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-0966d8ce92dd3654.md) |
+| UEFI firmware boot /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-043bca370ab4f3bf.md) |
+| Windows x86-64 native /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-dbb3e09dde39d865.md) |
+| iOS AArch64 &#40;deferred for draft PR&#41; /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-afb69b0f25839631.md) |
+| Linux x86-64 sanitized-release /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-e8cc3f2ed44f579b.md) |
+| Android x86-64 /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-2e6ec8d0608fb829.md) |
+| Linux AArch64 portability /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-ecf435e6f25b7682.md) |
+| Clang analyzer shards /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-94e37deb735724e9.md) |
+| Linux x86-64 native /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-11a1cc73d70313b7.md) |
+| macOS AArch64 release &#40;deferred for draft PR&#41; /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-0c88a93fc8a31004.md) |
+| Linux x86-64 portability /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-a4225493e12c3f9d.md) |
+| macOS AArch64 native &#40;deferred for draft PR&#41; /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-0831c67829b3c552.md) |
+| Linux AArch64 sanitized-release /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-193e6f513fdfb1d4.md) |
+| Linux AArch64 native /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-1ff813c9df79da50.md) |
+| Windows AArch64 native /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-7dfdcf61dbd6239b.md) |
+| Windows x86-64 sanitized-release /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-6274c8340b31f89f.md) |
+| Windows AArch64 release /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-63153bfc253a08bd.md) |
+| macOS AArch64 portability &#40;deferred for draft PR&#41; /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-a96a7de36571c68e.md) |
+| Windows x86-64 portability /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-3f40ad04cc4ab4d1.md) |
+| macOS AArch64 sanitized-release &#40;deferred for draft PR&#41; /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-20c2068ddd3a46c8.md) |
+| Windows AArch64 checks /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-a77fce4951b3b8e1.md) |
+| github.event&#95;name == 'merge&#95;group' &#38;&#38; 'Workflow lint' &#124;&#124; 'Queue lint preflight &#40;inactive&#41;' /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-fe30c2e7856f7088.md) |
+| Windows x86-64 release /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-1195f92667953f4b.md) |
+| Main CI reuse decision /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-898e06cac6b3fe1d.md) |
+| CI complete /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-37b3f21b2ab7aeac.md) |
+| Preflight regression tests /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-fea0cb68756f3436.md) |
+| Record the workload request /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-fb6223b5bf16dab1.md) |
+| foundation /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-154b41873114a0c2.md) |
+| Native retirement merge admission /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-dc4df11089fe76cc.md) |
+| Canonical TCC bootstrap /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-e2b6069eb7072b9c.md) |
+| linux-x86-64 /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 1 | [series](series-020d0886e83b12ec.md) |
+| Pinned baseline self-host fixed point /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-ad30ace201b9f2c1.md) |
+| Linux x86-64 investigation evidence /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-3aa670dd075895df.md) |
+| Main integration admission /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-121e2a827c4299b4.md) |
+| Reconstruct candidate closure ephemerally /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-2c95c8ec23291f27.md) |
+| Rebind unit &#40;ubuntu-26.04&#41; /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-f982bbd6a4cff192.md) |
+| Rebind unit &#40;macos-26&#41; /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-51fdd826652fdfea.md) |
+| Benchmark service workflow policy /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-75a01e04c90df826.md) |
+| GPU Linux consumers /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-1141468468452001.md) |
+| GPU Metal consumer /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-5c48c9a0e0d9b00a.md) |
