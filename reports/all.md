@@ -6,10 +6,10 @@ PR, queue, manual and main contexts retain distinct histories. Unknown context r
 
 | Job / matrix | OS / actual CPU | Event / branch | Successful samples | Missing context | History |
 |---|---|---|---:|---:|---|
-| Report required job step changes / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 7 | 7 | [series](series-e1aa0159099025c2.md) |
+| Report required job step changes / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 8 | 8 | [series](series-e1aa0159099025c2.md) |
 | Collect terminal Actions executions / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 0 | 9 | [series](series-0109083458cb9d60.md) |
-| Native CI history controls /  | unknown OS / unknown CPU | schedule / main | 0 | 43 | [series](series-e460ad260f8a45e8.md) |
-| Authentic desktop architecture execution joins /  | unknown OS / unknown CPU | schedule / main | 0 | 43 | [series](series-f666f9001ca74394.md) |
+| Native CI history controls /  | unknown OS / unknown CPU | schedule / main | 0 | 44 | [series](series-e460ad260f8a45e8.md) |
+| Authentic desktop architecture execution joins /  | unknown OS / unknown CPU | schedule / main | 0 | 44 | [series](series-f666f9001ca74394.md) |
 | Publish advisory CI history / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | schedule / main | 4 | 4 | [series](series-c76b1beb08b7806c.md) |
 | watch-merge-group / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 14 | 14 | [series](series-b3d270346cdad83d.md) |
 | Reconcile trusted retirement requests / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | workflow&#95;run / main | 23 | 23 | [series](series-33ea968a7c5f4ce4.md) |
@@ -48,7 +48,7 @@ PR, queue, manual and main contexts retain distinct histories. Unknown context r
 | direct-ssa-census / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-bbb61d3288d3636d.md) |
 | regression-guard / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-c3938d4167af66cb.md) |
 | production-profile / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 1 | 1 | [series](series-d98a27949181ee15.md) |
-| Exact merge-tree preflight /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 45 | [series](series-ea535b664ec3d589.md) |
+| Exact merge-tree preflight /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 46 | [series](series-ea535b664ec3d589.md) |
 | Preflight regression tests /  | unknown OS / unknown CPU | pull&#95;request / codex/current-native-retirement-reader-bootstrap | 0 | 6 | [series](series-1ba894ad0af2da6a.md) |
 | authorize /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 9 | [series](series-974e42bddace4d7c.md) |
 | Authorize the main commit comparison /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 10 | [series](series-f3c9d7042e21edb3.md) |
@@ -58,7 +58,7 @@ PR, queue, manual and main contexts retain distinct histories. Unknown context r
 | Publish the compiler benchmark commit report /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 10 | [series](series-568cee59811c9f4f.md) |
 | Show the pull request comparison check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 8 | [series](series-09ebae9d0d57cd60.md) |
 | Compare the pull request compiler /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 7 | [series](series-d8ce067a389e95bb.md) |
-| bench /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 19 | [series](series-7ab221e1da782c9b.md) |
+| bench /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 21 | [series](series-7ab221e1da782c9b.md) |
 | Publish the pull request compiler benchmark check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 8 | [series](series-1fc7940ff060b185.md) |
 | Workflow lint /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-9b542bb3b88d7e8d.md) |
 | Linux x86-64 release /  | unknown OS / unknown CPU | pull&#95;request / ccr-f6fc785c-23azgs | 0 | 2 | [series](series-51c4aedb8045882f.md) |
