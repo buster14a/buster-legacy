@@ -6,14 +6,14 @@ PR, queue, manual and main contexts retain distinct histories. Unknown context r
 
 | Job / matrix | OS / actual CPU | Event / branch | Successful samples | Missing context | History |
 |---|---|---|---:|---:|---|
-| Report required job step changes / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 10 | 10 | [series](series-e1aa0159099025c2.md) |
+| Report required job step changes / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 11 | 11 | [series](series-e1aa0159099025c2.md) |
 | Collect terminal Actions executions / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 0 | 9 | [series](series-0109083458cb9d60.md) |
-| Native CI history controls /  | unknown OS / unknown CPU | schedule / main | 0 | 46 | [series](series-e460ad260f8a45e8.md) |
-| Authentic desktop architecture execution joins /  | unknown OS / unknown CPU | schedule / main | 0 | 46 | [series](series-f666f9001ca74394.md) |
+| Native CI history controls /  | unknown OS / unknown CPU | schedule / main | 0 | 47 | [series](series-e460ad260f8a45e8.md) |
+| Authentic desktop architecture execution joins /  | unknown OS / unknown CPU | schedule / main | 0 | 47 | [series](series-f666f9001ca74394.md) |
 | Publish advisory CI history / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | schedule / main | 5 | 5 | [series](series-c76b1beb08b7806c.md) |
 | watch-merge-group / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 15 | 15 | [series](series-b3d270346cdad83d.md) |
-| Reconcile trusted retirement requests / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | workflow&#95;run / main | 25 | 25 | [series](series-33ea968a7c5f4ce4.md) |
-| Open the native-retirement catch-up request / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 15 | 15 | [series](series-9d03e2991bd3143d.md) |
+| Reconcile trusted retirement requests / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | workflow&#95;run / main | 26 | 26 | [series](series-33ea968a7c5f4ce4.md) |
+| Open the native-retirement catch-up request / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 16 | 16 | [series](series-9d03e2991bd3143d.md) |
 | Reconcile trusted retirement requests / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | schedule / main | 4 | 4 | [series](series-81526bc99a167891.md) |
 | Reconcile exact-group admission / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 11 | 11 | [series](series-9e5432b30abe97dc.md) |
 | Preflight regression tests / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 9V74 80-Core Processor | pull&#95;request / codex/2758-ci-machine-specifications | 2 | 2 | [series](series-e77ee4e38184b45a.md) |
