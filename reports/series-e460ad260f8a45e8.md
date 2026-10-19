@@ -2,7 +2,7 @@
 
 [Trusted main](index.md) · [All series](all.md) · [JSON](recent.jsonl) · [CSV](recent.csv)
 
-Policy hosted-ci-cohort-v1; refresh 2026-10-19T20:14:46Z. Cohort fields and missing values:
+Policy hosted-ci-cohort-v1; refresh 2026-10-19T23:46:52Z. Cohort fields and missing values:
 
 | Field | Value |
 |---|---|
@@ -57,10 +57,10 @@ These are descriptive CI signals, not independent significance tests or paired e
 
 | Started | Outcome / population | Elapsed s | Source evidence |
 |---|---|---:|---|
-| 2026-10-18T14:53:00Z | skipped / skipped / physical-execution | unavailable | [job 117706305909](https://github.com/buster14a/buster/actions/runs/39137979244/job/117706305909) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39137979244/attempts/1) / tested source unavailable |
 | 2026-10-18T18:08:24Z | skipped / skipped / physical-execution | unavailable | [job 117749664260](https://github.com/buster14a/buster/actions/runs/39152783398/job/117749664260) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39152783398/attempts/1) / tested source unavailable |
 | 2026-10-18T20:47:15Z | skipped / skipped / physical-execution | unavailable | [job 117785666958](https://github.com/buster14a/buster/actions/runs/39164896602/job/117785666958) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39164896602/attempts/1) / tested source unavailable |
 | 2026-10-18T23:16:08Z | skipped / skipped / physical-execution | unavailable | [job 117818061105](https://github.com/buster14a/buster/actions/runs/39175792741/job/117818061105) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39175792741/attempts/1) / tested source unavailable |
 | 2026-10-19T01:22:27Z | skipped / skipped / physical-execution | unavailable | [job 117845603905](https://github.com/buster14a/buster/actions/runs/39185049648/job/117845603905) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39185049648/attempts/1) / tested source unavailable |
 | 2026-10-19T06:54:15Z | skipped / skipped / physical-execution | unavailable | [job 117929188018](https://github.com/buster14a/buster/actions/runs/39212616586/job/117929188018) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39212616586/attempts/1) / tested source unavailable |
 | 2026-10-19T14:42:37Z | skipped / skipped / physical-execution | unavailable | [job 118124349674](https://github.com/buster14a/buster/actions/runs/39271402357/job/118124349674) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39271402357/attempts/1) / tested source unavailable |
+| 2026-10-19T20:14:10Z | skipped / skipped / physical-execution | unavailable | [job 118283049236](https://github.com/buster14a/buster/actions/runs/39317608168/job/118283049236) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39317608168/attempts/1) / tested source unavailable |
