@@ -55,7 +55,8 @@ disagree, inspect the code and update the affected guide in the same change.
   `lane_run` entry. Use direct calls, loops, switches, and explicit work data.
 - Use arena allocation, `String8`/`S8`, explicit struct typedefs, and `BUSTER_` macros.
   Match surrounding style: four spaces, snake_case, braces on their own line,
-  and single-line declarations/statements where clear. Include headers through
+  and single-line function headers, declarations, and statements where clear.
+  Put each aggregate field or initializer entry on its own line. Include headers through
   `<buster/lib/...>` or `<buster/tests/...>`.
 - `BUSTER_F_DECL` belongs only on header declarations; `.c`-local functions use
   `BUSTER_GLOBAL_LOCAL`, and header-declared definitions carry no linkage macro.

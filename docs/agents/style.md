@@ -75,9 +75,22 @@
 - **Idioms**: arena allocation (`<buster/lib/arena.h>`) — no malloc/free churn;
   `String8`/`S8("...")` (defined in `<buster/lib/base.h>`) — no C strings; explicit struct typedefs
   and declarations; `BUSTER_`-prefixed macros; 4-space indent, snake_case, braces
-  on their own line. Prefer function headers, declarations, statements, and
-  similar constructs on one line; split them only when doing so is clearer.
-  Match the surrounding file.
+  on their own line. Match the surrounding file while applying the formatting
+  preferences below.
+
+## Formatting for LLM-generated changes
+
+- Prefer a single line for each statement or declaration. Do not wrap ordinary
+  assignments, expressions, or function calls merely to meet a line-length
+  target; split them when it makes the code clearer. Keep separate statements
+  on separate lines.
+- Prefer single-line function headers, including the return type, function
+  name, and parameter list, for both declarations and definitions. Keep the
+  opening brace of a definition on its own line. Split a header only when it
+  improves readability.
+- Put each field in a `struct` or `union` on its own line, with one field per
+  declaration. Put each aggregate initializer entry and each enum enumerator
+  on its own line as well; apply the same layout to nested aggregates.
 
 ## String boundaries
 
