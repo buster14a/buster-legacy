@@ -6,16 +6,16 @@ PR, queue, manual and main contexts retain distinct histories. Unknown context r
 
 | Job / matrix | OS / actual CPU | Event / branch | Successful samples | Missing context | History |
 |---|---|---|---:|---:|---|
-| Collect terminal Actions executions / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 1 | 10 | [series](series-0109083458cb9d60.md) |
+| Collect terminal Actions executions / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 2 | 11 | [series](series-0109083458cb9d60.md) |
 | Report required job step changes / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 12 | 12 | [series](series-e1aa0159099025c2.md) |
-| Native CI history controls /  | unknown OS / unknown CPU | schedule / main | 0 | 49 | [series](series-e460ad260f8a45e8.md) |
-| Authentic desktop architecture execution joins /  | unknown OS / unknown CPU | schedule / main | 0 | 49 | [series](series-f666f9001ca74394.md) |
-| Publish advisory CI history / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 17 | 17 | [series](series-9def7bbd9848aee7.md) |
+| Native CI history controls /  | unknown OS / unknown CPU | schedule / main | 0 | 50 | [series](series-e460ad260f8a45e8.md) |
+| Authentic desktop architecture execution joins /  | unknown OS / unknown CPU | schedule / main | 0 | 50 | [series](series-f666f9001ca74394.md) |
+| Publish advisory CI history / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 18 | 18 | [series](series-9def7bbd9848aee7.md) |
 | Reconcile trusted retirement requests / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | workflow&#95;run / main | 6 | 6 | [series](series-ae6b998d63154457.md) |
 | Open the native-retirement catch-up request / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 9V74 80-Core Processor | schedule / main | 10 | 10 | [series](series-d872b912a5d76106.md) |
-| watch-merge-group / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 17 | 17 | [series](series-b3d270346cdad83d.md) |
+| watch-merge-group / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 18 | 18 | [series](series-b3d270346cdad83d.md) |
 | Reconcile exact-group admission / non-matrix | Ubuntu 24.04.5 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 12 | 12 | [series](series-9e5432b30abe97dc.md) |
-| Reconcile trusted retirement requests / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 18 | 18 | [series](series-c1ede1978aed2092.md) |
+| Reconcile trusted retirement requests / non-matrix | Ubuntu 26.04.1 LTS / AMD EPYC 7763 64-Core Processor | schedule / main | 19 | 19 | [series](series-c1ede1978aed2092.md) |
 | Reconcile trusted retirement requests /  | unknown OS / unknown CPU | push / main | 0 | 9 | [series](series-0901cea64b4b1428.md) |
 | Rebind unit &#40;macos-26&#41; /  | unknown OS / unknown CPU | push / main | 0 | 8 | [series](series-2739fd069892a158.md) |
 | Rebind unit &#40;ubuntu-26.04&#41; /  | unknown OS / unknown CPU | push / main | 0 | 8 | [series](series-51c0dbb885831a80.md) |
@@ -48,22 +48,22 @@ PR, queue, manual and main contexts retain distinct histories. Unknown context r
 | Exact merge-tree preflight /  | unknown OS / unknown CPU | push / main | 0 | 9 | [series](series-4a0cb53cd5e4105c.md) |
 | Reconcile exact-group admission /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 98 | [series](series-45fa970274f35d52.md) |
 | watch-merge-group /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 151 | [series](series-c451c74a07da770f.md) |
-| Reconcile trusted retirement requests /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 69 | [series](series-158092c3b4626035.md) |
-| Exact merge-tree preflight /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 62 | [series](series-ea535b664ec3d589.md) |
+| Reconcile trusted retirement requests /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 70 | [series](series-158092c3b4626035.md) |
+| Exact merge-tree preflight /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 64 | [series](series-ea535b664ec3d589.md) |
 | Preflight regression tests /  | unknown OS / unknown CPU | pull&#95;request / ccr-9f6b30ca-l7xyfw | 0 | 2 | [series](series-041d859af02b8a61.md) |
 | Preflight regression tests /  | unknown OS / unknown CPU | pull&#95;request / codex/79-cpython-recursion-qualification | 0 | 4 | [series](series-9d741302f17f53f1.md) |
 | Preflight regression tests /  | unknown OS / unknown CPU | pull&#95;request / codex/2680-gnu-movq-form | 0 | 2 | [series](series-b1d09f0501f16d1c.md) |
 | Preflight regression tests /  | unknown OS / unknown CPU | pull&#95;request / codex/1570-validate-constant-offsetof-designators | 0 | 3 | [series](series-34a361cecb9f5042.md) |
-| authorize /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 15 | [series](series-974e42bddace4d7c.md) |
-| Compare the main commit compiler /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 16 | [series](series-1f6260be31355292.md) |
-| Show the main commit comparison check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 16 | [series](series-fd9520dea7e6a343.md) |
-| Authorize the main commit comparison /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 16 | [series](series-f3c9d7042e21edb3.md) |
-| Publish the compiler benchmark check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 16 | [series](series-1be8211ea92f5352.md) |
-| Publish the compiler benchmark commit report /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 16 | [series](series-568cee59811c9f4f.md) |
-| Show the pull request comparison check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 14 | [series](series-09ebae9d0d57cd60.md) |
+| authorize /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 16 | [series](series-974e42bddace4d7c.md) |
+| Compare the main commit compiler /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 17 | [series](series-1f6260be31355292.md) |
+| Show the main commit comparison check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 17 | [series](series-fd9520dea7e6a343.md) |
+| Authorize the main commit comparison /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 17 | [series](series-f3c9d7042e21edb3.md) |
+| Publish the compiler benchmark check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 17 | [series](series-1be8211ea92f5352.md) |
+| Publish the compiler benchmark commit report /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 17 | [series](series-568cee59811c9f4f.md) |
+| Show the pull request comparison check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 15 | [series](series-09ebae9d0d57cd60.md) |
 | Compare the pull request compiler /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 13 | [series](series-d8ce067a389e95bb.md) |
-| bench /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 30 | [series](series-7ab221e1da782c9b.md) |
-| Publish the pull request compiler benchmark check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 14 | [series](series-1fc7940ff060b185.md) |
+| bench /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 31 | [series](series-7ab221e1da782c9b.md) |
+| Publish the pull request compiler benchmark check /  | unknown OS / unknown CPU | workflow&#95;run / main | 0 | 15 | [series](series-1fc7940ff060b185.md) |
 | linux-x86-64 /  | unknown OS / unknown CPU | pull&#95;request / codex/2680-gnu-movq-form | 0 | 1 | [series](series-773a18e3fd10362e.md) |
 | foundation /  | unknown OS / unknown CPU | pull&#95;request / codex/2680-gnu-movq-form | 0 | 1 | [series](series-7f7ce17dbd0458c8.md) |
 | Pages validation and artifact /  | unknown OS / unknown CPU | pull&#95;request / codex/2680-gnu-movq-form | 0 | 1 | [series](series-fb74c35b1e0a826d.md) |
