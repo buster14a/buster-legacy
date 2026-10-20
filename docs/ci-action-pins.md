@@ -89,6 +89,33 @@ still fail CI.
 
 ## Updating an action
 
+The repository rename tracked in
+[buster-fast #166](https://github.com/buster14a/buster-fast/issues/166) requires
+the default-branch trusted integration writer and merge-queue admission
+reconciler to remain runnable between the two renames. The reconciler publishes
+the two required merge-group admission checks from trusted main; it must work
+before the staged repository references can merge. Hosted Action references
+do not follow repository rename redirects.
+Only `.github/workflows/native-retirement-integration.yml` and
+`.github/workflows/merge-queue-reconcile.yml` therefore check out
+the machine reporter from `${{ github.repository }}` at its existing immutable
+commit `a36422384d0334a53d4be73bc306b97ccdba4768`, using the existing approved
+checkout revision, into `.pinned-machine-reporter`. It invokes the unchanged
+composite there before checking out any candidate or trusted-main source.
+
+The exact loader, unconditional startup call and immediate reporter-source
+record are checked together. Credentials are not persisted. Subsequent
+checkouts use disjoint `trusted` or `integration/external/<project>` paths;
+they cannot replace the reporter checkout. The local reporter path is approved
+only in the four existing writer jobs and the reconciler's `reconcile` job.
+The reconciler checks out and executes only independently trusted main in
+`trusted`, separate from the pinned reporter; it never runs merge-group source.
+Other workflows keep their hosted
+reporter reference and their existing checks. The reporter commit, source blob
+checks, writer authorization, environment protection and publication lease
+remain unchanged. The outcome job gains only `contents: read` for this pinned
+checkout. No generated retirement identities are edited by this preparation.
+
 1. Resolve the desired tag at its existing origin. Fetch the full commit and
    inspect source and bundled entry point changes from the current pin,
    including runtime requirements, authentication handling and post-job cleanup.
