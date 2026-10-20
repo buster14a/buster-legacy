@@ -8,6 +8,8 @@ retargeting any remote, API client or unattended writer; historical `buster`
 URLs now select the other project. Local checkout directory names are unchanged.
 Immutable audit and receipt bytes retain their original names and commit IDs;
 use `buster-legacy` when navigating to this project's historical records.
+See [repository identity](docs/repository-identity.md) for the activation order
+and the distinction between live destinations and preserved evidence.
 
 **Buster** is a personal monorepo of applications, shared C components, tools
 and experiments. The compiler and toolchain is one project; find the others
