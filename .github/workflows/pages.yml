@@ -51,7 +51,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Machine specifications
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           requested-runner: >-
             ubuntu-24.04
@@ -60,7 +60,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Record actual checkout identity
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: .
@@ -78,7 +78,7 @@ jobs:
   deploy:
     name: Deploy GitHub Pages
     # Main/manual skip the PR-only planner; require the validated artifact directly.
-    if: ${{ !cancelled() && needs.build.result == 'success' && github.repository == 'buster14a/buster' && github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
+    if: ${{ !cancelled() && needs.build.result == 'success' && github.repository_id == '1071732997' && github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
     needs: build
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -90,7 +90,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Machine specifications
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           requested-runner: >-
             ubuntu-24.04

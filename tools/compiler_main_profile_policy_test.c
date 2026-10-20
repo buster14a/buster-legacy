@@ -120,7 +120,7 @@ BUSTER_GLOBAL_LOCAL CompilerMainPolicyFixture compiler_main_policy_test_fixture(
     String8 hash = S8("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     String8 ref = string_slice(hash,0,40);
     for (u64 i = 0; i < 22; i += 1) result.policy[i] = hash;
-    result.policy[0]=S8("buster-compiler-main-profile-routing-v1"); result.policy[1]=S8("buster14a/buster");
+    result.policy[0]=S8("buster-compiler-main-profile-routing-v1"); result.policy[1]=S8("buster14a/buster-legacy");
     result.policy[2]=S8("qualified-40");result.policy[3]=ref;result.policy[4]=S8("compiler-main-40pairs-v1");
     result.policy[5]=S8("legacy-rebuild");result.policy[6]=S8("buster-compiler-main-owned-phases-v1");
     result.policy[8]=S8("/usr/bin/python3.12");result.policy[15]=ref;result.policy[17]=S8("-");

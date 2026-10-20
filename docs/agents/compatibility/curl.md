@@ -1,7 +1,7 @@
 # curl/libcurl qualification
 
 [Harness index](../compatibility.md) · Owning milestone:
-[#3181](https://github.com/buster14a/buster/issues/3181).
+[#3181](https://github.com/buster14a/buster-legacy/issues/3181).
 
 ## First diagnostic cell
 
@@ -32,8 +32,8 @@ results and exact candidate revisions belong on the issue and implementation PR.
 
 Normal CMake/Ninja compiler probes request `-MD -MT ... -MF ...`.
 Buster dependency-file emission is owned by
-[#2302](https://github.com/buster14a/buster/issues/2302).
-The [curl reproducer](https://github.com/buster14a/buster/issues/2302#issuecomment-6108097129)
+[#2302](https://github.com/buster14a/buster-legacy/issues/2302).
+The [curl reproducer](https://github.com/buster14a/buster-legacy/issues/2302#issuecomment-6108097129)
 retains the observed configure refusal before curl C compilation.
 Preserve these flags when rerunning after that implementation lands; removing
 them or forcing a compiler-check result cannot qualify the normal build graph.

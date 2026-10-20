@@ -689,7 +689,7 @@ mobile/shader CMake branches and helper scripts are historical source: reference
 to removed packaging/embedding helpers must be restored or replaced before an
 owner can reconnect those paths. Automatic desktop compiler CI does not use them.
 
-The [pre-removal build guide](https://github.com/buster14a/buster/blob/02a6414e020f5d549122197c3a7c8407df5bed76/docs/agents/build.md)
+The [pre-removal build guide](https://github.com/buster14a/buster-legacy/blob/02a6414e020f5d549122197c3a7c8407df5bed76/docs/agents/build.md)
 retains the SDK-selection rules and Android/iOS incremental-asset procedures.
 Those commands and their asset-test scripts require that historical checkout;
 they do not establish current mobile packaging, signing or device coverage.
@@ -743,7 +743,7 @@ and CI defaults remain unchanged.
 ## Exact-artifact binary coverage pilot
 
 The native command `binary_coverage_inventory` is the bounded inventory/reporting
-slice for [#2216](https://github.com/buster14a/buster/issues/2216). It accepts one
+slice for [#2216](https://github.com/buster14a/buster-legacy/issues/2216). It accepts one
 ELF64 little-endian x86-64 executable/shared-object file; the maintained pilot
 target is the Linux x86-64 native build driver. It hashes the actual file and
 reads its program headers independently of any received coverage data:

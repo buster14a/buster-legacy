@@ -244,7 +244,7 @@ class JobEnvironmentWorkflowTests(unittest.TestCase):
                 self.assertRegex(body, r"      - uses: actions/checkout@[^\n]+\n        id: checkout\n"
                                       r"(?:        [^\n]*\n|          [^\n]*\n)*"
                                       r"      - name: Record actual checkout identity\n"
-                                      r"        uses: buster14a/buster/\.github/actions/machine-specifications@[0-9a-f]{40}\n"
+                                      r"        uses: buster14a/buster-legacy/\.github/actions/machine-specifications@[0-9a-f]{40}\n"
                                       r"        with:\n          mode: source\n          source-directory: \.\n"
                                       r"          source-repository: \$\{\{ github.repository \}\}\n"
                                       r"      - name: Retain actual job environment\n")

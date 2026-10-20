@@ -20,7 +20,7 @@ jobs:
       BUSTER_MATRIX_THREADS: '2'
     steps:
       - name: Machine specifications
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           requested-runner: >-
             ubuntu-26.04
@@ -29,7 +29,7 @@ jobs:
           ref: ${{ github.sha }}
           persist-credentials: false
       - name: Record actual checkout identity
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: .
@@ -47,7 +47,7 @@ jobs:
           git archive --format=tar HEAD > evidence/source.tar
           sha256sum evidence/source.tar > evidence/source.tar.sha256
       - name: Retain machine records in existing evidence
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: retain
           retention-directory: evidence
@@ -75,7 +75,7 @@ jobs:
           persist-credentials: false
       - name: Record actual checkout identity 2
         if: ${{ !cancelled() }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: external/cjson
@@ -91,7 +91,7 @@ jobs:
           persist-credentials: false
       - name: Record actual checkout identity 3
         if: ${{ !cancelled() }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: external/lua-git
@@ -139,7 +139,7 @@ jobs:
           persist-credentials: false
       - name: Record actual checkout identity 3
         if: ${{ !cancelled() }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: external/zlib
@@ -153,7 +153,7 @@ jobs:
           persist-credentials: false
       - name: Record actual checkout identity 4
         if: ${{ !cancelled() }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: external/stb
@@ -167,7 +167,7 @@ jobs:
           persist-credentials: false
       - name: Record actual checkout identity 6
         if: ${{ !cancelled() }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: external/quickjs
@@ -181,7 +181,7 @@ jobs:
           persist-credentials: false
       - name: Record actual checkout identity 2
         if: ${{ !cancelled() }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: external/raddebugger
@@ -195,7 +195,7 @@ jobs:
           persist-credentials: false
       - name: Record actual upstream identity
         if: ${{ !cancelled() }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: external/git
@@ -672,7 +672,7 @@ jobs:
           .ci-tools/build external_projects git 2>&1 | tee evidence/git.log
       - name: Retain machine records
         if: always()
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: retain
           retention-directory: evidence/git
@@ -763,7 +763,7 @@ jobs:
       - name: Record pristine FFmpeg source identity
         id: ffmpeg_source_identity
         if: ${{ !cancelled() }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: external/ffmpeg
@@ -940,7 +940,7 @@ jobs:
           cat evidence/os-outcomes.txt >> "$GITHUB_STEP_SUMMARY"
       - name: Retain machine records in existing evidence 2
         if: always()
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: retain
           retention-directory: evidence
@@ -962,7 +962,7 @@ jobs:
     timeout-minutes: 360
     steps:
       - name: Machine specifications
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           requested-runner: >-
             macos-26
@@ -971,7 +971,7 @@ jobs:
           ref: ${{ github.sha }}
           persist-credentials: false
       - name: Record actual checkout identity
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: .
@@ -986,7 +986,7 @@ jobs:
           cat evidence/os-outcomes.txt >> "$GITHUB_STEP_SUMMARY"
       - name: Retain machine records
         if: ${{ always() }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: retain
           retention-directory: evidence
@@ -1006,7 +1006,7 @@ jobs:
     timeout-minutes: 360
     steps:
       - name: Machine specifications
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           requested-runner: >-
             windows-2025
@@ -1015,7 +1015,7 @@ jobs:
           ref: ${{ github.sha }}
           persist-credentials: false
       - name: Record actual checkout identity
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: .
@@ -1030,7 +1030,7 @@ jobs:
           cat evidence/os-outcomes.txt >> "$GITHUB_STEP_SUMMARY"
       - name: Retain machine records
         if: ${{ always() }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: retain
           retention-directory: evidence

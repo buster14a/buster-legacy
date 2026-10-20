@@ -519,7 +519,7 @@ def render_catalogue(data, root):
         "",
         "Generated from [backend-capabilities-v1.json](backend-capabilities-v1.json) by "
         "`python3 tools/backend_capabilities.py --write` — do not edit by hand; "
-        "owned by [#309](https://github.com/buster14a/buster/issues/309).",
+        "owned by [#309](https://github.com/buster14a/buster-legacy/issues/309).",
         "",
         f"Reviewed revision `{data['reviewed_revision']}`.",
         "",

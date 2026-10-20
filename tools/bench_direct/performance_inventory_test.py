@@ -98,7 +98,7 @@ RECEIPT = ROOT / "tools" / "bench_direct" / "compiler_receipt.py"
 NATIVE_ROUTE, NATIVE_STATUS = "hosted-native", "native-informative"
 NATIVE_CONSUMER = "tools/bench_direct/native_timing.c"
 NATIVE_RUNNERS = {"macos": re.compile(r"macos-[0-9a-z.-]+"), "windows": re.compile(r"windows-[0-9a-z.-]+")}
-NATIVE_ALERT_GATE = ("github.repository == 'buster14a/buster'", "github.ref == 'refs/heads/main'")
+NATIVE_ALERT_GATE = ("github.repository_id == '1071732997'", "github.ref == 'refs/heads/main'")
 # Inventory row -> the compiler_receipt profile constant its consumer must validate.
 PROFILE_ROWS = {
     "uarch_lab:compare@canonical-inline-self-host": "INLINE_ACCEPTANCE_PROFILE",
@@ -129,7 +129,7 @@ NATIVE_WORKFLOW = """jobs:
       - run: '"$RUNNER_TEMP/native-timing" macos --annotate'
   alert:
     needs: timing
-    if: ${{ needs.timing.outputs.verdict == 'regression' && github.repository == 'buster14a/buster' && github.ref == 'refs/heads/main' }}
+    if: ${{ needs.timing.outputs.verdict == 'regression' && github.repository_id == '1071732997' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-26.04
     permissions:
       contents: read

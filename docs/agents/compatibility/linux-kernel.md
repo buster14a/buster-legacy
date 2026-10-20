@@ -1,6 +1,6 @@
 # Linux kernel qualification frontier
 
-[Compatibility index](../compatibility.md) · [Owning issue #3186](https://github.com/buster14a/buster/issues/3186)
+[Compatibility index](../compatibility.md) · [Owning issue #3186](https://github.com/buster14a/buster-legacy/issues/3186)
 
 This opt-in native C tool establishes a trusted minimal reference and exposes
 Buster blockers. A successful diagnostic does **not** qualify a Buster-built

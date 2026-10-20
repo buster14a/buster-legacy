@@ -17,7 +17,7 @@ SITE = ROOT / "site"
 WORKFLOW = ROOT / ".github/workflows/pages.yml"
 UPLOAD = "actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9"
 DEPLOY = "actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346"
-GUARD = "!cancelled() && needs.build.result == 'success' && github.repository == 'buster14a/buster' && github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')"
+GUARD = "!cancelled() && needs.build.result == 'success' && github.repository_id == '1071732997' && github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')"
 
 
 class Page(HTMLParser):
@@ -112,11 +112,12 @@ class PagesTests(unittest.TestCase):
                         self.assertEqual(tag, "a", "external assets are not allowed")
                         self.assertEqual(parsed.scheme, "https")
                         self.assertEqual(parsed.netloc, "github.com")
-                        self.assertTrue(parsed.path.startswith("/buster14a/buster"))
+                        self.assertTrue(parsed.path in ("/buster14a/buster", "/buster14a/buster-legacy") or
+                                        parsed.path.startswith("/buster14a/buster-legacy/"))
 
     def test_repository_document_links_exist(self):
         page = Page((SITE / "index.html").read_text(encoding="utf-8"))
-        prefix = "/buster14a/buster/blob/main/"
+        prefix = "/buster14a/buster-legacy/blob/main/"
         for _, reference in page.links:
             path = urlsplit(reference).path
             if path.startswith(prefix):
@@ -188,7 +189,7 @@ class PagesTests(unittest.TestCase):
       url: ${{{{ steps.deployment.outputs.page_url }}}}
     steps:
       - name: Machine specifications
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           requested-runner: >-
             ubuntu-24.04

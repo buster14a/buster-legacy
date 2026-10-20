@@ -20,7 +20,7 @@ import tempfile
 import native_retirement_archive as archive
 
 
-REPOSITORY = "buster14a/buster"
+REPOSITORY = "buster14a/buster-legacy"
 SCHEMA = "buster-native-retirement-history-v1"
 CHUNK = 1024 * 1024
 

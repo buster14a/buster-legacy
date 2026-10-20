@@ -186,7 +186,7 @@ BUSTER_GLOBAL_LOCAL bool compiler_experiment_cleanup_context(String8* values)
     bool result = compiler_experiment_cleanup_decimal(request, 0) && compiler_experiment_cleanup_decimal(executor, 0) &&
         compiler_experiment_cleanup_decimal(attempt, 0) && string_equal(executor, declared_executor) &&
         compiler_experiment_cleanup_hex(head, 40) && compiler_experiment_cleanup_hex(policy, 40) &&
-        string_equal(repository, S8("buster14a/buster")) && known_job;
+        string_equal(repository, S8("buster14a/buster-legacy")) && known_job;
     if (result)
     {
         values[4] = request; values[5] = executor; values[6] = attempt; values[7] = head;

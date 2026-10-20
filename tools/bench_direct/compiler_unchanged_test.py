@@ -22,7 +22,7 @@ import compiler_comment  # noqa: E402
 import compiler_github  # noqa: E402
 import compiler_publish  # noqa: E402
 
-REPOSITORY = "buster14a/buster"
+REPOSITORY = "buster14a/buster-legacy"
 HEAD, BASE, TRUSTED, FIRST = "a" * 40, "b" * 40, "c" * 40, "d" * 40
 REFERENCE_URL = f"https://github.com/{REPOSITORY}/runs/700"
 REFERENCE_AT = "2026-10-01T02:03:04Z"

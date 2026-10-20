@@ -337,7 +337,7 @@ BUSTER_GLOBAL_LOCAL CompilerSamplingAdmission compiler_sampling_admission_valida
         string_equal(config[SAMPLING_CONFIG_SCHEMA], S8("buster-main-sampling-admission-v1")) &&
         (string_equal(config[SAMPLING_CONFIG_STATE], S8("acquire")) ||
             string_equal(config[SAMPLING_CONFIG_STATE], S8("pilot")) || string_equal(config[SAMPLING_CONFIG_STATE], S8("confirm"))) &&
-        string_equal(config[SAMPLING_CONFIG_REPOSITORY], S8("buster14a/buster")) &&
+        string_equal(config[SAMPLING_CONFIG_REPOSITORY], S8("buster14a/buster-legacy")) &&
         string_equal(config[SAMPLING_CONFIG_OWNER_LOGIN], S8("davidgmbb")) &&
         string_equal(config[SAMPLING_CONFIG_OWNER_ID], S8("39247043")) &&
         compiler_sampling_hex(config[SAMPLING_CONFIG_FREEZE_REVISION], 40) &&
@@ -489,17 +489,17 @@ BUSTER_GLOBAL_LOCAL bool compiler_sampling_admission_self_test(Arena* arena)
     String8 names[] = {S8("schema"), S8("state"), S8("freeze_revision"), S8("freeze_sha256"), S8("campaign_parent"),
         S8("parent_freeze_revision"), S8("protocol_sha256"), S8("history_since"), S8("repository"), S8("owner_login"), S8("owner_id")};
     String8 config_values[] = {S8("buster-main-sampling-admission-v1"), S8("acquire"), a40, plan_sha, S8("-"),
-        S8("-"), a, S8("2026-10-09T00:00:00Z"), S8("buster14a/buster"), S8("davidgmbb"), S8("39247043")};
+        S8("-"), a, S8("2026-10-09T00:00:00Z"), S8("buster14a/buster-legacy"), S8("davidgmbb"), S8("39247043")};
     String8 marker = string_format(arena, S8("profile: compiler-main-sampling-acquire-v1 packet: 0 freeze: {S8}"), a40);
     String8 fact_names[] = {S8("schema"), S8("repository"), S8("request_run_id"), S8("request_run_attempt"),
         S8("executor_run_id"), S8("executor_run_attempt"), S8("request_head"), S8("trusted_revision"),
         S8("owner_login"), S8("owner_id"), S8("actor_login"), S8("actor_id"), S8("triggering_login"), S8("triggering_id"),
         S8("pull_author_login"), S8("pull_author_id"), S8("request_repository"), S8("request_head_repository"),
         S8("pull_repository"), S8("pull_state"), S8("parent_count"), S8("fresh_parent_0"), S8("fresh_parent_1")};
-    String8 fact_values[] = {S8("buster-main-sampling-github-facts-v1"), S8("buster14a/buster"), S8("10000"), S8("1"),
+    String8 fact_values[] = {S8("buster-main-sampling-github-facts-v1"), S8("buster14a/buster-legacy"), S8("10000"), S8("1"),
         S8("20000"), S8("1"), c40, a40, S8("davidgmbb"), S8("39247043"), S8("davidgmbb"), S8("39247043"),
-        S8("davidgmbb"), S8("39247043"), S8("davidgmbb"), S8("39247043"), S8("buster14a/buster"),
-        S8("buster14a/buster"), S8("buster14a/buster"), S8("open"), S8("1"), marker, S8("-")};
+        S8("davidgmbb"), S8("39247043"), S8("davidgmbb"), S8("39247043"), S8("buster14a/buster-legacy"),
+        S8("buster14a/buster-legacy"), S8("buster14a/buster-legacy"), S8("open"), S8("1"), marker, S8("-")};
     String8 header = S8("phase\tpacket\trequest_run_id\trequest_run_attempt\texecutor_run_id\texecutor_run_attempt\tstate\tphysical_wall_us\tcampaign\tfreeze_revision\tactor_login\tactor_id\ttriggering_login\ttriggering_id\tpull_author_login\tpull_author_id\n");
     SliceString8 config_names = (SliceString8)BUSTER_ARRAY_TO_SLICE(names);
     SliceString8 config_fields = (SliceString8)BUSTER_ARRAY_TO_SLICE(config_values);

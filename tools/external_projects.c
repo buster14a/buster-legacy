@@ -216,7 +216,7 @@ BUSTER_GLOBAL_LOCAL ProcessResult external_projects_main(Arena* arena, SliceStri
         CpythonCommandResult identity = cpython_command(arena, (SliceString8)BUSTER_ARRAY_TO_SLICE(args), S8("."), true,
             (SliceString8){0}, (SliceString8){0}, 10000000);
         bool admitted = identity.result == PROCESS_RESULT_SUCCESS && !identity.error.length && project < EXTERNAL_PROJECT_COUNT &&
-            string_equal(os_get_environment_variable(S8("GITHUB_REPOSITORY")), S8("buster14a/buster")) &&
+            string_equal(os_get_environment_variable(S8("GITHUB_REPOSITORY")), S8("buster14a/buster-legacy")) &&
             external_projects_event_valid(os_get_environment_variable(S8("GITHUB_EVENT_NAME")), os_get_environment_variable(S8("GITHUB_REF")),
                 os_get_environment_variable(S8("GITHUB_SHA")), cpython_trim_ascii_space(identity.output));
         if (admitted && external_projects_record(arena, project, S8("started;incomplete"), 0))

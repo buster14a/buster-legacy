@@ -33,13 +33,13 @@ An already authorized experiment needs no second unrelated manual approval.
    pull request's checks:
 
    ```sh
-   gh run list --repo buster14a/buster --workflow 9700x-direct-bench.yml --limit 5
+   gh run list --repo buster14a/buster-legacy --workflow 9700x-direct-bench.yml --limit 5
    ```
 
 4. Read the report from the run's summary page, or from its log:
 
    ```sh
-   gh run view RUN_ID --repo buster14a/buster --log
+   gh run view RUN_ID --repo buster14a/buster-legacy --log
    ```
 
    The report begins at `## 9700X direct workload run` and its first line

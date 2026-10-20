@@ -1914,7 +1914,7 @@ class DraftMacosDeferralTests(unittest.TestCase):
             # identity follows the exact checkout predicate and cannot run on
             # the cheap Linux deferral host for a macOS workload.
             self.assertNotRegex(steps[0][1], r"(?m)^        if:")
-            self.assertIn("uses: buster14a/buster/.github/actions/machine-specifications@", steps[0][1])
+            self.assertIn("uses: buster14a/buster-legacy/.github/actions/machine-specifications@", steps[0][1])
             checkout_guard = re.search(r"^        if: (.+)$", steps[2][1], re.M).group(1)
             source_guard = re.search(r"^        if: (.+)$", steps[3][1], re.M).group(1)
             self.assertEqual(source_guard, checkout_guard)

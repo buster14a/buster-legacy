@@ -215,7 +215,7 @@ acceptance.
 ## Existing ownership and dependencies
 
 The guarded literal XGETBV correction is already owned by
-[#1487 / PR #2258](https://github.com/buster14a/buster/pull/2258).
+[#1487 / PR #2258](https://github.com/buster14a/buster-legacy/pull/2258).
 It covers constrained fixed-register inline assembly on baseline and
 XSAVE-disabled targets; it is relevant to upstream BLAKE3's GNU inline-asm
 runtime probe. `memfun.h` also uses the distinct `__builtin_ia32_xgetbv`
@@ -224,7 +224,7 @@ Reproduce the remaining gap after the existing dependency lands instead of
 duplicating its implementation.
 
 At the audit, PR #2258 remained open under the explicitly recorded stable-main
-hold on [#1751](https://github.com/buster14a/buster/issues/1751#issuecomment-5951717741).
+hold on [#1751](https://github.com/buster14a/buster-legacy/issues/1751#issuecomment-5951717741).
 Honor that owner's integration boundary; the RAD Debugger harness must not
 remove the hold, rewrite the owned branch, or change retirement authority.
 Keep current validation and handoff details on the owning issue/PR rather

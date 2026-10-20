@@ -38,7 +38,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Machine specifications
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           requested-runner: >-
             ${{ matrix.os }}
@@ -48,7 +48,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
       - name: Record actual checkout identity
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: .
@@ -101,7 +101,7 @@ jobs:
           ./build/build bench_throughput self-test --sanitize
       - name: Retain machine records in existing evidence
         if: always()
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: retain
           retention-directory: build/throughput-tool-tests
@@ -124,7 +124,7 @@ jobs:
     timeout-minutes: 35
     steps:
       - name: Machine specifications
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           requested-runner: >-
             ubuntu-26.04
@@ -136,7 +136,7 @@ jobs:
           path: baseline
           persist-credentials: false
       - name: Record actual checkout identity
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: baseline
@@ -147,7 +147,7 @@ jobs:
           path: candidate
           persist-credentials: false
       - name: Record actual checkout identity 2
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: candidate
@@ -177,7 +177,7 @@ jobs:
           fi
       - name: Retain machine records in existing evidence
         if: always()
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: retain
           retention-directory: candidate/build/throughput-ci-results
@@ -203,7 +203,7 @@ jobs:
       BUSTER_TEST_JOBS: '2'
     steps:
       - name: Machine specifications
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           requested-runner: >-
             ubuntu-26.04
@@ -216,7 +216,7 @@ jobs:
           ref: ${{ github.sha }}
           persist-credentials: false
       - name: Record actual checkout identity
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: .
@@ -358,7 +358,7 @@ jobs:
           fi
       - name: Retain machine records in existing evidence
         if: always()
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: retain
           retention-directory: direct-ssa-census-evidence

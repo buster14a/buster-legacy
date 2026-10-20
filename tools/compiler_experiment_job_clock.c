@@ -119,7 +119,7 @@ BUSTER_GLOBAL_LOCAL bool compiler_experiment_job_clock_parse(Arena* arena, Strin
     }
     valid = valid && row==BUSTER_ARRAY_LENGTH(names) &&
         string_equal(values[0],S8("buster-compiler-physical-job-clock-v1")) &&
-        string_equal(values[1],expected_kind) && string_equal(values[2],S8("buster14a/buster")) &&
+        string_equal(values[1],expected_kind) && string_equal(values[2],S8("buster14a/buster-legacy")) &&
         (string_equal(expected_kind,S8("main")) || string_equal(values[4],S8("1"))) && string_equal(values[5],expected_policy) &&
         compiler_sampling_hex(expected_policy,40) &&
         string_equal(values[16],S8("1000000")) && string_equal(values[17],S8("public-platform-job-start"));

@@ -30,7 +30,7 @@ conversions in semantic-only analysis and both canonical frontend forms;
 `c_test_array_parameter_address_runtime` checks pointer-object mutation and
 multidimensional parameters with both allocators and tree/query routes (#4173).
 Qualifiers applied to an array typedef remain on the existing path pending
-[#4183](https://github.com/buster14a/buster/issues/4183); they cannot be moved to
+[#4183](https://github.com/buster14a/buster-legacy/issues/4183); they cannot be moved to
 the pointer to disguise lost element qualifiers. Wrong-target const/volatile
 alias conversions remain rejected.
 

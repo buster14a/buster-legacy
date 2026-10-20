@@ -431,6 +431,6 @@ against their original inputs after consumption. Other hosts retain the
 canonical target checks and report native execution as unsupported.
 
 The fixture covers the lifecycle records tracked by
-[#1336](https://github.com/buster14a/buster/issues/1336). The LLVM contract is
+[#1336](https://github.com/buster14a/buster-legacy/issues/1336). The LLVM contract is
 [`llvm.global_ctors` and `llvm.global_dtors`](https://llvm.org/docs/LangRef.html#the-llvm-global-ctors-global-variable):
 appending arrays of priority, function pointer and associated-data pointer.

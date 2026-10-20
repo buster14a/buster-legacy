@@ -455,7 +455,7 @@ do not close #867 based on settings or offline fixtures alone:
    never overwrite a newer live ruleset with the historical desired JSON.
 3. Have an authorized repository administrator apply the reviewed queue and
    required-check changes, preserving other live protections. Read back
-   `GET /repos/buster14a/buster/rulesets/22537199` and the effective branch rules;
+   `GET /repos/buster14a/buster-legacy/rulesets/22537199` and the effective branch rules;
    run `check-ruleset` against the saved current response. Contents/PR write
    access does not imply permission to edit repository rulesets.
 4. Queue two nonconflicting PRs from the same old base and retain both exact
@@ -505,7 +505,7 @@ python3 -B tools/merge_queue_admission.py check-ruleset .github/main-merge-queue
 python3 -B tools/merge_queue_admission.py check-ruleset /tmp/live-main-ruleset.json
 # One bounded pass; publishes only for reconciler-owned groups (needs checks: write).
 GH_TOKEN=... python3 -B tools/merge_queue_admission.py reconcile --repo-root . \
-  --repository buster14a/buster --details-url URL --output /tmp/reconcile.json
+  --repository buster14a/buster-legacy --details-url URL --output /tmp/reconcile.json
 ```
 
 ## Emergency policy

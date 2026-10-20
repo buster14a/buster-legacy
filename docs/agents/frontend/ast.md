@@ -1,6 +1,6 @@
 # Implicit postorder syntax tree
 
-[Frontend index](../frontend.md) · [Issue #3102](https://github.com/buster14a/buster/issues/3102)
+[Frontend index](../frontend.md) · [Issue #3102](https://github.com/buster14a/buster-legacy/issues/3102)
 
 `c_ast_build` (`src/buster/lib/compiler/frontend/c/c_ast.c`, contract in
 `c_ast.h`) reads a unit's final expanded token stream once, front to back, and
@@ -9,9 +9,9 @@ declarators, statements, expressions, initializers and designators,
 attributes, assembly and the supported GNU/C23 forms, function bodies
 included. **Status: default since 2026-10-13.** The
 [driver hook](#driver-pilot-hook) builds it on every C compile, by the
-[owner decision](https://github.com/buster14a/buster/issues/3102#issuecomment-6146782845)
+[owner decision](https://github.com/buster14a/buster-legacy/issues/3102#issuecomment-6146782845)
 that put the switch ahead of steps 3 and 4 of the
-[lowering direction](https://github.com/buster14a/buster/issues/3102#issuecomment-6144374034).
+[lowering direction](https://github.com/buster14a/buster-legacy/issues/3102#issuecomment-6144374034).
 Every ordinary C compile prepares the tree before semantic analysis and
 retains the completed facts needed by lowering. The production
 `-fno-c-ast-pilot` switch is retired; selecting it is an unsupported-option
@@ -123,7 +123,7 @@ the preprocessing result's tokens by index, so the array stays either way.
 [`2026-10-09T222755Z`](../../performance-audits/2026-10-09T222755Z.md)).
 
 The measured mechanism stays in the history of
-[#3102](https://github.com/buster14a/buster/issues/3102)'s fusion branch at
+[#3102](https://github.com/buster14a/buster-legacy/issues/3102)'s fusion branch at
 `2eeb846e`, then reverted:
 - **The preprocessor.** Its main loop became resumable: begin, run text lines
   until the output reaches a target, then finish. A record holds the state that
@@ -150,7 +150,7 @@ A later attempt has to handle what this one met:
   table mid-stream, or every later id shifts.
 - **Memory.** Both phase arenas are alive at once: about 12 MiB more peak RSS
   and 31 GiB more reserved address space, which Valgrind's cap cannot hold
-  ([#3305](https://github.com/buster14a/buster/issues/3305)).
+  ([#3305](https://github.com/buster14a/buster-legacy/issues/3305)).
 - **`__STDC_HOSTED__`.** Its replacement token lives on the stage driver's
   setup stack. That is safe only while setup and the line loop share one frame.
 
@@ -226,8 +226,8 @@ tree does.
 ### Retained facts
 
 **Each phase retains its finished output for the next** (owner direction of
-2026-10-13 on [#3102](https://github.com/buster14a/buster/issues/3102#issuecomment-6144374034),
-implemented by [#4062](https://github.com/buster14a/buster/issues/4062)).
+2026-10-13 on [#3102](https://github.com/buster14a/buster-legacy/issues/3102#issuecomment-6144374034),
+implemented by [#4062](https://github.com/buster14a/buster-legacy/issues/4062)).
 This replaces the #3474 decision that the
 [tree expression typer](#tree-expression-typer)'s per-node types are neither
 retained nor recomputed for lowering. The [inventory](#facts-lowering-needs)
@@ -405,7 +405,7 @@ IR. Lowering reads the columns by node and emits only what it emits today.
 
 ## Retained facts for lowering
 
-Step 1 of the [owner direction](https://github.com/buster14a/buster/issues/3102#issuecomment-6144374034)
+Step 1 of the [owner direction](https://github.com/buster14a/buster-legacy/issues/3102#issuecomment-6144374034)
 on #3102: each phase keeps its finished output for the next, and `c_gen.c`
 lowers from nodes and facts.
 
@@ -935,7 +935,7 @@ bodies, where the queries mint them, those builders go through
 append (`CTypeInterning` in `c_internal.h`). The tree's answers for casts and
 `&` read those rows, in initializers as in bodies (`c_ast_types_interned`), so
 `S8()`'s `(char8*)("text")` at file scope answers with the replay. Until
-[#3102](https://github.com/buster14a/buster/issues/3102)'s initializer slice,
+[#3102](https://github.com/buster14a/buster-legacy/issues/3102)'s initializer slice,
 the window opened only for the bodies, after the initializer walk, and every
 such initializer shape declined.
 
@@ -945,7 +945,7 @@ the interning header only when the caller asks for it
 (`-fc-ast-pilot`). Without it every builder appends as before. The first
 version of stage 3 interned on the default path too. Review held it because a
 default-path change needs 9700X acceptance, so it was narrowed
-([#3321](https://github.com/buster14a/buster/pull/3321)).
+([#3321](https://github.com/buster14a/buster-legacy/pull/3321)).
 
 A row interned there is observable only as table size:
 - It is never mutated in place. Only aggregate and enum rows are completed in
@@ -971,7 +971,7 @@ The same holds for an aggregate a type name defines. The declaration pass
 registers every aggregate that a body or file-scope initializer type name
 defines, qualified ones such as `(const struct { char *p; })` included, before
 the window opens, and the machine reads its row back, so no member segment is
-read inside the window ([#3380](https://github.com/buster14a/buster/pull/3380)).
+read inside the window ([#3380](https://github.com/buster14a/buster-legacy/pull/3380)).
 A trap in `c_parse_type_interning_suspend` while the window is open never
 fires on `c_test_type_interning_objects`' sources or on the unity self-host at
 `-g0` and `-g`. CTypeInterning's `suspended` stays as a guard should a later
@@ -1006,7 +1006,7 @@ the Zen 5 route ([measurement plan](#measurement-plan)).
 ### Qualified member copies
 
 **Status: implemented under `-fc-ast-pilot` as option (b) below, at the
-owner's request on [#3102](https://github.com/buster14a/buster/issues/3102).**
+owner's request on [#3102](https://github.com/buster14a/buster-legacy/issues/3102).**
 The machine side is `c_parse_intern_qualified_type`, the typer's lookup is
 `c_parse_interned_qualified_type`, and the rules are in CTypeInterning's
 comment (`c_internal.h`). The design and its prototype evidence follow as
@@ -1082,7 +1082,7 @@ Its rules:
   - A copy first made in its own body (1,679 runs, 9.7 M) stays with the
     machine.
   - That family is below the code-layout noise #3384 measured
-    ([PR #3384](https://github.com/buster14a/buster/pull/3384)), so the
+    ([PR #3384](https://github.com/buster14a/buster-legacy/pull/3384)), so the
     proposal adds no re-check for it.
 
 **Why sharing stays unobservable.** The argument is the
@@ -1167,7 +1167,7 @@ fixed number of node and token reads; nothing recurses.
   range. That holds when the list sits inside a redundant group,
   `int (k(a))`, or after one, `int (k)(a)`, because the walker records the
   name's own list either way
-  ([#3368](https://github.com/buster14a/buster/issues/3368)). Group boundaries are where a
+  ([#3368](https://github.com/buster14a/buster-legacy/issues/3368)). Group boundaries are where a
   suffix derivation's inner declarator is a pointer. Redundant parentheses
   leave no node, so the split counts the `(` written before the name; more
   than the boundaries is a redundant group, which the walker reads the same
@@ -1227,9 +1227,9 @@ every delimiter and before the first top-level `=` or `,`. The split counts a
 `SPECIFIER_WORD` item of the declaration's `DECL_SPECIFIERS`. A word inside an
 initializer, such as a statement expression's `typedef` or a C23 constexpr
 compound literal, marks neither the declaration nor its later declarators
-([#3310](https://github.com/buster14a/buster/issues/3310)).
+([#3310](https://github.com/buster14a/buster-legacy/issues/3310)).
 
-**Redundant groups ([#3215](https://github.com/buster14a/buster/issues/3215)).**
+**Redundant groups ([#3215](https://github.com/buster14a/buster-legacy/issues/3215)).**
 The walker used to classify a parenthesized declarator by the token after its
 outermost group and to require a `*` before a nested one. So it read
 `int ((*pq))(int) = f;` as a function, merged `int (gd(int a)) { ... } int zz;`
@@ -1241,7 +1241,7 @@ and is redundant otherwise. A name whose own list sits inside the group,
 `(gd(int a))`, is a function, but only when the group follows a type or
 qualifier word, a punctuator or nothing (`c_parse_declarator_group_may_open`).
 After a typedef or tag name it is a group too
-([#3368](https://github.com/buster14a/buster/issues/3368)):
+([#3368](https://github.com/buster14a/buster-legacy/issues/3368)):
 `c_parser_type_name_before_group` answers for a tag after `struct`, `union`
 or `enum` (`c_parse_tag_name_before_group`), and for a typedef name in the
 type's position (`c_parse_typedef_name_position`: first in the declaration,
@@ -1330,7 +1330,7 @@ given tokens the plan tells it what it would otherwise scan for:
   - whether an `auto` or `__auto_type` word stands where the auto-inference
     scan reads: any node of the specifiers, or of the first declarator up to
     its initializer. A parameter's specifier counts, as in
-    `int (*f)(__auto_type x);` ([#3550](https://github.com/buster14a/buster/issues/3550)).
+    `int (*f)(__auto_type x);` ([#3550](https://github.com/buster14a/buster-legacy/issues/3550)).
 
   The split (`c_parse_planned_local_declarations`, the hinted caller of the
   always-inline `c_parse_local_declarations_split`) then skips:
@@ -1568,7 +1568,7 @@ as the field-by-field model comparison.
 
 Lowering's statement walker, `c_ir_lower_body_advance` (`c_gen.c`), reads a
 function body from its statement nodes (#4060, step 2 of the
-[owner direction](https://github.com/buster14a/buster/issues/3102#issuecomment-6144374034)).
+[owner direction](https://github.com/buster14a/buster-legacy/issues/3102#issuecomment-6144374034)).
 It has no token path and no fallback: a body without a COMPOUND_STATEMENT
 node is refused with `function body has no syntax tree node`.
 
@@ -1676,21 +1676,21 @@ pass fails its entry until the input moves to the agreement table
 entries, the attribute placements under [Syntax boundary](#syntax-boundary),
 moved to the agreement table when the tree began to accept them. The four
 declaration-split misreads the differential found
-([#3142](https://github.com/buster14a/buster/issues/3142)) were fixed by
-[#3156](https://github.com/buster14a/buster/pull/3156) and are agreement
+([#3142](https://github.com/buster14a/buster-legacy/issues/3142)) were fixed by
+[#3156](https://github.com/buster14a/buster-legacy/pull/3156) and are agreement
 constructs now: a file-scope plain `asm("...")`, attribute lists before or
 opening a parenthesized pointer declarator, and a C23 opaque `enum E : T;`.
 The redundant-parenthesis misreads it found
-([#3215](https://github.com/buster14a/buster/issues/3215)) are agreement
+([#3215](https://github.com/buster14a/buster-legacy/issues/3215)) are agreement
 constructs too, beside the other redundant shapes: objects and functions in
 one or more groups, a definition whose list sits inside its group, groups in a
 declarator list, after a typedef name and in parameters. The single groups
 after a typedef or tag name
-([#3368](https://github.com/buster14a/buster/issues/3368)) joined them, and
+([#3368](https://github.com/buster14a/buster-legacy/issues/3368)) joined them, and
 so did the old-style definitions whose name sits in a redundant group, with
 and without a declaration list.
 The tree also rejects syntax errors that today's `-fsyntax-only` accepts
-([#3143](https://github.com/buster14a/buster/issues/3143)).
+([#3143](https://github.com/buster14a/buster-legacy/issues/3143)).
 
 Every input whose tree builds also checks the
 [declaration split](#declaration-split-from-the-tree) (`c_ast_corpus_split`).
@@ -1805,8 +1805,8 @@ condition, logical-value and conditional-value owners retain their exact nodes
 through their child handoffs and continuations. Type, constant, bound and
 initializer owners likewise consume exact child nodes and finished facts;
 the temporary range adapters are deleted.** This is
-step 3 of the [owner direction](https://github.com/buster14a/buster/issues/3102#issuecomment-6144374034)
-([#4059](https://github.com/buster14a/buster/issues/4059)). It lands as a
+step 3 of the [owner direction](https://github.com/buster14a/buster-legacy/issues/3102#issuecomment-6144374034)
+([#4059](https://github.com/buster14a/buster-legacy/issues/4059)). It lands as a
 short stack, each part byte-identical on its own:
 - **(a) hoisting from the tree**, below in [Hoisting from the tree](#hoisting-from-the-tree):
   both prepasses read nodes, and their token scans are deleted;
@@ -1880,7 +1880,7 @@ About 296 M of the structure cost is a range that holds nothing to find:
 
 An exact negative answer for those needs no tree: per-body prefix counts of
 the candidate tokens give it. That default-path change is
-[#3445](https://github.com/buster14a/buster/issues/3445). The tree slices
+[#3445](https://github.com/buster14a/buster-legacy/issues/3445). The tree slices
 below are budgeted net of it, so the tree is not credited with that saving.
 
 ### Emission order
@@ -2274,7 +2274,7 @@ ranges onto each carried node and its `CIrHoistFact` byte. The temporary
   prepared-group reuse and source provenance. A condition whose root is an assignment of a logical value,
   `if (x = a || b)`, is a leaf: the token path split it at the `||` and
   lowered `x = a` as its left operand
-  ([#4162](https://github.com/buster14a/buster/issues/4162),
+  ([#4162](https://github.com/buster14a/buster-legacy/issues/4162),
   `c_test_condition_assignment_of_logical`).
 - **Logical and conditional values** ask their retained node's root-assignment
   and `ANY_ASSIGNMENT` facts. Conditional type tasks retain the actual
@@ -2378,8 +2378,8 @@ were in progress. The opening account below describes that migration checkpoint.
 Current production follows the [mandatory retained boundary](#retained-facts-for-lowering)
 and [consumer and retirement map](#consumer-and-retirement-map).
 This is step 4 of the
-[owner direction](https://github.com/buster14a/buster/issues/3102#issuecomment-6144374034)
-of 2026-10-13, tracked in [#4061](https://github.com/buster14a/buster/issues/4061).
+[owner direction](https://github.com/buster14a/buster-legacy/issues/3102#issuecomment-6144374034)
+of 2026-10-13, tracked in [#4061](https://github.com/buster14a/buster-legacy/issues/4061).
 At that checkpoint, local declarations and their bindings used nodes and
 retained facts. Under the
 direction, `c_gen.c` lowers from nodes and retained facts, uses tokens only for
@@ -2389,11 +2389,11 @@ The plan:
 
 | Step | Issue | Scope |
 |---|---|---|
-| 1 | [#4062](https://github.com/buster14a/buster/issues/4062) | retain the tree and semantic facts through lowering |
-| 2 | [#4060](https://github.com/buster14a/buster/issues/4060) | statements |
-| 3 | [#4059](https://github.com/buster14a/buster/issues/4059) | expressions |
-| 4 | [#4061](https://github.com/buster14a/buster/issues/4061) | this section |
-| 5 | [#4058](https://github.com/buster14a/buster/issues/4058) | remaining token-structure code, and a guard |
+| 1 | [#4062](https://github.com/buster14a/buster-legacy/issues/4062) | retain the tree and semantic facts through lowering |
+| 2 | [#4060](https://github.com/buster14a/buster-legacy/issues/4060) | statements |
+| 3 | [#4059](https://github.com/buster14a/buster-legacy/issues/4059) | expressions |
+| 4 | [#4061](https://github.com/buster14a/buster-legacy/issues/4061) | this section |
+| 5 | [#4058](https://github.com/buster14a/buster-legacy/issues/4058) | remaining token-structure code, and a guard |
 
 No code from this step lands before step 1. At that checkpoint, step 1
 ([retained facts](#retained-facts)) retained F1's types, the bindings and
@@ -2439,7 +2439,7 @@ the semantic phase has already parsed:
 - **Precedence:** `c_ir_sizeof_operand_type_classify` and
   `c_ir_constant_evaluate_impl` each run a shunting yard over the operand.
 - **Casts:** the constant evaluator asks `c_ir_query_type_name` for every
-  parenthesized group ([#3473](https://github.com/buster14a/buster/issues/3473)
+  parenthesized group ([#3473](https://github.com/buster14a/buster-legacy/issues/3473)
   measures this).
 - **Initializers:** `c_ir_constant_initializer_designator`,
   `c_ir_initializer_inference_designator` and the compound-literal steps walk
@@ -2998,7 +2998,7 @@ The same table also already counts `?`. Under the pilot,
 `c_ir_root_conditional` skips that count and takes the records' path for
 every call: 79.1 M, against 18.1 M of scan behind the count on the default
 path. Both leads are on the token path and are tracked in
-[#3924](https://github.com/buster14a/buster/issues/3924).
+[#3924](https://github.com/buster14a/buster-legacy/issues/3924).
 
 **Recommendation:**
 - Land the token gates first. Their saving belongs to the token path, not
@@ -3013,7 +3013,7 @@ path. Both leads are on the token path and are tracked in
 
 ## Facts lowering needs
 
-The inventory for [#4062](https://github.com/buster14a/buster/issues/4062), at
+The inventory for [#4062](https://github.com/buster14a/buster-legacy/issues/4062), at
 main `2b190a7b`.
 - **Left column:** each fact `c_gen.c` re-derives from tokens today.
 - **Middle column:** where semantic analysis already computes the same fact.
@@ -3337,7 +3337,7 @@ is compared with the frozen original compiler and workload, including syntax
 construction, retained semantic facts, all lowering work, diagnostics, object
 identity at `-g0` and `-g`, and the self-host fixed point. Hosted measurements
 are diagnostic. Acceptance needs the Ryzen 7 9700X route required by
-[#2761](https://github.com/buster14a/buster/issues/2761) and described in
+[#2761](https://github.com/buster14a/buster-legacy/issues/2761) and described in
 [benchmarking](../benchmarking.md); correctness and source-guard success alone
 do not establish that performance result.
 
@@ -3346,10 +3346,10 @@ optional pilot. Since the default switch (2026-10-13), their "default path"
 and "D against A" refer to the historical tree-free driver path. That
 production opt-out is now retired; a frozen original binary supplies the
 reference endpoint. Under the
-[owner direction](https://github.com/buster14a/buster/issues/3102#issuecomment-6144374034),
+[owner direction](https://github.com/buster14a/buster-legacy/issues/3102#issuecomment-6144374034),
 lowering slices carry no per-slice budget. The final end-to-end measurement
 and Zen 5 acceptance follow
-[#4058](https://github.com/buster14a/buster/issues/4058). The older
+[#4058](https://github.com/buster14a/buster-legacy/issues/4058). The older
 `ast-pilot-acceptance-v1` profile compares no flag against `-fc-ast-pilot`;
 after the default switch those arms select the same layout and do not measure
 the migration.
@@ -3760,7 +3760,7 @@ The reason is that for this function the instruction band is below
 code-generation noise. Six variants whose planless walks make the same calls
 measured D against A at +0.088%, +0.125%, +0.146%, −0.105%, −0.22% and
 −0.34% (the census above and
-[PR #3370](https://github.com/buster14a/buster/pull/3370)): register
+[PR #3370](https://github.com/buster14a/buster-legacy/pull/3370)): register
 allocation in one 500-line loop moves with its surroundings. The statement
 plan meets the replacement criterion. Every other budget in this plan keeps
 its own declared criterion.
@@ -3943,7 +3943,7 @@ no extra code.
 
 The input, flags and four Callgrind arms are the declaration specifier
 read's. The base is `b9c17db2`, the head of
-[#3483](https://github.com/buster14a/buster/pull/3483), which the candidate
+[#3483](https://github.com/buster14a/buster-legacy/pull/3483), which the candidate
 branches from. The budgets:
 - **Correctness.**
   - 0 model differences over the corpus and the frontend sources: the
@@ -4492,7 +4492,7 @@ the hoist set from one walk of the core's subtree, these budgets are
 declared before any measured run of a candidate. That candidate does not
 exist yet. Its base is the main revision where slice 2's range-to-node index
 has landed; slice 1's hand-off is already on main. If
-[#3445](https://github.com/buster14a/buster/issues/3445) has landed by then,
+[#3445](https://github.com/buster14a/buster-legacy/issues/3445) has landed by then,
 the base carries it, so the tree is measured net of the tree-free negative
 tests. Inputs and arms: the unity self-host, `-g0 -c`, with four Callgrind
 arms (`--cache-sim=no --branch-sim=no`) on tests-off `-march=x86-64-v3`
@@ -4543,7 +4543,7 @@ and diagnostic only:
 - Of the evaluator's 1.88 G inclusive Ir, 676 M answers structure
   questions, 835 M is emission and its lookups, and 371 M is its own body.
 - About 296 M of the structure cost is a range with nothing to find, which
-  [#3445](https://github.com/buster14a/buster/issues/3445) can answer without
+  [#3445](https://github.com/buster14a/buster-legacy/issues/3445) can answer without
   a tree.
 - No tree slice was built. At the census base, slices 1–2, which this one
   consumes, had not landed, and building their hand-off and index here would
@@ -4746,7 +4746,7 @@ the same way and diagnostic only:
 ### Initializer value typing
 
 This section has its own anchor because other open AST branches append to
-the plan's final paragraph. After [#3552](https://github.com/buster14a/buster/pull/3552),
+the plan's final paragraph. After [#3552](https://github.com/buster14a/buster-legacy/pull/3552),
 `c_parse_infer_initializer_array_count_core` was still the largest
 semantic-analysis cost in audit
 [`2026-10-11T142104Z`](../../performance-audits/2026-10-11T142104Z.md)'s
@@ -4889,7 +4889,7 @@ main `4e5d563f`, hosted and diagnostic. No candidate was built:
   throwaway build that routes it through `c_ir_query_group_type_name` runs
   32.7 M fewer instructions (−0.136%) on the default path, with byte-identical
   objects. That is a default-path change in its own right, measured on its
-  own ([#3473](https://github.com/buster14a/buster/issues/3473)).
+  own ([#3473](https://github.com/buster14a/buster-legacy/issues/3473)).
 - After that gate, a tree answer ("no `TYPE_NAME` anchored at the first
   token, so negative") could still remove at most about 26 M (0.11%), almost
   all of it unbound identifiers whose scope lookup the probe runs.
@@ -5093,7 +5093,7 @@ diagnostic only. The candidate passes every hosted budget and ships:
 ### Initializer walk
 
 This section has its own anchor because other open AST branches append to
-the plan's final paragraph. After [#3624](https://github.com/buster14a/buster/pull/3624)
+the plan's final paragraph. After [#3624](https://github.com/buster14a/buster-legacy/pull/3624)
 [reused each element's checked type](#initializer-value-typing), the walk in
 `c_parse_infer_initializer_array_count_core` was left unclaimed at about
 550 M Ir. Designators (`c_parse_initializer_designator`, about 216 M) are a
@@ -5126,7 +5126,7 @@ The candidate is an exact cut on the default path, with no tree:
   scan;
 - that `}`, and the list's own, come from `c_parse_type_delimiter_close`:
   the unit's pair table when its delimiters nest, and the same-kind scan
-  otherwise, as [#3667](https://github.com/buster14a/buster/pull/3667) does
+  otherwise, as [#3667](https://github.com/buster14a/buster-legacy/pull/3667) does
   for tag bodies;
 - the end scan tests each token against one punctuator set before it looks
   at which delimiter it is.
@@ -5181,7 +5181,7 @@ This section has its own anchor because other open AST branches append to
 the plan's final paragraph. [The initializer walk](#initializer-walk) left
 two items open: the shape validations that walk a list again after
 array-bound inference walked it, and the scalar element end scans.
-Designators stay with [#3579](https://github.com/buster14a/buster/issues/3579)
+Designators stay with [#3579](https://github.com/buster14a/buster-legacy/issues/3579)
 and are not touched here.
 
 **Census.** It was taken on main `f0f84944` (tests-off `-march=x86-64-v3`
@@ -6055,7 +6055,7 @@ on that workload. Zen 5 validation stays incomplete (#2761).
 This section has its own anchor because other open AST branches append to
 the plan's end. The [token-to-node map census](#token-to-node-map-for-lowering)
 left two tree-free leads on the token path, tracked in
-[#3924](https://github.com/buster14a/buster/issues/3924):
+[#3924](https://github.com/buster14a/buster-legacy/issues/3924):
 - **The predicates.** `c_ir_has_root_comma`, `c_ir_has_root_assignment`,
   `c_ir_has_root_control_operator`, `c_ir_has_root_question` and
   `c_ir_call_argument_separator` scan 703,748 ranges (71.8 M Ir) that hold

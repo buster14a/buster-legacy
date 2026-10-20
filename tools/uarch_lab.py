@@ -336,7 +336,7 @@ COMPARE_METHOD = {
 # Frozen historical native-retirement gate (command_retirement): the #512 decision record
 # rescoped the gate to this lab and kept the #511 per-cell limits unchanged.
 RETIREMENT_SCHEMA = "buster-uarch-lab-retirement-v1"
-RETIREMENT_DECISION = "https://github.com/buster14a/buster/issues/36#issuecomment-5969534074"
+RETIREMENT_DECISION = "https://github.com/buster14a/buster-legacy/issues/36#issuecomment-5969534074"
 RETIREMENT_CONTRACT = "docs/native-retirement-performance-contract.md"
 RETIREMENT_MODES = ("none", "mir-stack", "fast", "quality")
 RETIREMENT_ROLES = (("baseline", "A"), ("candidate", "B"))

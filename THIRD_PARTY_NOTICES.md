@@ -5,12 +5,12 @@ imports, generated metadata, adapted tests, hash integration, and retained
 window code. Read it together with the full texts in [LICENSES](LICENSES/README.md).
 The inventory was prepared against main
 `68eaf7571c8bfaaf7c75bf617e22aa6f3297cd60` on 2026-09-14 for
-[issue #620](https://github.com/buster14a/buster/issues/620).
+[issue #620](https://github.com/buster14a/buster-legacy/issues/620).
 
 **These are upstream notices, not a project-wide license for Buster.** No
 first-party license is selected by this change. That decision, contribution
 authority, and unresolved redistribution questions are tracked in
-[issue #621](https://github.com/buster14a/buster/issues/621).
+[issue #621](https://github.com/buster14a/buster-legacy/issues/621).
 The applicable upstream terms are not replaced by this summary. A project
 being scanned, used as a tool, or tested does not by itself make all of its
 code part of Buster; conversely, generated or translated material must not
@@ -175,7 +175,7 @@ Arm-derived material here. Do not publish a new archive of the restricted
 inputs or represent this inventory as approval for distributing the derived
 outputs. Obtain and review the exact release terms and record the permitted
 scope or a replacement/removal decision in
-[issue #621](https://github.com/buster14a/buster/issues/621) before claiming
+[issue #621](https://github.com/buster14a/buster-legacy/issues/621) before claiming
 redistribution clearance for affected source or binaries.
 
 ## Separately obtained compatibility projects and tools

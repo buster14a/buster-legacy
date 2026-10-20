@@ -50,7 +50,7 @@ PREENTRY_RESERVATION_SCRIPT = (
     "          [[ \"${BQ_REQUEST_RUN_ID:-}\" =~ ^[1-9][0-9]*$ ]]",
     "          [[ \"$GITHUB_RUN_ID\" =~ ^[1-9][0-9]*$ && \"$GITHUB_RUN_ATTEMPT\" =~ ^[1-9][0-9]*$ ]]",
     "          [[ \"${BQ_HEAD_COMMIT:-}\" =~ ^[0-9a-f]{40}$ && \"$GITHUB_SHA\" =~ ^[0-9a-f]{40}$ ]]",
-    "          [[ \"$GITHUB_REPOSITORY\" == buster14a/buster ]]",
+    "          [[ \"$GITHUB_REPOSITORY\" == buster14a/buster-legacy ]]",
     "          [[ \"$GITHUB_JOB\" == compare || \"$GITHUB_JOB\" == preparation ||",
     "             \"$GITHUB_JOB\" == utility || \"$GITHUB_JOB\" == sampling ]]",
     "          if [[ -e /tmp/buster-9700x-cleanup-unknown-v1 || -L /tmp/buster-9700x-cleanup-unknown-v1 ||",
@@ -828,7 +828,7 @@ concurrency:
 jobs:
   reconcile:
     name: Reconcile the exact completed benchmark attempt
-    if: ${{ github.repository == 'buster14a/buster' && ((github.event_name == 'workflow_run' && github.event.workflow_run.head_repository.full_name == github.repository && (github.event.workflow_run.path == '.github/workflows/9700x-direct-bench.yml' || (github.event.workflow_run.path == '.github/workflows/9700x-compiler-request.yml' && github.event.workflow_run.conclusion != 'success'))) || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && github.actor == 'davidgmbb' && github.actor_id == '39247043' && github.triggering_actor == 'davidgmbb')) }}
+    if: ${{ github.repository_id == '1071732997' && ((github.event_name == 'workflow_run' && github.event.workflow_run.head_repository.full_name == github.repository && (github.event.workflow_run.path == '.github/workflows/9700x-direct-bench.yml' || (github.event.workflow_run.path == '.github/workflows/9700x-compiler-request.yml' && github.event.workflow_run.conclusion != 'success'))) || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && github.actor == 'davidgmbb' && github.actor_id == '39247043' && github.triggering_actor == 'davidgmbb')) }}
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     concurrency:
@@ -841,7 +841,7 @@ jobs:
       checks: write
     steps:
       - name: Machine specifications
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           requested-runner: >-
             ubuntu-24.04
@@ -851,7 +851,7 @@ jobs:
           ref: ${{ github.sha }}
           persist-credentials: false
       - name: Record actual checkout identity
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: .
@@ -869,7 +869,7 @@ jobs:
           "$RUNNER_TEMP/9700x-lifecycle" recover "$LC_RUN_ID" "$LC_ATTEMPT" | tee "$RUNNER_TEMP/9700x-lifecycle.jsonl"
       - name: Retain safe machine records
         if: ${{ always() }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: retain
           retention-directory: ${{ runner.temp }}
@@ -1292,7 +1292,7 @@ def remove_reviewed_machine_steps(text: str) -> str:
     Strip only the reviewed literal reference before applying the unchanged
     workload/checkouts/authority contract; never strip arbitrary uses or runs.
     """
-    pin = "buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768"
+    pin = "buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768"
     pieces = re.split(r"(?=^      - (?:name|uses|id):)", text, flags=re.MULTILINE)
     result = []
     for piece in pieces:

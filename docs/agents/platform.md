@@ -44,7 +44,7 @@ The maintained compiler uses only the OS/process/memory/file services below.
   metrics, or from the latest component with `USE_MY_METRICS`, untransformed as
   FreeType does. Hinting is never evaluated, so phantoms are never
   instruction-adjusted (tracked by
-  [#2138](https://github.com/buster14a/buster/issues/2138)); fonts whose
+  [#2138](https://github.com/buster14a/buster-legacy/issues/2138)); fonts whose
   anchors depend on hinted phantoms are unsupported. An explicit stack admits
   up to eight component levels; retained
   points are capped at 1,048,576, while glyph visits, anchor searches
@@ -650,5 +650,5 @@ Xvfb stderr even on failure. Local fixture invocations default to one complete
 repetition; `BUSTER_NATIVE_CAMPAIGN_REPETITIONS` admits only 1..64. A smaller
 executed case count fails independently of the assertion total. Existing
 five-second phase deadlines, pass bounds, pixel readback and downstream browser
-checks remain required. See [#2499](https://github.com/buster14a/buster/issues/2499)
+checks remain required. See [#2499](https://github.com/buster14a/buster-legacy/issues/2499)
 for the before/after experiments and attribution.

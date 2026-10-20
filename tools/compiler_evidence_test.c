@@ -35,7 +35,7 @@ BUSTER_GLOBAL_LOCAL bool compiler_evidence_put(Arena* arena, String8 bundle, Str
 BUSTER_GLOBAL_LOCAL String8 compiler_evidence_test_identity(Arena* arena, String8 candidate, String8 corpus, String8 harness)
 {
     String8 result = string_format(arena,
-        S8("repository\tbuster14a/buster\nrequest_run\t91\nrequest_attempt\t1\nexecutor_run\t92\nexecutor_attempt\t1\n"
+        S8("repository\tbuster14a/buster-legacy\nrequest_run\t91\nrequest_attempt\t1\nexecutor_run\t92\nexecutor_attempt\t1\n"
            "trusted_revision\t{S8}\nbaseline_revision\t{S8}\ncandidate_revision\t{S8}\nbaseline_tree\t{S8}\n"
            "candidate_tree\t{S8}\nlab_profile\tcompiler-compare-v1\ncorpus_profile\t{S8}\ncorpus_harness_revision\t{S8}\n"),
         S8("9999999999999999999999999999999999999999"), S8("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"), candidate,
@@ -246,7 +246,7 @@ BUSTER_GLOBAL_LOCAL bool compiler_evidence_self_test(Arena* arena)
         problem = (String8){0};
         compiler_evidence_expect(&test, compiler_evidence_identity(arena, pinned, &phases, &problem).length != 0 && phases == 0,
             S8("identity:historical-pinned-parse"), problem);
-        String8 malformed[] = {S8(""), S8("repository\tbuster14a/buster\n"), string_format(arena, S8("{S8}extra\tvalue\n"), ordinary),
+        String8 malformed[] = {S8(""), S8("repository\tbuster14a/buster-legacy\n"), string_format(arena, S8("{S8}extra\tvalue\n"), ordinary),
             string_format(arena, S8("x{S8}"), ordinary)};
         for (u64 index = 0; index < BUSTER_ARRAY_LENGTH(malformed); index += 1)
         {

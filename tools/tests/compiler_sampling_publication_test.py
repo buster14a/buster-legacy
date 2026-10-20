@@ -105,7 +105,7 @@ class SamplingPublicationControls(unittest.TestCase):
                 if path == "/check-runs":
                     self.posts += 1
                     row = dict(fields, id=303, app={"id": 15368})
-                    row["details_url"] = "https://github.com/buster14a/buster/runs/303"
+                    row["details_url"] = "https://github.com/buster14a/buster-legacy/runs/303"
                     self.rows.append(row)
                     if lost_response and self.posts == 1:
                         raise publisher.urllib.error.URLError("response lost")
@@ -134,7 +134,7 @@ class SamplingPublicationControls(unittest.TestCase):
         api = self.fake_api(authority, lost_response=True)
         row = publisher.sampling_write(api, authority, {"status": "queued"})
         self.assertEqual((api.posts, api.patches, row["id"]), (1, 0, 303))
-        self.assertEqual(row["details_url"], "https://github.com/buster14a/buster/runs/303")
+        self.assertEqual(row["details_url"], "https://github.com/buster14a/buster-legacy/runs/303")
 
     def test_duplicate_owned_checks_are_rejected(self):
         authority = self.authority()
@@ -146,7 +146,7 @@ class SamplingPublicationControls(unittest.TestCase):
     def test_unbound_sampling_workflow_is_rejected_before_api_access(self):
         with mock.patch.object(publisher, "Api", side_effect=AssertionError("must not access API")):
             with self.assertRaises(ValueError):
-                publisher.sampling_authority({"BQ_REPOSITORY": "buster14a/buster"})
+                publisher.sampling_authority({"BQ_REPOSITORY": "buster14a/buster-legacy"})
 
 
     def test_in_progress_check_never_moves_back_to_queued(self):
@@ -294,7 +294,7 @@ def publication_fixture(phase="pilot", packet=0):
         "ab1_candidate_bytes": str(producer["prepared"]["candidate_bytes"]), "ab2_candidate_bytes": str(producer["prepared"]["candidate2_bytes"])}
     family = sampling.schedule(phase, packet)["family"]
     campaign = plan_sha if phase == "acquire" else "e" * 64
-    authority = {"repository": "buster14a/buster", "head": "7" * 40, "request_id": "200", "run_id": "201",
+    authority = {"repository": "buster14a/buster-legacy", "head": "7" * 40, "request_id": "200", "run_id": "201",
         "admitted": {"sampling_phase": phase, "sampling_packet": str(packet), "sampling_family": family,
             "sampling_freeze_sha256": campaign, "sampling_freeze_revision": "1" * 40 if phase == "acquire" else "e" * 40,
             "sampling_trusted_revision": plan["trusted_revision"], "sampling_protocol_sha256": plan["protocol_sha256"],
@@ -393,7 +393,7 @@ def publication_fixture(phase="pilot", packet=0):
                 "triggering_id": "39247043", "pull_author_login": "davidgmbb", "pull_author_id": "39247043"})
     class FixtureApi:
         token = "synthetic"
-        prefix = "https://api.github.com/repos/buster14a/buster"
+        prefix = "https://api.github.com/repos/buster14a/buster-legacy"
         def __init__(self):
             self.runs, self.jobs, self.payloads = {}, {}, {}
             self.contents = {"tools/uarch_lab.py": lab_bytes, "docs/compiler-main-sampling-qualification-v1.json": protocol_bytes}
@@ -402,7 +402,7 @@ def publication_fixture(phase="pilot", packet=0):
                 self.runs[request_id] = {"id": int(request_id), "run_attempt": 1, "head_sha": item["head"]}
                 self.runs[run_id] = {"id": int(run_id), "run_attempt": 1, "head_sha": item["executor"]["head_sha"],
                     "path": publisher.BENCH_WORKFLOW, "event": "workflow_run", "head_branch": "main",
-                    "repository": {"full_name": "buster14a/buster"}, "status": "completed", "conclusion": "success",
+                    "repository": {"full_name": "buster14a/buster-legacy"}, "status": "completed", "conclusion": "success",
                     "display_title": f"9700X request {request_id}.1 head {item['head']}"}
                 duration = 120
                 if run_id == authority["run_id"]:
@@ -556,8 +556,8 @@ class SamplingPublicationOutcomes(unittest.TestCase):
         self.assertEqual((body["status"], body["conclusion"]), ("completed", "failure"))
         self.assertEqual(body["output"]["title"], "Incomplete unqualified sampling packet")
         for line in ("Lifecycle protocol: sampling-terminal-native-v1.",
-                     "Request run 200 attempt 1: https://github.com/buster14a/buster/actions/runs/200/attempts/1",
-                     "Workflow run 201 attempt 1: https://github.com/buster14a/buster/actions/runs/201/attempts/1"):
+                     "Request run 200 attempt 1: https://github.com/buster14a/buster-legacy/actions/runs/200/attempts/1",
+                     "Workflow run 201 attempt 1: https://github.com/buster14a/buster-legacy/actions/runs/201/attempts/1"):
             self.assertEqual(body["output"]["summary"].count(line), 1)
         result = json.loads(body["output"]["text"].split("\n", 1)[1].rsplit("\n", 1)[0])
         self.assertEqual(result["authenticated_attempt_history"][-1]["state"], "incomplete")
@@ -757,7 +757,7 @@ def preparation_publication_fixture():
            "plan.tsv": plan_bytes, "allowlist.tsv": b"fixture\ttrusted-native-policy\n",
            "facts.tsv": b"fixture\ttrusted-api-facts\n",
            "history.tsv": b"phase\tpacket\trequest_run_id\trequest_run_attempt\texecutor_run_id\texecutor_run_attempt\tstate\tphysical_wall_us\tcampaign\tfreeze_revision\tactor_login\tactor_id\ttriggering_login\ttriggering_id\tpull_author_login\tpull_author_id\n"}
-    authority = {"repository": "buster14a/buster", "head": "7" * 40, "request_id": "200", "run_id": "201",
+    authority = {"repository": "buster14a/buster-legacy", "head": "7" * 40, "request_id": "200", "run_id": "201",
                  "executor": {"id": 201, "run_attempt": 1, "head_sha": "6" * 40},
                  "request": {"id": 200, "run_attempt": 1, "head_sha": "7" * 40},
                  "admitted": admitted, "plan": plan, "raw": raw, "history": []}
@@ -861,7 +861,7 @@ def preparation_publication_fixture():
     git = ["git", "-c", "gc.auto=0", "-c", "maintenance.auto=false", "-c", "core.hooksPath=/dev/null"]
     commands = [
         ("trusted-harness-pin", git + ["-C", "/trusted", "rev-parse", "HEAD"]),
-        ("clone-preparation-source", git + ["clone", "--no-checkout", "--no-tags", "https://github.com/buster14a/buster.git", expected["root"]]),
+        ("clone-preparation-source", git + ["clone", "--no-checkout", "--no-tags", "https://github.com/buster14a/buster-legacy.git", expected["root"]]),
         ("fetch-preparation-pins", git + ["-C", expected["root"], "fetch", "--no-tags", "origin", expected["base"], expected["head"]]),
         ("baseline-tree", git + ["-C", expected["root"], "rev-parse", expected["base"] + "^{tree}"]),
         ("candidate-tree", git + ["-C", expected["root"], "rev-parse", expected["head"] + "^{tree}"]),
@@ -889,7 +889,7 @@ def preparation_publication_fixture():
         claim[label] = hashlib.sha256(raw[name]).hexdigest()
     files["claim.tsv"] = tsv_bytes(claim)
     class PreparationFixtureApi:
-        prefix = "https://api.github.com/repos/buster14a/buster"
+        prefix = "https://api.github.com/repos/buster14a/buster-legacy"
         token = "synthetic"
         def __init__(self):
             start = datetime(2026, 10, 9, tzinfo=timezone.utc)
@@ -995,8 +995,8 @@ class PreparationPublicationOutcomes(unittest.TestCase):
             body = write.call_args[0][2]
             self.assertEqual(body["conclusion"], "success" if available else "failure")
             self.assertIn("Lifecycle protocol: preparation-terminal-native-v1.", body["output"]["summary"])
-            self.assertIn("Request run 200 attempt 1: https://github.com/buster14a/buster/actions/runs/200/attempts/1", body["output"]["summary"])
-            self.assertIn("Workflow run 201 attempt 1: https://github.com/buster14a/buster/actions/runs/201/attempts/1", body["output"]["summary"])
+            self.assertIn("Request run 200 attempt 1: https://github.com/buster14a/buster-legacy/actions/runs/200/attempts/1", body["output"]["summary"])
+            self.assertIn("Workflow run 201 attempt 1: https://github.com/buster14a/buster-legacy/actions/runs/201/attempts/1", body["output"]["summary"])
             self.assertIn('"qualification_state": "unqualified"', body["output"]["text"])
             self.assertIn('"whole_job_net_savings_assessed": false', body["output"]["text"])
             self.assertIn("complete ordinary-job net savings is unassessed", body["output"]["summary"])
@@ -1147,13 +1147,13 @@ class PreparationPublicationOutcomes(unittest.TestCase):
 
     def test_current_executor_owner_and_head_repository_are_requeried(self):
         import authorize as direct_authorize
-        environment = {"BQ_REPOSITORY": "buster14a/buster", "BQ_HEAD_COMMIT": "7" * 40,
+        environment = {"BQ_REPOSITORY": "buster14a/buster-legacy", "BQ_HEAD_COMMIT": "7" * 40,
             "BQ_REQUEST_RUN_ID": "200", "BQ_RUN_ID": "201", "BQ_RUN_ATTEMPT": "1", "BQ_REQUEST_ATTEMPT": "1",
-            "GITHUB_RUN_ID": "201", "GITHUB_RUN_ATTEMPT": "1", "GITHUB_REPOSITORY": "buster14a/buster",
+            "GITHUB_RUN_ID": "201", "GITHUB_RUN_ATTEMPT": "1", "GITHUB_REPOSITORY": "buster14a/buster-legacy",
             "GITHUB_SHA": "6" * 40, "GH_TOKEN": "fixture"}
         execution = {"id": 201, "run_attempt": 1, "path": publisher.BENCH_WORKFLOW, "event": "workflow_run",
             "head_branch": "main", "head_sha": "6" * 40,
-            "repository": {"full_name": "buster14a/buster"}, "head_repository": {"full_name": "buster14a/buster"},
+            "repository": {"full_name": "buster14a/buster-legacy"}, "head_repository": {"full_name": "buster14a/buster-legacy"},
             "actor": dict(direct_authorize.MAINTAINER), "triggering_actor": dict(direct_authorize.MAINTAINER),
             "display_title": "9700X request 200.1 head " + "7" * 40}
         for field, value in (("actor", {"login": "someone-else", "id": 39247043}),
@@ -1205,7 +1205,7 @@ class PreparationPublicationOutcomes(unittest.TestCase):
     def test_preparation_native_admission_refuses_unbound_input_before_api(self):
         with mock.patch.object(publisher, "Api", side_effect=AssertionError("API must not run")):
             with self.assertRaises(ValueError):
-                publisher.preparation_authority({"BQ_REPOSITORY": "buster14a/buster"})
+                publisher.preparation_authority({"BQ_REPOSITORY": "buster14a/buster-legacy"})
 
 
 class PreparationNativeExportReplay(unittest.TestCase):

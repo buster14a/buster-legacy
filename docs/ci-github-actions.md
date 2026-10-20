@@ -294,7 +294,7 @@ skips the LLVM prepend and the clang probe. Each of that test's seven helper
 probes is still its own `powershell.exe` step process with its own files, but
 they launch together from `setUpClass`. Serial probes once pushed the shared
 workflow-tools step past its five-minute budget on hosted AArch64
-([#2021](https://github.com/buster14a/buster/issues/2021)); that step now
+([#2021](https://github.com/buster14a/buster-legacy/issues/2021)); that step now
 runs its suites in concurrent lanes; see
 [bootstrap wrapper CI](ci-bootstrap-wrapper.md#required-gate-and-budgets).
 The cost was not process startup. Each probe's first cmdlet from an unloaded
@@ -314,10 +314,10 @@ Clang and missing-compiler failures preserve an existing build tree. The GCC
 row remains an unsanitized Debug compilation with warnings as errors; all
 AppleClang, Zig, sanitizer, unity/split and static-analysis work is retained.
 
-The baseline main run [34708311595](https://github.com/buster14a/buster/actions/runs/34708311595)
+The baseline main run [34708311595](https://github.com/buster14a/buster-legacy/actions/runs/34708311595)
 at `f75949b0e27820b02a0fe337b58db1fe700e8f54` reported Apple Clang
 21.0.0 for `gcc` on both macOS architectures, confirming the former coverage
-gap. [PR #500](https://github.com/buster14a/buster/pull/500) records the
+gap. [PR #500](https://github.com/buster14a/buster-legacy/pull/500) records the
 replacement compilers, exact tested revisions and complete CI results. Discovery
 alone does not establish compilation: the GCC Debug build and the full macOS
 matrices must also pass.
@@ -489,14 +489,14 @@ The scan is capped at 64 MiB with 4 KiB line fragments and reports truncation.
 `python3 android/ci_summary_test.py -v` covers these cases without an SDK; the
 existing Linux/macOS mobile lifecycle workflow runs it independently and retains
 `android-summary.log`. No payload deadline, cleanup policy or test selection is
-changed. See [#685](https://github.com/buster14a/buster/issues/685) for the original
-Debug-timeout/Release-success diagnosis and [#686](https://github.com/buster14a/buster/pull/686)
+changed. See [#685](https://github.com/buster14a/buster-legacy/issues/685) for the original
+Debug-timeout/Release-success diagnosis and [#686](https://github.com/buster14a/buster-legacy/pull/686)
 for the already-landed producer and lifecycle repairs.
 
 ### Why the runs in #685 failed
 
 The three `Android x86-64` attempts cited in
-[#685](https://github.com/buster14a/buster/issues/685) — runs `35008982632`
+[#685](https://github.com/buster14a/buster-legacy/issues/685) — runs `35008982632`
 (`fe9569a`) and `35012645467` attempts 1 and 2 (`c6ccdc6`) — were not emulator
 teardown failures. In each, the Debug payload reached its 60-second deadline and
 `error: Android Debug tests failed with status 1` before Release ran and reported
@@ -504,7 +504,7 @@ teardown failures. In each, the Debug payload reached its 60-second deadline and
 Release alone. The extra Debug time came from an `O(values x rows)` residue in
 the MIR debug-location recorder that put roughly 33 seconds into one
 `codegen_tests` fixture, fixed inside
-[#676](https://github.com/buster14a/buster/pull/676) (`f9f817d`), after which the
+[#676](https://github.com/buster14a/buster-legacy/pull/676) (`f9f817d`), after which the
 lane passed again on `af4efd6`. The same-day passing runs simply carried no such
 payload regression. No deadline was raised, no cleanup policy relaxed and no test
 skipped; what the diagnostics above add is that the next occurrence is legible

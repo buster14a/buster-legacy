@@ -14,7 +14,7 @@ import re
 import sys
 
 
-MACHINE_REPORTER_REFERENCE = "buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768"
+MACHINE_REPORTER_REFERENCE = "buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768"
 MACHINE_REPORTER_BLOBS = {".github/actions/machine-specifications/action.yml":"ca7b8666a9cc5fedc1189fd09cc666863f90571a","tools/machine_specifications.c":"db34702e5adb3ddce3ab9c0dc0d93a4ef21c81ff"}
 PINNED_MACHINE_REPORTER = "./.pinned-machine-reporter/.github/actions/machine-specifications"
 PINNED_REPORTER_LOADER = [
@@ -52,7 +52,7 @@ def pinned_reporter_jobs(path):
 
 
 APPROVED = {
-    "buster14a/buster/.github/actions/machine-specifications": {"a36422384d0334a53d4be73bc306b97ccdba4768"},
+    "buster14a/buster-legacy/.github/actions/machine-specifications": {"a36422384d0334a53d4be73bc306b97ccdba4768"},
     "actions/upload-pages-artifact": {"fc324d3547104276b827a68afc52ff2a11cc49c9"},
     "actions/deploy-pages": {"368f82528645a54fb793d4d04e342629a3f51346"},
     "actions/checkout": {"11bd71901bbe5b1630ceea73d27597364c9af683"},

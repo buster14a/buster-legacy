@@ -218,7 +218,28 @@ BUSTER_GLOBAL_LOCAL bool compiler_prerequisite_historical_self_test(Arena* arena
             fixture.config, fixture.marker, fixture.facts, fixture.history, fixture.plan, cleanup, workspace).valid :
             compiler_preparation_admission_validate(arena, fixture.config, fixture.marker, fixture.facts,
                 fixture.history, fixture.plan, cleanup, workspace).valid;
+        // Original repository names remain valid historical data, but cannot
+        // authorize a new execution after the repository-name handover.
+        compiler_preparation_test_check(!live_open, &cases, &failures);
+        fixture.config_values[PREPARATION_CONFIG_REPOSITORY] = S8("buster14a/buster-legacy");
+        u64 renamed_repositories[] = {SAMPLING_FACT_REPOSITORY, SAMPLING_FACT_REQUEST_REPOSITORY,
+            SAMPLING_FACT_HEAD_REPOSITORY, SAMPLING_FACT_PULL_REPOSITORY};
+        for (u64 i = 0; i < BUSTER_ARRAY_LENGTH(renamed_repositories); i += 1)
+        {
+            fixture.fact_values[renamed_repositories[i]] = S8("buster14a/buster-legacy");
+        }
+        compiler_prerequisite_historical_fixture_refresh(arena, &fixture);
+        live_open = fixture.utility ? compiler_closure_utility_admission_validate(arena,
+            fixture.config, fixture.marker, fixture.facts, fixture.history, fixture.plan, cleanup, workspace).valid :
+            compiler_preparation_admission_validate(arena, fixture.config, fixture.marker, fixture.facts,
+                fixture.history, fixture.plan, cleanup, workspace).valid;
         compiler_preparation_test_check(live_open, &cases, &failures);
+        fixture.config_values[PREPARATION_CONFIG_REPOSITORY] = S8("buster14a/buster");
+        for (u64 i = 0; i < BUSTER_ARRAY_LENGTH(renamed_repositories); i += 1)
+        {
+            fixture.fact_values[renamed_repositories[i]] = S8("buster14a/buster");
+        }
+        compiler_prerequisite_historical_fixture_refresh(arena, &fixture);
         // Complete scientific negatives keep their actual check/workflow failure
         // provenance. Raw replay still establishes physical completeness/criteria.
         String8 positive_title = fixture.api[HISTORICAL_CHECK_TITLE];
@@ -374,7 +395,7 @@ BUSTER_GLOBAL_LOCAL bool compiler_prerequisite_historical_self_test(Arena* arena
                 &cases, &failures);
         }
     }
-    bool valid = failures == 0 && cases == 204;
+    bool valid = failures == 0 && cases == 206;
     string_print(S8("COMPILER_PREREQUISITE_HISTORICAL_TEST cases={u64} failures={u64} qualification=unqualified\n"),
         cases, failures);
     return valid;

@@ -34,8 +34,8 @@ BUSTER_GLOBAL_LOCAL bool compiler_main_controller_environment(CompilerMainCompar
         S8("BQ_REPOSITORY"),S8("BQ_RUN_ID"),S8("BQ_RUN_ATTEMPT"),S8("BQ_TRUSTED_REVISION"),S8("BQ_HEAD_COMMIT"),
         S8("BQ_REQUEST_RUN_ID"),S8("BQ_REQUEST_ATTEMPT"),S8("BQ_BASE_COMMIT"),S8("BQ_BASE_TREE"),
         S8("BQ_HEAD_TREE"),S8("BQ_PULL"),S8("BQ_PULL_HEAD"),S8("BQ_FIRST_PARENT"),S8("BQ_RANGE")};
-    String8 values[]={S8("buster14a/buster"),state.facts[2],state.facts[3],state.facts[4],S8("compare"),
-        S8("workflow_run"),S8("refs/heads/main"),S8("buster14a/buster"),state.facts[2],state.facts[3],state.facts[4],state.identity[3],
+    String8 values[]={S8("buster14a/buster-legacy"),state.facts[2],state.facts[3],state.facts[4],S8("compare"),
+        S8("workflow_run"),S8("refs/heads/main"),S8("buster14a/buster-legacy"),state.facts[2],state.facts[3],state.facts[4],state.identity[3],
         state.facts[8],state.facts[9],state.identity[1],state.identity[2],state.identity[4],
         state.identity[5],state.identity[6],state.identity[7],state.identity[8]};
     bool valid=BUSTER_ARRAY_LENGTH(keys)==BUSTER_ARRAY_LENGTH(values);
@@ -88,7 +88,7 @@ BUSTER_GLOBAL_LOCAL CompilerMainComparisonController compiler_main_controller_re
         compiler_sampling_hex(route[4],40) && compiler_sampling_hex(route[19],40) &&
         string_equal(route[19],facts[4]) &&
         string_equal(facts[0],S8("buster-compiler-main-route-github-facts-v1")) &&
-        string_equal(facts[1],S8("buster14a/buster")) &&
+        string_equal(facts[1],S8("buster14a/buster-legacy")) &&
         string_equal(facts[5],S8(".github/workflows/9700x-direct-bench.yml")) &&
         string_equal(facts[6],S8("workflow_run")) && string_equal(facts[7],S8("main")) &&
         string_equal(facts[11],S8(".github/workflows/9700x-compiler-request.yml")) &&
@@ -153,7 +153,7 @@ BUSTER_GLOBAL_LOCAL SliceString8 compiler_main_controller_compare(Arena* arena,
         S8("--work"),route[17],S8("--evidence"),route[18],S8("--summary"),
         path_join(arena,state.proof_root,S8("main-summary.md")),S8("--closure-policy"),route[2],
         S8("--main-owned-phases"),S8("--main-profile"),route[1],S8("--closure-driver"),state.driver,
-        S8("--mode"),S8("main"),S8("--repository"),S8("buster14a/buster"),S8("--ref"),S8("refs/heads/main"),
+        S8("--mode"),S8("main"),S8("--repository"),S8("buster14a/buster-legacy"),S8("--ref"),S8("refs/heads/main"),
         S8("--pull"),identity[5],S8("--pull-head"),identity[6],S8("--base"),identity[1],
         S8("--base-tree"),identity[2],S8("--head"),identity[3],S8("--head-tree"),identity[4],
         S8("--trusted-revision"),route[4],S8("--request-run-id"),facts[8],S8("--run-id"),facts[2],

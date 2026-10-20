@@ -408,7 +408,7 @@ BUSTER_GLOBAL_LOCAL CompilerMainRoute compiler_main_route_validate(Arena* arena,
         compiler_main_fields(facts, (SliceString8)BUSTER_ARRAY_TO_SLICE(compiler_main_fact_names), actual);
     String8* p = result.policy;
     valid = valid && string_equal(p[0], S8("buster-compiler-main-profile-routing-v1")) &&
-        string_equal(p[1], S8("buster14a/buster")) && string_equal(actual[0], S8("buster-compiler-main-route-github-facts-v1")) &&
+        string_equal(p[1], S8("buster14a/buster-legacy")) && string_equal(actual[0], S8("buster-compiler-main-route-github-facts-v1")) &&
         string_equal(actual[1], p[1]) && compiler_sampling_hex(actual[4], 40) &&
         compiler_sampling_hex(actual[10], 40) && string_equal(actual[5], S8(".github/workflows/9700x-direct-bench.yml")) &&
         string_equal(actual[6], S8("workflow_run")) && string_equal(actual[7], S8("main")) &&
@@ -604,7 +604,7 @@ BUSTER_GLOBAL_LOCAL ProcessResult compiler_main_runtime_main(Arena* arena, Slice
         (string_equal(route[1], S8("compiler-compare-v1")) || string_equal(route[1], S8("compiler-main-40pairs-v1"))) &&
         (string_equal(route[2], S8("legacy-rebuild")) || string_equal(route[2], S8("snapshot-v1"))) &&
         string_equal(facts[0], S8("buster-compiler-main-route-github-facts-v1")) &&
-        string_equal(facts[1], S8("buster14a/buster"));
+        string_equal(facts[1], S8("buster14a/buster-legacy"));
     // Borrowing active ownership is permitted only for an exact live ancestor
     // in the existing host context; an UNKNOWN marker never self-clears.
     valid = valid && compiler_experiment_cleanup_guard(arena);

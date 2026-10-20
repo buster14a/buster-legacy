@@ -1,6 +1,6 @@
 # QEMU TCG compatibility census
 
-[Harness index](../compatibility.md) · [Campaign #3185](https://github.com/buster14a/buster/issues/3185)
+[Harness index](../compatibility.md) · [Campaign #3185](https://github.com/buster14a/buster-legacy/issues/3185)
 
 This native-C opt-in action starts the campaign with normal upstream configure,
 a selected emulator build, and separate unit/QTest attempts. A successful census
@@ -129,7 +129,7 @@ inputs: it creates only synthetic Git fixtures and runs in the existing TCC
 bootstrap job. The scheduling scanner continues to refuse `test_qemu` routes
 outside the shared owner.
 
-Historical run [38137123079](https://github.com/buster14a/buster/actions/runs/38137123079)
+Historical run [38137123079](https://github.com/buster14a/buster-legacy/actions/runs/38137123079)
 at `0abe1ac3216de3dd3bbdbc8111ae6d614f87dc83` retains the independent reference
 census and genuine candidate configure failure. It does not validate newer
 source. Diagnostic retention includes commands, stdout/stderr, child statuses,

@@ -36,7 +36,7 @@ BUSTER_GLOBAL_LOCAL bool compiler_experiment_cleanup_guard_test_environment(Aren
     char const* names[] = {"BQ_REQUEST_RUN_ID", "GITHUB_RUN_ID", "BQ_RUN_ID", "GITHUB_RUN_ATTEMPT",
         "BQ_HEAD_COMMIT", "GITHUB_REPOSITORY", "GITHUB_JOB", "GITHUB_SHA"};
     char const* values[] = {"70001", "70002", "70002", "1", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "buster14a/buster", "utility", "cccccccccccccccccccccccccccccccccccccccc"};
+        "buster14a/buster-legacy", "utility", "cccccccccccccccccccccccccccccccccccccccc"};
     bool result = count == BUSTER_ARRAY_LENGTH(names);
     if (install)
     {
@@ -266,7 +266,7 @@ BUSTER_GLOBAL_LOCAL bool compiler_experiment_cleanup_guard_test_identity(Arena* 
     char const* names[] = {"BQ_REQUEST_RUN_ID", "GITHUB_RUN_ID", "BQ_RUN_ID", "GITHUB_RUN_ATTEMPT",
         "BQ_HEAD_COMMIT", "GITHUB_REPOSITORY", "GITHUB_JOB", "GITHUB_SHA"};
     char const* ordinary[] = {"70001", "70002", "70002", "1", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "buster14a/buster", "utility", "cccccccccccccccccccccccccccccccccccccccc"};
+        "buster14a/buster-legacy", "utility", "cccccccccccccccccccccccccccccccccccccccc"};
     char const* changed[] = {"70003", "70004", "70004", "2", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
         "other/repository", "sampling", "dddddddddddddddddddddddddddddddddddddddd"};
     bool context = true;

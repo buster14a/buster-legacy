@@ -105,7 +105,7 @@ class SamplingPublicationControls(unittest.TestCase):
                 if path == "/check-runs":
                     self.posts += 1
                     row = dict(fields, id=303, app={"id": 15368})
-                    row["details_url"] = "https://github.com/buster14a/buster/runs/303"
+                    row["details_url"] = "https://github.com/buster14a/buster-legacy/runs/303"
                     self.rows.append(row)
                     if lost_response and self.posts == 1:
                         raise publisher.urllib.error.URLError("response lost")
@@ -134,7 +134,7 @@ class SamplingPublicationControls(unittest.TestCase):
         api = self.fake_api(authority, lost_response=True)
         row = publisher.sampling_write(api, authority, {"status": "queued"})
         self.assertEqual((api.posts, api.patches, row["id"]), (1, 0, 303))
-        self.assertEqual(row["details_url"], "https://github.com/buster14a/buster/runs/303")
+        self.assertEqual(row["details_url"], "https://github.com/buster14a/buster-legacy/runs/303")
 
     def test_duplicate_owned_checks_are_rejected(self):
         authority = self.authority()
@@ -146,7 +146,7 @@ class SamplingPublicationControls(unittest.TestCase):
     def test_unbound_sampling_workflow_is_rejected_before_api_access(self):
         with mock.patch.object(publisher, "Api", side_effect=AssertionError("must not access API")):
             with self.assertRaises(ValueError):
-                publisher.sampling_authority({"BQ_REPOSITORY": "buster14a/buster"})
+                publisher.sampling_authority({"BQ_REPOSITORY": "buster14a/buster-legacy"})
 
 
 if __name__ == "__main__":

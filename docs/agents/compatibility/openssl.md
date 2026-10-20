@@ -1,7 +1,7 @@
 # OpenSSL qualification
 
 [Harness index](../compatibility.md). This opt-in Linux x86-64 intake belongs
-to [#3184](https://github.com/buster14a/buster/issues/3184). Build/test intake
+to [#3184](https://github.com/buster14a/buster-legacy/issues/3184). Build/test intake
 does not complete the issue's TLS, mixed ABI, provider or performance gates.
 
 ## Pin and dependencies
@@ -97,18 +97,18 @@ All children retain the original ten-minute bound. The unmeasured 600-to-1800
 second test-limit increase was reverted; the portable reference still timed out
 at the larger limit. The measured cause is serial execution (see below), not
 the bound. Final bounded TAP progress/summary is also printed to the job log. The
-[initial census](https://github.com/buster14a/buster/actions/runs/38131412845/job/114446340801)
+[initial census](https://github.com/buster14a/buster-legacy/actions/runs/38131412845/job/114446340801)
 built both Clang references and passed optimized reference tests. Both Buster
-cells stopped on `-m64`, owned by [#3458](https://github.com/buster14a/buster/issues/3458)
-and [PR #3442](https://github.com/buster14a/buster/pull/3442). That run's artifact
+cells stopped on `-m64`, owned by [#3458](https://github.com/buster14a/buster-legacy/issues/3458)
+and [PR #3442](https://github.com/buster14a/buster-legacy/pull/3442). That run's artifact
 upload failed on the colon filename, so only its job log is retained.
 
-The [final historical intake](https://github.com/buster14a/buster/actions/runs/38133873942/job/114453613810)
+The [final historical intake](https://github.com/buster14a/buster-legacy/actions/runs/38133873942/job/114453613810)
 at `e65b49e1efe9f43e671afdec171f8d0238460586` failed: portable reference tests
 timed out at 1800 seconds without capture truncation, optimized reference tests
 exited successfully, and both candidate builds rejected `-m64`; candidate tests
 were not run. Its separate self-host check reached a 40,941,128-byte fixed point.
-[Artifact 11702275158](https://github.com/buster14a/buster/actions/runs/38133873942/artifacts/11702275158)
+[Artifact 11702275158](https://github.com/buster14a/buster-legacy/actions/runs/38133873942/artifacts/11702275158)
 was uploaded successfully. The native log records inner archive SHA-256
 `abfec46e016efda32db0b311b2ade445466ac772dc3e9b4a843b6186f3de5e82`;
 this is retained producer evidence, not independent archive certification or a

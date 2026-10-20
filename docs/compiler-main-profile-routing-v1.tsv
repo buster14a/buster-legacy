@@ -1,5 +1,5 @@
 schema	buster-compiler-main-profile-routing-v1
-repository	buster14a/buster
+repository	buster14a/buster-legacy
 state	disabled
 measurement_revision	-
 main_profile	compiler-compare-v1
