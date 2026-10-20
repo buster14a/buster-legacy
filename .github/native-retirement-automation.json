@@ -1,6 +1,6 @@
 {
   "schema": "buster-native-retirement-automation-policy-v1",
-  "repository": "buster14a/buster",
+  "repository": "buster14a/buster-legacy",
   "enabled": true,
   "epoch": 1,
   "classes": [
