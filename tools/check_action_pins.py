@@ -39,6 +39,18 @@ PINNED_REPORTER_SOURCE = [
 def is_trusted_writer(path):
     return pathlib.Path(path).parts[-3:] == (".github", "workflows", "native-retirement-integration.yml")
 
+
+def pinned_reporter_jobs(path):
+    parts = pathlib.Path(path).parts
+    jobs = ()
+    if parts[-3:-1] == (".github", "workflows"):
+        jobs = {
+            "native-retirement-integration.yml": ("prepare", "validate", "publish", "automation_outcome"),
+            "merge-queue-reconcile.yml": ("reconcile",),
+        }.get(parts[-1], ())
+    return jobs
+
+
 APPROVED = {
     "buster14a/buster/.github/actions/machine-specifications": {"a36422384d0334a53d4be73bc306b97ccdba4768"},
     "actions/upload-pages-artifact": {"fc324d3547104276b827a68afc52ff2a11cc49c9"},
@@ -120,7 +132,7 @@ def check_text(text, path):
             value = action.group(1)
             if len(value) >= 2 and value[0] in "'\"" and value[-1] == value[0]:
                 value = value[1:-1]
-            pinned_reporter = value == PINNED_MACHINE_REPORTER and is_trusted_writer(path)
+            pinned_reporter = value == PINNED_MACHINE_REPORTER and bool(pinned_reporter_jobs(path))
             if not pinned_reporter and value not in APPROVED_LOCAL_WORKFLOWS | {APPROVED_COMPILER_THROUGHPUT_WORKFLOW, APPROVED_CI_NO_CODE_WORKFLOW} | APPROVED_LOCAL_ACTIONS:
                 match = re.fullmatch(r"([A-Za-z0-9_.-]+/[A-Za-z0-9_./-]+)@([0-9a-f]{40})", value)
                 if not match:
@@ -155,7 +167,7 @@ def structure_lines(text):
 
 
 def check_machine_reporting(text, path):
-    """Every job reports before work; the trusted writer may first fetch the fixed reporter."""
+    """Every job reports before work; approved trusted jobs may first fetch the fixed reporter."""
     errors = []
     lines = structure_lines(text)
     if "jobs:" not in lines:
@@ -201,11 +213,10 @@ def check_machine_reporting(text, path):
         if local_reporter:
             reporter_reference = PINNED_MACHINE_REPORTER
             startup_index = 1
-            if (not is_trusted_writer(path) or
-                    job not in ("prepare", "validate", "publish", "automation_outcome") or
+            if (job not in pinned_reporter_jobs(path) or
                     len(parts) < 3 or parts[0] != PINNED_REPORTER_LOADER or
                     parts[2] != PINNED_REPORTER_SOURCE):
-                errors.append(prefix + "local reporter requires the exact trusted-writer pinned checkout and source record")
+                errors.append(prefix + "local reporter requires an approved job, exact pinned checkout and source record")
         first = parts[startup_index] if len(parts) > startup_index else []
         if (not first or first[0] != "      - name: Machine specifications" or
                 "        uses: " + reporter_reference not in first or
@@ -232,7 +243,8 @@ def check_machine_reporting(text, path):
                                          for line in step if line.startswith("          path: ")), ".")
                 if local_reporter and index != 0 and not (
                         source_directory == "trusted" or
-                        re.fullmatch(r"integration/external/[A-Za-z0-9_-]+", source_directory)):
+                        (is_trusted_writer(path) and
+                         re.fullmatch(r"integration/external/[A-Za-z0-9_-]+", source_directory))):
                     errors.append(prefix + "checkout must not replace the isolated pinned reporter")
                 if ("        uses: " + reporter_reference not in following or
                         "          mode: source" not in following or

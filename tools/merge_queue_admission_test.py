@@ -1240,6 +1240,11 @@ class ReconcileTests(unittest.TestCase):
         self.assertEqual(text.count(": write"), 1)
         self.assertIn("      checks: write\n", text)
         self.assertIn("          ref: main\n", text)
+        checkout = text.split("      - name: Check out independently trusted main\n", 1)[1].split("      - name:", 1)[0]
+        self.assertIn("          path: trusted\n", checkout)
+        for name in ("Compile independently trusted no-code classifier", "Reconcile every live merge group once"):
+            step = text.split("      - name: " + name + "\n", 1)[1].split("      - name:", 1)[0]
+            self.assertIn("        working-directory: trusted\n", step)
         self.assertIn("persist-credentials: false", text)
         self.assertIn("timeout-minutes: 10\n", text)
         self.assertIn("cancel-in-progress: false", text)
