@@ -337,6 +337,34 @@ class MachineSpecificationsWorkflowTests(unittest.TestCase):
             with self.subTest(path=path):
                 self.assertEqual(PINS.check_machine_reporting(path.read_text(), path), [])
 
+    def test_trusted_writer_pinned_reporter_survives_repository_rename(self):
+        path = ROOT / ".github/workflows/native-retirement-integration.yml"
+        good = path.read_text()
+        self.assertEqual(good.count("\n".join(PINS.PINNED_REPORTER_LOADER)), 4)
+        self.assertNotIn(PINS.MACHINE_REPORTER_REFERENCE, good)
+        self.assertEqual(PINS.check_text(good, path), [])
+        self.assertEqual(PINS.check_machine_reporting(good, path), [])
+        for bad in (
+            good.replace("ref: a36422384d0334a53d4be73bc306b97ccdba4768", "ref: main", 1),
+            good.replace("repository: ${{ github.repository }}", "repository: elsewhere/repo", 1),
+            good.replace("persist-credentials: false", "persist-credentials: true", 1),
+            good.replace("path: .pinned-machine-reporter", "path: trusted", 1),
+            good.replace("      - name: Check out the pinned machine reporter",
+                         "      - name: Check out the pinned machine reporter\n        if: false", 1),
+            good.replace("\n".join(PINS.PINNED_REPORTER_SOURCE), "", 1),
+            good.replace("source-directory: .pinned-machine-reporter",
+                         "source-directory: trusted", 1),
+            good.replace("path: trusted", "path: .", 1),
+            good.replace("path: trusted", "path: .pinned-machine-reporter", 1),
+            good.replace("path: trusted", "path: integration/../.pinned-machine-reporter", 1),
+            good.replace("  prepare:", "  arbitrary_job:", 1),
+        ):
+            with self.subTest(bad=bad):
+                self.assertTrue(PINS.check_machine_reporting(bad, path))
+        for other in (ROOT / ".github/workflows/ci.yml", "elsewhere-native-retirement-integration.yml"):
+            self.assertTrue(PINS.check_text(good, other))
+            self.assertTrue(PINS.check_machine_reporting(good, other))
+
     def test_checkout_reporting_cannot_guess_event_sha(self):
         startup = ("      - name: Machine specifications\n        uses: " + PINS.MACHINE_REPORTER_REFERENCE +
                    "\n        with:\n          requested-runner: >-\n            ubuntu-latest\n")
