@@ -2,7 +2,7 @@
 
 [Trusted main](index.md) · [All series](all.md) · [JSON](recent.jsonl) · [CSV](recent.csv)
 
-Policy hosted-ci-cohort-v1; refresh 2026-10-20T13:02:14Z. Cohort fields and missing values:
+Policy hosted-ci-cohort-v1; refresh 2026-10-20T18:00:02Z. Cohort fields and missing values:
 
 | Field | Value |
 |---|---|
@@ -37,19 +37,19 @@ Context qualification: incomplete-producer-context. Unknown critical context pre
 
 ### Trailing comparison
 
-**insufficient data**. Baseline: n=0; median/dispersion unavailable; p95 unavailable (requires 20). Candidate: n=2; median 66.0 s; MAD 6.0 s; 2 UTC date buckets; p95 unavailable (requires 20). Change unavailable (percent unavailable below two-second baseline). Observed practical floor 2.0 s; candidate variability allowance 18.0 s.
+**insufficient data**. Baseline: n=0; median/dispersion unavailable; p95 unavailable (requires 20). Candidate: n=0; median/dispersion unavailable; p95 unavailable (requires 20). Change unavailable (percent unavailable below two-second baseline). Observed practical floor 2.0 s; candidate variability allowance 2.0 s.
 
 **Trailing baseline observations:** unavailable.
 
-**Candidate observations:** [job 118261845579](https://github.com/buster14a/buster/actions/runs/39311463557/job/118261845579) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39311463557/attempts/1) / [tested dbc869835b0c](https://github.com/buster14a/buster/commit/dbc869835b0c4d66b591e5b420f7ee4d16cb23ed) at 2026-10-19T19:29:52Z; [job 118406983355](https://github.com/buster14a/buster/actions/runs/39354786947/job/118406983355) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39354786947/attempts/1) / [tested dbc869835b0c](https://github.com/buster14a/buster/commit/dbc869835b0c4d66b591e5b420f7ee4d16cb23ed) at 2026-10-20T01:41:01Z.
+**Candidate observations:** unavailable.
 
 ### Cumulative change from the fixed initial anchor
 
-**insufficient data**. Baseline: n=0; median/dispersion unavailable; p95 unavailable (requires 20). Candidate: n=2; median 66.0 s; MAD 6.0 s; 2 UTC date buckets; p95 unavailable (requires 20). Change unavailable (percent unavailable below two-second baseline). Observed practical floor 2.0 s; candidate variability allowance 18.0 s.
+**insufficient data**. Baseline: n=2; median 66.0 s; MAD 6.0 s; 2 UTC date buckets; p95 unavailable (requires 20). Candidate: n=0; median/dispersion unavailable; p95 unavailable (requires 20). Change unavailable (percent unavailable below two-second baseline). Observed practical floor 18.0 s; candidate variability allowance 2.0 s.
 
 Anchor reason: initial observations of this exact policy/cohort. It fills at most twenty points and never slides. Candidate overlap is excluded. Changing an anchor requires a new explicit report/policy and recorded reason; old rows remain.
 
-**Fixed anchor observations:** unavailable.
+**Fixed anchor observations:** [job 118261845579](https://github.com/buster14a/buster/actions/runs/39311463557/job/118261845579) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39311463557/attempts/1) / [tested dbc869835b0c](https://github.com/buster14a/buster/commit/dbc869835b0c4d66b591e5b420f7ee4d16cb23ed) at 2026-10-19T19:29:52Z; [job 118406983355](https://github.com/buster14a/buster/actions/runs/39354786947/job/118406983355) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39354786947/attempts/1) / [tested dbc869835b0c](https://github.com/buster14a/buster/commit/dbc869835b0c4d66b591e5b420f7ee4d16cb23ed) at 2026-10-20T01:41:01Z.
 
 Existing native phase receipts, where supplied, are retained in the JSON/CSV exports as native_phase_records_json. Their native monotonic clock scope, elapsed_ns and observer overhead remain separate from API job wall time; phases are not summed into CPU time. Toolchain log receipts are reported context rather than complete producer authentication.
 
@@ -57,5 +57,3 @@ These are descriptive CI signals, not independent significance tests or paired e
 
 | Started | Outcome / population | Elapsed s | Source evidence |
 |---|---|---:|---|
-| 2026-10-19T19:29:52Z | success / executed / physical-execution | 72 | [job 118261845579](https://github.com/buster14a/buster/actions/runs/39311463557/job/118261845579) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39311463557/attempts/1) / [tested dbc869835b0c](https://github.com/buster14a/buster/commit/dbc869835b0c4d66b591e5b420f7ee4d16cb23ed) |
-| 2026-10-20T01:41:01Z | success / executed / physical-execution | 60 | [job 118406983355](https://github.com/buster14a/buster/actions/runs/39354786947/job/118406983355) / [attempt 1](https://github.com/buster14a/buster/actions/runs/39354786947/attempts/1) / [tested dbc869835b0c](https://github.com/buster14a/buster/commit/dbc869835b0c4d66b591e5b420f7ee4d16cb23ed) |
