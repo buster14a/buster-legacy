@@ -94,7 +94,7 @@ BUSTER_GLOBAL_LOCAL bool compiler_preparation_controller_attempt(Arena* arena,
         S8("BQ_PREPARATION_TRUSTED_REVISION"), S8("BQ_PREPARATION_RESERVATION_SECONDS"),
         S8("BQ_PREPARATION_WORKER_SECONDS"), S8("BQ_PREPARATION_TIMEOUT_MINUTES")};
     String8 values[] = {compiler_sampling_controller_fact(facts, S8("executor_run_id")), S8("1"),
-        S8("buster14a/buster"), admitted.policy_trusted_revision,
+        S8("buster14a/buster-legacy"), admitted.policy_trusted_revision,
         compiler_sampling_controller_fact(facts, S8("request_run_id")), S8("1"),
         compiler_sampling_controller_fact(facts, S8("request_head")), S8("qualify"), S8("0"), S8("preparation"),
         admitted.freeze_revision, admitted.freeze_sha256, admitted.protocol_sha256,
@@ -560,7 +560,7 @@ BUSTER_GLOBAL_LOCAL ProcessResult compiler_preparation_controller_worker(Arena* 
         bool pin = string_equal(production_profile_trim(controller.last_output), resolved.admitted.trusted_revision);
         controller.success = controller.success && pin;
         String8 clone[] = {S8("clone"), S8("--no-checkout"), S8("--no-tags"),
-            S8("https://github.com/buster14a/buster.git"), resolved.admitted.plan.source_root};
+            S8("https://github.com/buster14a/buster-legacy.git"), resolved.admitted.plan.source_root};
         compiler_preparation_controller_phase(&controller, S8("clone-preparation-source"),
             compiler_sampling_controller_git(arena, (SliceString8)BUSTER_ARRAY_TO_SLICE(clone)), 120000000ull);
         String8 fetch[] = {S8("-C"), resolved.admitted.plan.source_root, S8("fetch"), S8("--no-tags"), S8("origin"),

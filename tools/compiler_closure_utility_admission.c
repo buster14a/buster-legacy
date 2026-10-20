@@ -195,7 +195,7 @@ BUSTER_GLOBAL_LOCAL CompilerClosureUtilityAdmission compiler_closure_utility_adm
         compiler_sampling_hex(config[CLOSURE_UTILITY_CONFIG_FREEZE_SHA], 64) &&
         compiler_sampling_hex(config[CLOSURE_UTILITY_CONFIG_PROTOCOL_SHA], 64) &&
         compiler_sampling_admission_timestamp(config[CLOSURE_UTILITY_CONFIG_HISTORY_SINCE]) &&
-        string_equal(config[CLOSURE_UTILITY_CONFIG_REPOSITORY], S8("buster14a/buster")) &&
+        string_equal(config[CLOSURE_UTILITY_CONFIG_REPOSITORY], S8("buster14a/buster-legacy")) &&
         string_equal(config[CLOSURE_UTILITY_CONFIG_OWNER_LOGIN], S8("davidgmbb")) &&
         string_equal(config[CLOSURE_UTILITY_CONFIG_OWNER_ID], S8("39247043"));
     CompilerClosureUtilityPlan plan = valid ? compiler_closure_utility_plan_parse(plan_text) : (CompilerClosureUtilityPlan){0};

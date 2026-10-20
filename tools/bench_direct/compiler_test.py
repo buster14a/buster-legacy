@@ -115,7 +115,7 @@ def scaling(status: str = "valid", compiler: str = B256) -> dict:
 
 
 HOST = {"hostname": "benchpress", "cpu_model": "AMD Ryzen 7 9700X 8-Core Processor"}
-EXPECTED = {"mode": "main", "repository": "buster14a/buster", "ref": "refs/heads/main",
+EXPECTED = {"mode": "main", "repository": "buster14a/buster-legacy", "ref": "refs/heads/main",
             "pull": "7", "pull_head": "c" * 40, "base": "b" * 40, "base_tree": "e" * 40, "head": "a" * 40,
             "head_tree": "d" * 40, "trusted_revision": "9" * 40, "request_run_id": "91", "run_id": "92",
             "run_attempt": "1"}
@@ -3199,7 +3199,7 @@ class HarnessTest(unittest.TestCase):
                     scaling_behavior: str = "", floor: str | None = None, **change) -> tuple[int, dict, Path]:
         values = {"mode": "main", "candidate": str(self.repo), "lab": str(self.lab), "work": str(self.root / "work"),
                   "evidence": str(self.root / "evidence"), "summary": str(self.root / "step.md"),
-                  "repository": "buster14a/buster", "ref": "refs/heads/main",
+                  "repository": "buster14a/buster-legacy", "ref": "refs/heads/main",
                   "pull": "7", "pull-head": self.pull_head, "base": self.base, "base-tree": self.trees[1],
                   "head": self.head, "head-tree": self.trees[0], "trusted-revision": "9" * 40,
                   "request-run-id": "91", "run-id": "92", "run-attempt": "1"}
@@ -3392,7 +3392,7 @@ class HarnessTest(unittest.TestCase):
                       decided[2])
 
     def test_an_unreadable_or_unverifiable_sealed_bundle_fails_closed(self) -> None:
-        expected = {"repository": "buster14a/buster", "request_run_id": "91", "run_id": "92", "run_attempt": "1",
+        expected = {"repository": "buster14a/buster-legacy", "request_run_id": "91", "run_id": "92", "run_attempt": "1",
                     "trusted_revision": "9" * 40, "base": self.base, "head": self.head, "base_tree": self.trees[1],
                     "head_tree": self.trees[0]}
         corpus = compiler_receipt.THROUGHPUT_PROFILE
@@ -3470,7 +3470,7 @@ class HarnessTest(unittest.TestCase):
                 self.assertEqual(lines[13:], route)
 
     def test_a_snapshot_identity_needs_its_exact_phase_count(self) -> None:
-        base = {"identity": {"repository": "buster14a/buster", "request_run_id": "91", "run_id": "92", "run_attempt": "1",
+        base = {"identity": {"repository": "buster14a/buster-legacy", "request_run_id": "91", "run_id": "92", "run_attempt": "1",
                              "trusted_revision": "9" * 40, "base": "b" * 40, "head": "c" * 40, "base_tree": "e" * 40,
                              "head_tree": "d" * 40},
                 "profile": compiler_receipt.PROFILE, "throughput_profile": compiler_receipt.THROUGHPUT_PROFILE}
@@ -3489,7 +3489,7 @@ class HarnessTest(unittest.TestCase):
             self.assertEqual(compiler_receipt.evidence_identity(broken, "1"), "")
 
     def test_the_publisher_verifies_a_snapshot_bundle_under_its_route(self) -> None:
-        expected = {"repository": "buster14a/buster", "request_run_id": "91", "run_id": "92", "run_attempt": "1",
+        expected = {"repository": "buster14a/buster-legacy", "request_run_id": "91", "run_id": "92", "run_attempt": "1",
                     "trusted_revision": "9" * 40, "base": self.base, "head": self.head, "base_tree": self.trees[1],
                     "head_tree": self.trees[0]}
         corpus = compiler_receipt.THROUGHPUT_PROFILE

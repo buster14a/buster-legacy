@@ -107,13 +107,13 @@ def fixture(phase: str = "confirm", packet: int = 0) -> tuple:
     history[-1]["physical_packet_wall_us"] = occupancy
     history[-1]["actions_job_occupancy_us"] = occupancy + 2000000
     trusted = {"authenticated": True,
-               "request": {"repository": "buster14a/buster", "actor": "davidgmbb", "owner": "davidgmbb",
+               "request": {"repository": "buster14a/buster-legacy", "actor": "davidgmbb", "owner": "davidgmbb",
                            "selector": receipt.REQUEST_SELECTORS[phase], "request_run_id": "998",
                            "request_head": HEAD, "freeze_revision": FREEZE, "phase": phase, "packet": packet,
                            "campaign": DIGEST, "acquisition_campaign": "1" * 64, "acquisition_revision": "1" * 40,
                            "pilot_campaign": "2" * 64 if phase == "confirm" else DIGEST,
                            "pilot_revision": "2" * 40 if phase == "confirm" else FREEZE},
-               "executor": {"repository": "buster14a/buster", "request_run_id": "998", "run_id": history[-1]["run_id"],
+               "executor": {"repository": "buster14a/buster-legacy", "request_run_id": "998", "run_id": history[-1]["run_id"],
                             "run_attempt": "1", "cpu_model": "AMD Ryzen 7 9700X 8-Core Processor",
                             "physical_packet_wall_us": occupancy, "actions_job_occupancy_us": occupancy + 2000000,
                             "queue_delay_seconds": None},

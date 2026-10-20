@@ -108,7 +108,7 @@ BUSTER_GLOBAL_LOCAL bool compiler_closure_utility_controller_attempt(Arena* aren
         S8("BQ_UTILITY_PULL_HEAD"), S8("BQ_UTILITY_TRUSTED_REVISION"), S8("BQ_UTILITY_RESERVATION_SECONDS"),
         S8("BQ_UTILITY_WORKER_SECONDS"), S8("BQ_UTILITY_TIMEOUT_MINUTES")};
     String8 values[] = {compiler_sampling_controller_fact(facts, S8("executor_run_id")), S8("1"),
-        S8("buster14a/buster"), admitted.policy_trusted_revision,
+        S8("buster14a/buster-legacy"), admitted.policy_trusted_revision,
         compiler_sampling_controller_fact(facts, S8("request_run_id")), S8("1"),
         compiler_sampling_controller_fact(facts, S8("request_head")), S8("utility"), S8("0"), S8("utility"),
         admitted.freeze_revision, admitted.freeze_sha256, admitted.protocol_sha256,
@@ -771,7 +771,7 @@ BUSTER_GLOBAL_LOCAL SliceString8 compiler_closure_utility_controller_compare(Are
         S8("--main-owned-phases"), S8("--main-profile"), S8("compiler-compare-v1"),
         S8("--closure-driver"), resolved.driver};
     // Allocate all arguments before constructing the contiguous builder.
-    String8 identity[] = {S8("--mode"), S8("main"), S8("--repository"), S8("buster14a/buster"), S8("--ref"), S8("refs/heads/main"),
+    String8 identity[] = {S8("--mode"), S8("main"), S8("--repository"), S8("buster14a/buster-legacy"), S8("--ref"), S8("refs/heads/main"),
         S8("--pull"), resolved.pull, S8("--pull-head"), plan.pull_head, S8("--base"), plan.baseline_revision,
         S8("--base-tree"), plan.baseline_tree, S8("--head"), plan.candidate_revision, S8("--head-tree"), plan.candidate_tree,
         S8("--trusted-revision"), plan.trusted_revision, S8("--request-run-id"),
@@ -927,7 +927,7 @@ BUSTER_GLOBAL_LOCAL ProcessResult compiler_closure_utility_controller_worker_cla
             compiler_sampling_controller_git(arena, (SliceString8)BUSTER_ARRAY_TO_SLICE(trusted_clean)), 120000000ull);
         if (!resolved.diagnostic)
         {
-        String8 clone[] = {S8("clone"), S8("--no-checkout"), S8("--no-tags"), S8("https://github.com/buster14a/buster.git"), resolved.admitted.plan.source_root};
+        String8 clone[] = {S8("clone"), S8("--no-checkout"), S8("--no-tags"), S8("https://github.com/buster14a/buster-legacy.git"), resolved.admitted.plan.source_root};
         compiler_closure_utility_controller_phase(&controller, &resolved, S8("clone-utility-source"),
             compiler_sampling_controller_git(arena, (SliceString8)BUSTER_ARRAY_TO_SLICE(clone)), 120000000ull);
         String8 fetch[] = {S8("-C"), resolved.admitted.plan.source_root, S8("fetch"), S8("--no-tags"), S8("origin"),

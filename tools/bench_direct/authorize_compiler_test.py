@@ -12,7 +12,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import authorize_compiler  # noqa: E402
 
-REPOSITORY = "buster14a/buster"
+REPOSITORY = "buster14a/buster-legacy"
 HEAD, BASE, PULL_HEAD = "a" * 40, "b" * 40, "c" * 40
 HEAD_TREE, BASE_TREE = "d" * 40, "e" * 40
 OLDER, OLDER_TREE = "f" * 40, "1" * 40
