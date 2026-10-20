@@ -331,9 +331,9 @@ recovered case into that family requires a separate measured decision covering
 per-mode completion, runtime/resource budgets, noise and statistical-family
 effects on the CI runner. This change makes no compiler speedup claim.
 
-Provenance: [issue #346](https://github.com/buster14a/buster/issues/346), from
+Provenance: [issue #346](https://github.com/buster14a/buster-legacy/issues/346), from
 the *Optimize Compiler Allocations* recovery. The verified
-[allocation transport manifest](https://github.com/buster14a/buster/blob/7b0e23ea24cc3233a91a67386122f85fdb6b1f7b/.github/workflows/allocation-transport.yml)
+[allocation transport manifest](https://github.com/buster14a/buster-legacy/blob/7b0e23ea24cc3233a91a67386122f85fdb6b1f7b/.github/workflows/allocation-transport.yml)
 identifies `.github/allocation-transport/part0` through `part3`; concatenating
 and decompressing them yields patch SHA-256
 `9793a8a47882ff875a1966ee6f2919f73fc8ca88ef07d2a5ea337413c9753271`.

@@ -483,7 +483,15 @@ not proof of a repository-wide speedup or of performance acceptance.
 
 ## Administrator steps
 
-None of these can be performed by a pull request.
+The original dedicated-service setup below predates the current compiler's
+shared use of this runner. A signed-in settings review on 2026-10-20 found
+selected repository access for IDs `1071732997` (legacy) and `1421805693`
+(current compiler), public repositories allowed, and **all workflows** allowed.
+The repository-name migration preserves that actual configuration; it does not
+apply the legacy-only access instructions below. Verify the same selected
+identities after both renames. See [repository identity](../../docs/repository-identity.md).
+
+None of these original setup steps can be performed by a pull request.
 
 1. Runner group. `buster-zen5-9700x` is an organization runner in `buster14a`,
    alone in the group `buster-9700x-service-dispatch` (the name predates the
