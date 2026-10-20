@@ -27,9 +27,9 @@ Externally published old links cannot all be repaired.
 
 Continuing workflows retain their job and check names, action revisions,
 permissions, runner labels, trigger conditions and shared host lock. Repository
-conditions use the stable ID. The trusted integration writer obtains its
-unchanged pinned machine reporter from its own current repository identity;
-other hosted reporter calls use the canonical legacy path.
+conditions use the stable ID. The trusted integration writer and merge-queue admission reconciler obtain
+their unchanged pinned machine reporter from their own current repository
+identity; other hosted reporter calls use the canonical legacy path.
 
 Live benchmark admissions, controller clones, publication checks, physical
 clock guards and the current routing policies use the legacy name. Existing
@@ -60,7 +60,8 @@ continue to belong to the current compiler.
 ## Activation order
 
 1. Land and validate the current compiler's stable-ID guard and this
-   repository's rename-safe trusted integration writer.
+   repository's rename-safe trusted integration writer and queue-admission
+   reconciler.
 2. Prepare the legacy source changes and separate automation-policy change.
    Pause repository-writing agents and automation, retaining their previous
    enabled or paused state.

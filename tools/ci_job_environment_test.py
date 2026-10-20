@@ -380,6 +380,34 @@ class MachineSpecificationsWorkflowTests(unittest.TestCase):
                                  "        uses: " + PINS.MACHINE_REPORTER_REFERENCE)):
             self.assertTrue(PINS.check_machine_reporting(bad, "case.yml"))
 
+    def test_trusted_reconciler_pinned_reporter_keeps_main_disjoint(self):
+        path = ROOT / ".github/workflows/merge-queue-reconcile.yml"
+        good = path.read_text()
+        self.assertEqual(good.count("\n".join(PINS.PINNED_REPORTER_LOADER)), 1)
+        self.assertNotIn(PINS.MACHINE_REPORTER_REFERENCE, good)
+        self.assertEqual(PINS.check_text(good, path), [])
+        self.assertEqual(PINS.check_machine_reporting(good, path), [])
+        for bad in (
+            good.replace("ref: a36422384d0334a53d4be73bc306b97ccdba4768", "ref: main", 1),
+            good.replace("repository: ${{ github.repository }}", "repository: elsewhere/repo", 1),
+            good.replace("persist-credentials: false", "persist-credentials: true", 1),
+            good.replace("path: .pinned-machine-reporter", "path: trusted", 1),
+            good.replace("      - name: Check out the pinned machine reporter",
+                         "      - name: Check out the pinned machine reporter\n        if: false", 1),
+            good.replace("\n".join(PINS.PINNED_REPORTER_SOURCE), "", 1),
+            good.replace("path: trusted", "path: .", 1),
+            good.replace("path: trusted", "path: .pinned-machine-reporter", 1),
+            good.replace("path: trusted", "path: integration/external/project", 1),
+            good.replace("path: trusted", "path: integration/../.pinned-machine-reporter", 1),
+            good.replace("  reconcile:", "  prepare:", 1),
+        ):
+            with self.subTest(bad=bad):
+                self.assertTrue(PINS.check_machine_reporting(bad, path))
+        for other in (ROOT / ".github/workflows/ci.yml",
+                      ROOT / ".github/workflows/native-retirement-integration.yml",
+                      "elsewhere-merge-queue-reconcile.yml"):
+            self.assertTrue(PINS.check_machine_reporting(good, other))
+
 
 if __name__ == "__main__":
     unittest.main()
