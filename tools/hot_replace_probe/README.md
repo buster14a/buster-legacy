@@ -160,4 +160,4 @@ is **Apache-2.0 WITH LLVM-exception**. This is technical-contract research only;
 no LLVM implementation was copied.
 
 Exact current checks, failed attempts, revisions and remaining gates live on
-[#2239](https://github.com/buster14a/buster/pull/2239), not in this support contract.
+[#2239](https://github.com/buster14a/buster-legacy/pull/2239), not in this support contract.
