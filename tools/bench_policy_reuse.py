@@ -17,7 +17,7 @@ import re
 import subprocess
 import sys
 
-REPOSITORY = "buster14a/buster"
+REPOSITORY = "buster14a/buster-legacy"
 REPOSITORY_ID = 1071732997
 WORKFLOW_ID = 361813014
 WORKFLOW_PATH = ".github/workflows/bench-service-policy.yml"

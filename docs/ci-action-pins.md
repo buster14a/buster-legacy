@@ -177,7 +177,7 @@ published site. See [Pages setup and acceptance](github-pages.md).
 
 ## Machine specifications collector
 
-Every executing job starts with `buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768`.
+Every executing job starts with `buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768`.
 This repository-owned C collector is frozen independently of candidate checkouts.
 It receives only the configured runner and matrix index; it receives no token,
 secret, candidate code, or publication authority. Its compiler bootstrap uses the

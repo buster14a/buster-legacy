@@ -1132,7 +1132,7 @@ to GNU's bytes; a moffs `movabs` forces the moffs row even when the address
 would fit a ModRM disp32, and a symbolic address is not accepted. A bare `cs`
 or `ds` instruction prefix before an AT&T mnemonic and unsized AT&T `nop mem`
 are not accepted (write `%cs:` in the operand and `nopl`).
-The short accumulator ALU immediate forms in [#2680](https://github.com/buster14a/buster/issues/2680)
+The short accumulator ALU immediate forms in [#2680](https://github.com/buster14a/buster-legacy/issues/2680)
 now select GNU's shorter accumulator opcodes when those forms are shortest
 (for example, `and al, 1` uses `24 01`). Source `movq %xmm3, %xmm9` chooses
 GNU's `F3 0F 7E` form on the equal-length XMM-register tie; machine queries
@@ -1231,11 +1231,11 @@ nothing the object stores. Other flag letters (`G`, `e`, `o`, ...), other
 types (`@unwind`, ...), array types combined with `x`/`T`/`@nobits`,
 `T` with `x`, and reopening a section as or from an array/TLS section with
 different flags are diagnosed naming the directive. Still open in
-[#1279](https://github.com/buster14a/buster/issues/1279): a section without
+[#1279](https://github.com/buster14a/buster-legacy/issues/1279): a section without
 `a` (such as `.note.GNU-stack,""`) is still written allocated, and `M`/`S`
 merging has no object representation, and `@note` is accepted as an approximation: the section takes the kind its flags select (read-only data for `"a"`) and `SHT_NOTE` is not preserved.
 Quoted instruction operands and the broader round trip are tracked in
-[#2519](https://github.com/buster14a/buster/issues/2519).
+[#2519](https://github.com/buster14a/buster-legacy/issues/2519).
 
 Statement boundaries follow the target: x86-64 and non-Apple AArch64 use
 `;` between statements; Apple AArch64 uses `%%` and treats `;` as a line
@@ -1341,7 +1341,7 @@ still writes as `.word` (#1280) reassemble through the 32-bit AArch64 `.word`.
 A corpus-wide differential census against llvm-mc
 (26,350 of 26,351 constant lines identical, 0 different, one documented
 refusal) was recorded on #2688. Its native, #2467-compliant reimplementation
-is tracked in [#2695](https://github.com/buster14a/buster/issues/2695).
+is tracked in [#2695](https://github.com/buster14a/buster-legacy/issues/2695).
 
 Arrangement suffixes and lane indices accept only unsigned decimal
 architectural spellings: `v1.-16b`, `v1.0x10b` and `v1.s[0x1]` are operand
@@ -2188,7 +2188,7 @@ host-linked control.
 successfully without reading source or standard input, compiling, spawning an
 external tool, or writing an artifact. `-march=x86-64 -O0 -g` may accompany the query. The independent
 `-m64` driver capability is tracked by
-[#3458](https://github.com/buster14a/buster/issues/3458). The typed invocation API exposes
+[#3458](https://github.com/buster14a/buster-legacy/issues/3458). The typed invocation API exposes
 `COMPILER_DRIVER_QUERY_LINKER_VERSION`; execution returns the identity in
 `CompilerDriverResult.output`.
 
@@ -2215,7 +2215,7 @@ link-line shape to discover Linux multiarch implicit library directories.
 Meson versions without a Buster linker detection/class implementation still
 reject this truthful identity. Native query support alone does not qualify
 Meson/QEMU configuration: upstream recognition and tests against unmodified
-Meson are required under [#3475](https://github.com/buster14a/buster/issues/3475).
+Meson are required under [#3475](https://github.com/buster14a/buster-legacy/issues/3475).
 
 ### Standalone CMake ABI discovery reduction
 

@@ -767,7 +767,7 @@ BUSTER_TEST_RETAIN_IMAGES=1 build/Release/ide test
 ```
 
 Any `--module=...` or `--ci=1` options can be added. This mode addresses the
-capture lifetime described in [issue #3674](https://github.com/buster14a/buster/issues/3674).
+capture lifetime described in [issue #3674](https://github.com/buster14a/buster-legacy/issues/3674).
 It keeps paths registered by spawned executables and recognized shared-library
 images (ELF `ET_DYN`, Mach-O `MH_DYLIB`/`MH_BUNDLE`, and PE DLL images). If the
 bounded registration table overflows, it also keeps any recognized loadable
@@ -826,7 +826,7 @@ production behavior or an expected result:
    is violated, repair production and retain the regression. If the fixture
    contradicts the contract, establish a valid counterexample and correct the
    expectation, changing production only as needed. If the reference lacks the
-   exact capability, follow [#2579](https://github.com/buster14a/buster/issues/2579);
+   exact capability, follow [#2579](https://github.com/buster14a/buster-legacy/issues/2579);
    preserve independent Buster checks and report unavailable execution honestly.
    Harness/environment failure needs its own evidence and owning report; do not
    change semantics or golden output to hide it. Unresolved cases stay unresolved.
@@ -842,9 +842,9 @@ Prefer observable semantics and invariants; retain exact bytes/order/counts when
 they enforce an encoding, determinism, coverage or trust contract. Required
 reference execution that did not run cannot satisfy CI/full-suite acceptance.
 
-[#2562](https://github.com/buster14a/buster/issues/2562) corrected a shared
+[#2562](https://github.com/buster14a/buster-legacy/issues/2562) corrected a shared
 implementation/test assumption: repeated namespace-local PID numbers are valid.
-The repaired draft-C23 guard in [#3073](https://github.com/buster14a/buster/pull/3073)
+The repaired draft-C23 guard in [#3073](https://github.com/buster14a/buster-legacy/pull/3073)
 was a fixture error, distinct from an incapable reference. The
 [bounded expectation audit](../regression-expectation-audit-3089.md) pins these and
 the retained behavioral `typeof` control. Unit-suite success does not prove

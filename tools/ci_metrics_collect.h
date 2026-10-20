@@ -165,7 +165,7 @@ BUSTER_GLOBAL_LOCAL int cm_workflow_startup(const char *workflow, const char *ke
             }
             else if (steps && first && indent == 8)
             {
-                if (cm_equal(text, "uses: buster14a/buster/.github/actions/machine-specifications@" CM_REPORTER)) pinned = 1;
+                if (cm_equal(text, "uses: buster14a/buster-legacy/.github/actions/machine-specifications@" CM_REPORTER)) pinned = 1;
                 else if (strncmp(text, "uses:", 5) == 0 || strncmp(text, "run:", 4) == 0 ||
                          strncmp(text, "env:", 4) == 0 || strncmp(text, "if:", 3) == 0) valid = 0;
             }
@@ -211,7 +211,7 @@ BUSTER_GLOBAL_LOCAL int cm_workflow_source(const char *workflow, const char *key
         }
         else if (in_source)
         {
-            if (indent == 8 && cm_equal(text, "uses: buster14a/buster/.github/actions/machine-specifications@" CM_REPORTER)) pinned = 1;
+            if (indent == 8 && cm_equal(text, "uses: buster14a/buster-legacy/.github/actions/machine-specifications@" CM_REPORTER)) pinned = 1;
             else if (indent == 8 && (strncmp(text, "run:", 4) == 0 || strncmp(text, "env:", 4) == 0)) bad = 1;
             else if (indent == 10 && cm_equal(text, "mode: source")) mode = 1;
         }

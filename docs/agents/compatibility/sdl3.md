@@ -1,6 +1,6 @@
 # SDL3 qualification
 
-[Harness index](../compatibility.md) · [Milestone #3188](https://github.com/buster14a/buster/issues/3188)
+[Harness index](../compatibility.md) · [Milestone #3188](https://github.com/buster14a/buster-legacy/issues/3188)
 
 This is an opt-in Linux x86-64 compatibility campaign for external SDL3.
 It does not add SDL to Buster's platform layer, compiler or application
@@ -204,7 +204,7 @@ compatibility claims.
 
 ## Historical evidence and current qualification frontier
 
-The original [intake38134480483](https://github.com/buster14a/buster/actions/runs/38134480483)
+The original [intake38134480483](https://github.com/buster14a/buster-legacy/actions/runs/38134480483)
 used harness head `b52b04f6df4e662e8b67f67c83368eb6680e569a` and
 compiler anchor `abb1c5afbcf55e120d83283ffbad402fc75bd80a`.
 Eight input-refusal controls and the final clean/raw-object controls passed.
@@ -214,21 +214,21 @@ Its original dependency-flag and foreign-Boolean blockers are historical:
 `c6e511e6dbb69204e4df470645a9cca87fef907c7b148c094e0c27be89cccb1f`
 and expires 2026-10-25; full raw archival beyond retention remains pending.
 
-The [later unchanged intake38222238640](https://github.com/buster14a/buster/actions/runs/38222238640)
+The [later unchanged intake38222238640](https://github.com/buster14a/buster-legacy/actions/runs/38222238640)
 is a separate composition: diagnostic head `da64acdb117e88ce6595b71de0b84567637752b5` over main
 `e13523e94128f980799e9a7e64663e4568b93cb0`, retaining the same
 upstream pin and intake/fixture bytes. The #3653 owner reports the exact
-[discovery records and following blockers](https://github.com/buster14a/buster/issues/3653#issuecomment-6120520220).
+[discovery records and following blockers](https://github.com/buster14a/buster-legacy/issues/3653#issuecomment-6120520220).
 Do not promote those results to a different candidate head or treat the
 historical per-project diagnostic workflow as the current scheduling contract.
 
 The recorded candidate configure exits 0 and finds the multiarch X11/Xext
 libraries after #3673 and #3648. It still fails the XOpenDisplay and
 HAVE_XFIXES_H link checks on full-path `.so` operands
-([#3712](https://github.com/buster14a/buster/issues/3712)), leaving
+([#3712](https://github.com/buster14a/buster-legacy/issues/3712)), leaving
 `SDL_X11_XFIXES=OFF` against the reference's ON. Configure success therefore
 does not establish a matching profile. Candidate build exits 1 on
-`-idirafter` ([#3676](https://github.com/buster14a/buster/issues/3676)).
+`-idirafter` ([#3676](https://github.com/buster14a/buster-legacy/issues/3676)).
 Candidate-library tests and both candidate-library ABI cells remain unexecuted.
 Artifact11734742728 has archive SHA-256
 `64da018e1d41bd5dd5645cb91775b68c9a44345e338b1dac7d9e3d1714f4b50b`;
@@ -241,13 +241,13 @@ intake, with the unchanged tool and fixtures, ran on PR merge head `56423abbb13a
 XOpenDisplay and HAVE_XFIXES_H checks succeeding and a feature summary
 identical to the reference (`SDL_X11_XFIXES=ON`). The remaining probe
 differences are compile-only `-Wl,--enable-new-dtags`, `-fcolor-diagnostics`
-and `-fcomment-block-commands` refusals ([#4041](https://github.com/buster14a/buster/issues/4041)).
+and `-fcomment-block-commands` refusals ([#4041](https://github.com/buster14a/buster-legacy/issues/4041)).
 The candidate build passes `-idirafter` and produces 259 of the reference's
 265 objects. Six still fail: `-std=c90` in four test targets
-([#1418](https://github.com/buster14a/buster/issues/1418)), the `"%rax"`/`"%rcx"`
-clobber spelling in `SDL_cpuinfo.c` ([#1415](https://github.com/buster14a/buster/issues/1415)),
+([#1418](https://github.com/buster14a/buster-legacy/issues/1418)), the `"%rax"`/`"%rcx"`
+clobber spelling in `SDL_cpuinfo.c` ([#1415](https://github.com/buster14a/buster-legacy/issues/1415)),
 and an unknown MMX builtin in Clang's `mmintrin.h` reached from `SDL_stb.c`
-([#1419](https://github.com/buster14a/buster/issues/1419)).
+([#1419](https://github.com/buster14a/buster-legacy/issues/1419)).
 Candidate tests and candidate-library ABI cells remain unexecuted. That run
 was not the main-only hosted route; its results are diagnostic, and exact
 records are on #3449.

@@ -487,9 +487,9 @@ None of these can be performed by a pull request.
 
 1. Runner group. `buster-zen5-9700x` is an organization runner in `buster14a`,
    alone in the group `buster-9700x-service-dispatch` (the name predates the
-   service's removal). Repository access: selected, only `buster14a/buster`,
+   service's removal). Repository access: selected, only `buster14a/buster-legacy`,
    public repositories allowed. Workflow access: selected workflows, exactly
-   `buster14a/buster/.github/workflows/9700x-direct-bench.yml@refs/heads/main`.
+   `buster14a/buster-legacy/.github/workflows/9700x-direct-bench.yml@refs/heads/main`.
    Remove the former `9700x-service-dispatch.yml` entry.
 2. Create `BENCH_DIRECT_ENABLED` with value `false`; set it to `true` only
    after the host step. Set it back to `false` on any drift.

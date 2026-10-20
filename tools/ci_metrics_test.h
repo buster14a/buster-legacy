@@ -123,9 +123,9 @@ BUSTER_GLOBAL_LOCAL int cm_inventory_tests(void)
     cm_outputs_free(&output);
     const char *workflow = "name: Fixture\njobs:\n  test:\n    steps:\n"
         "      - name: Machine specifications\n"
-        "        uses: buster14a/buster/.github/actions/machine-specifications@" CM_REPORTER "\n"
+        "        uses: buster14a/buster-legacy/.github/actions/machine-specifications@" CM_REPORTER "\n"
         "      - name: Record actual checkout identity\n"
-        "        uses: buster14a/buster/.github/actions/machine-specifications@" CM_REPORTER "\n"
+        "        uses: buster14a/buster-legacy/.github/actions/machine-specifications@" CM_REPORTER "\n"
         "        with:\n          mode: source\n";
     int matrix = 0;
     failures += cm_test_check(cm_workflow_startup(workflow, "test", &matrix) &&
@@ -222,7 +222,7 @@ BUSTER_GLOBAL_LOCAL int cm_publication_tests(void)
         "          - name: Linux\n            runner: ubuntu-26.04\n            mode: Release\n"
         "          - name: Windows\n            runner: windows-2025\n            mode: Debug\n"
         "    steps:\n      - name: Machine specifications\n"
-        "        uses: buster14a/buster/.github/actions/machine-specifications@" CM_REPORTER "\n"
+        "        uses: buster14a/buster-legacy/.github/actions/machine-specifications@" CM_REPORTER "\n"
         "        with:\n          matrix-index: ${{ strategy.job-index }}\n";
     char identity[2048];
     failures += cm_test_check(cm_matrix_identity(identity, sizeof(identity), matrix, "test", 1) &&

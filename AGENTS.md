@@ -1,5 +1,14 @@
 # Agent instructions
 
+This is `buster14a/buster-legacy`, GitHub repository ID `1071732997`, previously
+named `buster14a/buster`. It remains maintained, with its existing work and
+validation requirements. The current compiler is `buster14a/buster`, ID
+`1421805693`, previously named `buster-fast`. Check the repository ID before
+retargeting any remote, API client or unattended writer; historical `buster`
+URLs now select the other project. Local checkout directory names are unchanged.
+Immutable audit and receipt bytes retain their original names and commit IDs;
+use `buster-legacy` when navigating to this project's historical records.
+
 **Buster** is a personal monorepo of applications, shared C components, tools
 and experiments. The compiler and toolchain is one project; find the others
 in [PROJECTS.md](PROJECTS.md). The compiler and its foundation/runtime dependencies are the maintained product.

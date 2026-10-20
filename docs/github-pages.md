@@ -13,12 +13,23 @@ analytics, or new production dependency. Python's standard library is used only
 for validation and optional local preview. GitHub's deployment actions use their
 own Node runtime on the hosted runner, not a Buster dependency.
 
-## First activation
+## Repository rename and deployment
 
-A committed workflow is not an enabled or successfully deployed Pages site.
-The intended default address, after activation, is
-<https://buster14a.github.io/buster/>. Track actual activation and deployment
-evidence on [#2436](https://github.com/buster14a/buster/issues/2436), not here.
+On 2026-10-20, before the repository rename, the Pages API reported GitHub Actions
+deployment enabled with HTTPS enforced and no custom domain. Deployment
+`7102131206` of `dbc869835b0c4d66b591e5b420f7ee4d16cb23ed` had succeeded at
+`https://buster14a.github.io/buster/`. Preserve those deployment settings.
+
+The project URL after the rename is
+<https://buster14a.github.io/buster-legacy/>. GitHub does not redirect the previous
+project-site URL. Verify a new deployment and the page, stylesheet and navigation
+at this address; a workflow file or pre-rename success is not post-rename proof.
+Record that verification in the
+[migration issue](https://github.com/buster14a/buster-fast/issues/166).
+The original activation record remains
+[#2436](https://github.com/buster14a/buster-legacy/issues/2436).
+
+## Activation and verification
 
 A repository administrator must select **Settings → Pages → Build and deployment
 → Source: GitHub Actions**. Preserve any existing domain configuration; this
@@ -29,7 +40,7 @@ Environments**, preserving any required approval policy.
 After the implementation is on `main` and Pages is enabled, run **Actions →
 GitHub Pages → Run workflow**, selecting `main`. Confirm that both the validation
 and deployment jobs succeed and open the URL returned by the deployment. Check
-that the page and stylesheet load under `/buster/` and navigation works. Until
+that the page and stylesheet load under `/buster-legacy/` and navigation works. Until
 that verification, do not advertise the intended address as a live site or close
 the activation issue. A 404 from the deployment API may mean Pages is not enabled;
 the workflow does not create administrative settings or silently suppress errors.
@@ -139,6 +150,6 @@ stylesheet, and check that no stale deployment or renewed queue obstruction
 remains. PR/merge-group validation and the trusted no-code classification keep
 their existing behavior; only main push/manual events can deploy.
 
-Incident and recovery evidence: [#3281](https://github.com/buster14a/buster/issues/3281).
+Incident and recovery evidence: [#3281](https://github.com/buster14a/buster-legacy/issues/3281).
 This is an operational diagnostic, not a local reproduction of GitHub's
 concurrency or environment scheduler.

@@ -23,8 +23,8 @@ references remain below.
 | Area ID | Project | Existing source | Features and integration boundary |
 |---|---|---|---|
 | `compiler` | C compiler and toolchain | [Compiler modules](src/buster/lib/compiler/) and [headless entry point](src/buster/apps/ide/ide.c) | [Capabilities and contracts](docs/projects/compiler.md). `ide` is headless; C is the active source frontend. |
-| `image-browser` | Native image browser and inspector | [Historical source](https://github.com/buster14a/buster/blob/02a6414e020f5d549122197c3a7c8407df5bed76/src/buster/apps/image_browser/image_browser.c) | [Removal and historical reference](docs/projects/image-browser.md). Application, fixtures, component tests and CMake target removed; no current build or launch command. |
-| `disk-tools` | Disk-image tooling | [Historical source](https://github.com/buster14a/buster/blob/02a6414e020f5d549122197c3a7c8407df5bed76/src/buster/apps/disk_builder.c) | [Removal and historical reference](docs/projects/disk-tools.md). Builder, verifier, tests and CMake target removed; no current executable or test module. |
+| `image-browser` | Native image browser and inspector | [Historical source](https://github.com/buster14a/buster-legacy/blob/02a6414e020f5d549122197c3a7c8407df5bed76/src/buster/apps/image_browser/image_browser.c) | [Removal and historical reference](docs/projects/image-browser.md). Application, fixtures, component tests and CMake target removed; no current build or launch command. |
+| `disk-tools` | Disk-image tooling | [Historical source](https://github.com/buster14a/buster-legacy/blob/02a6414e020f5d549122197c3a7c8407df5bed76/src/buster/apps/disk_builder.c) | [Removal and historical reference](docs/projects/disk-tools.md). Builder, verifier, tests and CMake target removed; no current executable or test module. |
 
 ## Shared components
 

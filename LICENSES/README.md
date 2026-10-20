@@ -2,8 +2,8 @@
 
 These files accompany the [third-party notice inventory](../THIRD_PARTY_NOTICES.md).
 They preserve upstream terms; they do **not** select a license for Buster's
-first-party code. See [#620](https://github.com/buster14a/buster/issues/620)
-for notice restoration and [#621](https://github.com/buster14a/buster/issues/621)
+first-party code. See [#620](https://github.com/buster14a/buster-legacy/issues/620)
+for notice restoration and [#621](https://github.com/buster14a/buster-legacy/issues/621)
 for the separate first-party decision and unresolved permission review.
 
 ## Provenance

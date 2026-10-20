@@ -194,7 +194,7 @@ class ReconciledInventoryTests(unittest.TestCase):
             if path.startswith("check-runs/") and "/annotations" in path:
                 return []
             raise AssertionError(path)
-        arguments = argparse.Namespace(repository="buster14a/buster", run_id=self.RUN, run_attempt=self.run["run_attempt"],
+        arguments = argparse.Namespace(repository="buster14a/buster-legacy", run_id=self.RUN, run_attempt=self.run["run_attempt"],
                                        checks_layout="split", event_name=None, event_path=None)
         with mock.patch.object(github_ci_time, "api_get", side_effect=reply), \
                 mock.patch.object(github_ci_time.time, "sleep"):
@@ -283,17 +283,17 @@ class ReconciledInventoryTests(unittest.TestCase):
                 with mock.patch.object(github_ci_time, "api_get", side_effect=pages):
                     with self.assertRaises(ValueError):
                         github_ci_time._gate_reconciled_checks(
-                            "buster14a/buster", self.HEAD, None, github_ci_time.time.monotonic() + 30, [])
+                            "buster14a/buster-legacy", self.HEAD, None, github_ci_time.time.monotonic() + 30, [])
         with mock.patch.object(github_ci_time, "api_get", side_effect=[
                 {"total_count": 101, "check_runs": [{}] * 100},
                 {"total_count": 101, "check_runs": [{}]}]) as read:
             self.assertEqual(len(github_ci_time._gate_reconciled_checks(
-                "buster14a/buster", self.HEAD, None, github_ci_time.time.monotonic() + 30, [])), 101)
+                "buster14a/buster-legacy", self.HEAD, None, github_ci_time.time.monotonic() + 30, [])), 101)
             self.assertEqual(read.call_count, 2)
         with mock.patch.object(github_ci_time, "api_get") as read:
             with self.assertRaises(ValueError):
                 github_ci_time._gate_reconciled_checks(
-                    "buster14a/buster", self.HEAD, None, github_ci_time.time.monotonic() - 1, [])
+                    "buster14a/buster-legacy", self.HEAD, None, github_ci_time.time.monotonic() - 1, [])
             read.assert_not_called()
 
     def test_api_failure_has_no_proof_and_retries_within_existing_snapshot_budget(self):
@@ -341,7 +341,7 @@ class CompilerSamplingInventoryTests(unittest.TestCase):
                         self.sampling(status)
                         self.jobs[-1]["conclusion"] = self.checks[-1]["conclusion"] = conclusion
                         if details == "workflow":
-                            self.checks[-1]["details_url"] = "https://github.com/buster14a/buster/actions/runs/38566978972/attempts/1"
+                            self.checks[-1]["details_url"] = "https://github.com/buster14a/buster-legacy/actions/runs/38566978972/attempts/1"
                         result = self.gate()
                         self.assertTrue(result["success"], result["errors"])
                         self.assertEqual(len(result["jobs"]), len(github_ci_time.combination_jobs()))
@@ -470,12 +470,12 @@ class CompilerBenchmarkInventoryTests(unittest.TestCase):
         self.jobs.append({"id": 7000, "name": name, "run_id": self.RUN, "run_attempt": 1,
                           "head_sha": self.HEAD, "status": status, "conclusion": conclusion,
                           "steps": [], "runner_id": None})
-        here = "https://github.com/buster14a/buster/"
+        here = "https://github.com/buster14a/buster-legacy/"
         self.checks.append({"id": 7000, "name": name, "head_sha": self.HEAD, "app": {"id": 15368},
                             "external_id": compiler_receipt.attempt_marker(self.HEAD, mode, "500", "1", "1"),
                             "status": status, "conclusion": conclusion,
                             "details_url": here + "actions/runs/600/attempts/1"})
-        repo = {"id": 1071732997, "full_name": "buster14a/buster"}
+        repo = {"id": 1071732997, "full_name": "buster14a/buster-legacy"}
         request = {"id": 500, "run_attempt": 1, "head_sha": self.HEAD,
                    "path": ".github/workflows/" + ("9700x-direct-request.yml" if mode == "pull" else
                                                      "9700x-compiler-request.yml"),
@@ -533,9 +533,9 @@ class CompilerBenchmarkInventoryTests(unittest.TestCase):
                     self.setUp()
                     self.recovered_announcement(form)
                     check = self.checks[-1]
-                    if details == "default": check["details_url"] = f"https://github.com/buster14a/buster/runs/{check['id']}"
+                    if details == "default": check["details_url"] = f"https://github.com/buster14a/buster-legacy/runs/{check['id']}"
                     elif details == "workflow":
-                        check["details_url"] = "https://github.com/buster14a/buster/actions/workflows/9700x-direct-bench.yml?query=event%3Aworkflow_run"
+                        check["details_url"] = "https://github.com/buster14a/buster-legacy/actions/workflows/9700x-direct-bench.yml?query=event%3Aworkflow_run"
                     result = self.gate()
                     self.assertTrue(result["success"], result["errors"])
                     self.assertEqual(result["reconciled_checks"][-1]["check"]["conclusion"],
@@ -619,6 +619,23 @@ class CompilerBenchmarkInventoryTests(unittest.TestCase):
         self.assertEqual(proof["writer"]["id"], 114851763130)
         self.assertEqual(proof["artifact"]["id"], 11752441561)
         self.assertEqual(len(result["jobs"]), 23)
+
+    def test_repository_rename_preserves_receipts_and_rejects_successor_identity(self):
+        path = ROOT / "tools/fixtures/compiler_terminal_announcement.json"
+        original = path.read_bytes()
+        self.recovered_announcement()
+        check = copy.deepcopy(self.checks[-1])
+        self.assertTrue(self.gate()["success"])
+        self.assertEqual(self.checks[-1], check)
+        self.assertEqual(path.read_bytes(), original)
+        for name in ("buster14a/buster", "buster14a/buster-legacy"):
+            with self.subTest(name=name):
+                self.setUp()
+                self.recovered_announcement()
+                request = self.benchmark_reads["actions/runs/38260981679/attempts/1"]
+                for key in ("repository", "head_repository"):
+                    request[key] = {"id": 1421805693, "full_name": name}
+                self.assertFalse(self.gate()["success"])
 
     def test_terminal_announcement_rejects_forged_incomplete_or_moving_provenance(self):
         cases = ("check-id", "app", "head", "marker-attempt", "measurement-success", "title", "protocol",
@@ -779,8 +796,8 @@ class CompilerBenchmarkInventoryTests(unittest.TestCase):
     def test_completed_default_check_url_uses_one_exact_publisher_link(self):
         self.benchmark(status="completed", conclusion="success")
         check = self.checks[-1]
-        check["details_url"] = "https://github.com/buster14a/buster/runs/7000"
-        check["output"] = {"summary": "[Workflow run, attempt 1](https://github.com/buster14a/buster/actions/runs/600/attempts/1)"}
+        check["details_url"] = "https://github.com/buster14a/buster-legacy/runs/7000"
+        check["output"] = {"summary": "[Workflow run, attempt 1](https://github.com/buster14a/buster-legacy/actions/runs/600/attempts/1)"}
         self.assertTrue(self.gate()["success"])
         check["output"]["summary"] *= 2
         self.assertFalse(self.gate()["success"])
@@ -794,15 +811,15 @@ class CompilerBenchmarkInventoryTests(unittest.TestCase):
                 # though the hosted writer is already executing.
                 self.benchmark_reads["actions/runs/600/attempts/1"]["status"] = "queued"
                 check = self.checks[-1]
-                check["details_url"] = "https://github.com/buster14a/buster/runs/7000"
-                check["output"] = {"summary": "Workflow run 600 attempt 1: https://github.com/buster14a/buster/actions/runs/600/attempts/1"}
+                check["details_url"] = "https://github.com/buster14a/buster-legacy/runs/7000"
+                check["output"] = {"summary": "Workflow run 600 attempt 1: https://github.com/buster14a/buster-legacy/actions/runs/600/attempts/1"}
                 self.assertTrue(self.gate()["success"])
                 check["output"]["summary"] = check["output"]["summary"].replace("Workflow run 600", "Workflow run 601")
                 self.assertFalse(self.gate()["success"])
 
     def test_trusted_main_announcement_can_precede_the_benchmark_run(self):
         self.benchmark("main")
-        self.checks[-1]["details_url"] = "https://github.com/buster14a/buster/actions/workflows/9700x-direct-bench.yml?query=event%3Aworkflow_run"
+        self.checks[-1]["details_url"] = "https://github.com/buster14a/buster-legacy/actions/workflows/9700x-direct-bench.yml?query=event%3Aworkflow_run"
         request = self.benchmark_reads["actions/runs/500/attempts/1"]
         request.update(status="in_progress", conclusion=None)
         writer = {"id": 8000, "name": "Show the queued compiler benchmark check", "run_id": 500,
@@ -811,9 +828,9 @@ class CompilerBenchmarkInventoryTests(unittest.TestCase):
                             {"name": "Create the queued check", "status": "in_progress", "conclusion": None}]}
         self.benchmark_reads["actions/runs/500/attempts/1/jobs?per_page=100"] = {"total_count": 1, "jobs": [writer]}
         self.assertTrue(self.gate()["success"])
-        self.checks[-1]["details_url"] = "https://github.com/buster14a/buster/runs/7000"
-        self.checks[-1]["output"] = {"summary": "Request run 500 attempt 1: https://github.com/buster14a/buster/actions/runs/500/attempts/1\n"
-                                   "Waiting under https://github.com/buster14a/buster/actions/workflows/9700x-direct-bench.yml?query=event%3Aworkflow_run"}
+        self.checks[-1]["details_url"] = "https://github.com/buster14a/buster-legacy/runs/7000"
+        self.checks[-1]["output"] = {"summary": "Request run 500 attempt 1: https://github.com/buster14a/buster-legacy/actions/runs/500/attempts/1\n"
+                                   "Waiting under https://github.com/buster14a/buster-legacy/actions/workflows/9700x-direct-bench.yml?query=event%3Aworkflow_run"}
         self.assertTrue(self.gate()["success"])
         self.checks[-1]["status"] = "in_progress"
         self.assertFalse(self.gate()["success"])
@@ -1148,10 +1165,10 @@ class StepChangeTests(unittest.TestCase):
             self.assertEqual(finding["first_slow_run"]["id"], 37667271117)
         # The faster Linux native job is an improvement, never a reported rise.
         self.assertNotIn("Linux x86-64 native", findings)
-        text = github_ci_time.step_change_markdown(report, "buster14a/buster")
+        text = github_ci_time.step_change_markdown(report, "buster14a/buster-legacy")
         self.assertTrue(text.startswith(github_ci_time.STEP_CHANGE_MARKER))
         self.assertIn("| Linux x86-64 release | 11.8 min | 26.6 min | +14.8 min (+126%) |", text)
-        self.assertIn("[37667271117](https://github.com/buster14a/buster/actions/runs/37667271117) `cc2f84737b`", text)
+        self.assertIn("[37667271117](https://github.com/buster14a/buster-legacy/actions/runs/37667271117) `cc2f84737b`", text)
         self.assertIn("never gates merges", text)
 
     def test_step_entering_the_recent_window_is_reported_at_its_first_run(self):
@@ -1232,7 +1249,7 @@ class StepChangeTests(unittest.TestCase):
             paths.append(path)
             return listing if "/runs?" in path else {"total_count": len(jobs), "jobs": jobs}
         with mock.patch.object(github_ci_time, "api_get", side_effect=fake_get):
-            data = github_ci_time.step_change_collect("buster14a/buster", "token", ".github/workflows/ci.yml", 20)
+            data = github_ci_time.step_change_collect("buster14a/buster-legacy", "token", ".github/workflows/ci.yml", 20)
         self.assertEqual(data["runs"], [{"id": 3, "head_sha": "c" * 40, "created_at": "2026-10-07T18:29:00Z",
                                          "run_attempt": 1, "jobs": {"Linux x86-64 release": 1380.0}}])
         query = urllib.parse.parse_qs(paths[0].split("?", 1)[1])
@@ -1247,7 +1264,7 @@ class StepChangeTests(unittest.TestCase):
             return {"number": 4321}
         with mock.patch.object(github_ci_time, "api_get", return_value=issues), \
                 mock.patch.object(github_ci_time, "api_write", side_effect=fake_write):
-            action = github_ci_time.publish_step_change(report, "buster14a/buster", "token")
+            action = github_ci_time.publish_step_change(report, "buster14a/buster-legacy", "token")
         return action, writes
 
     def test_publication_opens_one_issue_then_updates_it(self):
@@ -1280,21 +1297,21 @@ class StepChangeTests(unittest.TestCase):
         pages = [[{"number": n, "body": "", "user": bot} for n in range(100)],
                  [{"number": 700, "body": github_ci_time.STEP_CHANGE_MARKER, "user": bot}]]
         with mock.patch.object(github_ci_time, "api_get", side_effect=pages) as get:
-            found = github_ci_time._step_change_issues("buster14a/buster", "token")
+            found = github_ci_time._step_change_issues("buster14a/buster-legacy", "token")
         self.assertEqual([issue["number"] for issue in found], [700])
         self.assertEqual(get.call_count, 2)
         with mock.patch.object(github_ci_time, "api_get", return_value=pages[0]), self.assertRaises(ValueError):
-            github_ci_time._step_change_issues("buster14a/buster", "token")
+            github_ci_time._step_change_issues("buster14a/buster-legacy", "token")
 
     def test_quiet_windows_publish_nothing(self):
         report = github_ci_time.step_change_detect(self.synthetic([600] * 20))
         with mock.patch.object(github_ci_time, "api_get") as get, \
                 mock.patch.object(github_ci_time, "api_write") as write:
-            self.assertEqual(github_ci_time.publish_step_change(report, "buster14a/buster", None), "none")
+            self.assertEqual(github_ci_time.publish_step_change(report, "buster14a/buster-legacy", None), "none")
         get.assert_not_called()
         write.assert_not_called()
         self.assertIn("No required job currently exceeds both thresholds.",
-                      github_ci_time.step_change_markdown(report, "buster14a/buster"))
+                      github_ci_time.step_change_markdown(report, "buster14a/buster-legacy"))
 
     def test_command_line_is_offline_with_input(self):
         output = io.StringIO()

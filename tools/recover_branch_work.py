@@ -17,7 +17,7 @@ import subprocess
 import sys
 from typing import Any
 
-REPOSITORY = "buster14a/buster"
+REPOSITORY = "buster14a/buster-legacy"
 
 
 def command(args: list[str], *, cwd: pathlib.Path | None = None,
