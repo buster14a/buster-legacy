@@ -16,6 +16,28 @@ import sys
 
 MACHINE_REPORTER_REFERENCE = "buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768"
 MACHINE_REPORTER_BLOBS = {".github/actions/machine-specifications/action.yml":"ca7b8666a9cc5fedc1189fd09cc666863f90571a","tools/machine_specifications.c":"db34702e5adb3ddce3ab9c0dc0d93a4ef21c81ff"}
+PINNED_MACHINE_REPORTER = "./.pinned-machine-reporter/.github/actions/machine-specifications"
+PINNED_REPORTER_LOADER = [
+    "      - name: Check out the pinned machine reporter",
+    "        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+    "        with:",
+    "          repository: ${{ github.repository }}",
+    "          ref: a36422384d0334a53d4be73bc306b97ccdba4768",
+    "          path: .pinned-machine-reporter",
+    "          persist-credentials: false",
+]
+PINNED_REPORTER_SOURCE = [
+    "      - name: Record pinned reporter checkout identity",
+    "        uses: " + PINNED_MACHINE_REPORTER,
+    "        with:",
+    "          mode: source",
+    "          source-directory: .pinned-machine-reporter",
+    "          source-repository: ${{ github.repository }}",
+]
+
+
+def is_trusted_writer(path):
+    return pathlib.Path(path).parts[-3:] == (".github", "workflows", "native-retirement-integration.yml")
 
 APPROVED = {
     "buster14a/buster/.github/actions/machine-specifications": {"a36422384d0334a53d4be73bc306b97ccdba4768"},
@@ -98,7 +120,8 @@ def check_text(text, path):
             value = action.group(1)
             if len(value) >= 2 and value[0] in "'\"" and value[-1] == value[0]:
                 value = value[1:-1]
-            if value not in APPROVED_LOCAL_WORKFLOWS | {APPROVED_COMPILER_THROUGHPUT_WORKFLOW, APPROVED_CI_NO_CODE_WORKFLOW} | APPROVED_LOCAL_ACTIONS:
+            pinned_reporter = value == PINNED_MACHINE_REPORTER and is_trusted_writer(path)
+            if not pinned_reporter and value not in APPROVED_LOCAL_WORKFLOWS | {APPROVED_COMPILER_THROUGHPUT_WORKFLOW, APPROVED_CI_NO_CODE_WORKFLOW} | APPROVED_LOCAL_ACTIONS:
                 match = re.fullmatch(r"([A-Za-z0-9_.-]+/[A-Za-z0-9_./-]+)@([0-9a-f]{40})", value)
                 if not match:
                     problem = "uses must contain a GitHub owner/repository action path and full lowercase commit SHA"
@@ -132,7 +155,7 @@ def structure_lines(text):
 
 
 def check_machine_reporting(text, path):
-    """Every runs-on job starts with the exact reviewed collector, never a name."""
+    """Every job reports before work; the trusted writer may first fetch the fixed reporter."""
     errors = []
     lines = structure_lines(text)
     if "jobs:" not in lines:
@@ -172,30 +195,46 @@ def check_machine_reporting(text, path):
         if not parts:
             errors.append(prefix + "no executing steps")
             continue
-        first = parts[0]
-        if (first[0] != "      - name: Machine specifications" or
-                "        uses: " + MACHINE_REPORTER_REFERENCE not in first or
+        reporter_reference = MACHINE_REPORTER_REFERENCE
+        startup_index = 0
+        local_reporter = any("        uses: " + PINNED_MACHINE_REPORTER in step for step in parts)
+        if local_reporter:
+            reporter_reference = PINNED_MACHINE_REPORTER
+            startup_index = 1
+            if (not is_trusted_writer(path) or
+                    job not in ("prepare", "validate", "publish", "automation_outcome") or
+                    len(parts) < 3 or parts[0] != PINNED_REPORTER_LOADER or
+                    parts[2] != PINNED_REPORTER_SOURCE):
+                errors.append(prefix + "local reporter requires the exact trusted-writer pinned checkout and source record")
+        first = parts[startup_index] if len(parts) > startup_index else []
+        if (not first or first[0] != "      - name: Machine specifications" or
+                "        uses: " + reporter_reference not in first or
                 "          requested-runner: >-" not in first or
                 any(line.startswith(("        if:", "        continue-on-error:", "        run:",
                                      "          mode:", "        env:")) for line in first)):
             errors.append(prefix + "first step must unconditionally invoke the reviewed startup reporter")
         startup_count = 0
         for index, step in enumerate(parts):
-            reporter = "        uses: " + MACHINE_REPORTER_REFERENCE in step
+            reporter = "        uses: " + reporter_reference in step
             if reporter and not any(line in step for line in ("          mode: source", "          mode: retain")):
                 startup_count += 1
-                if index != 0:
+                if index != startup_index:
                     errors.append(prefix + "startup reporting must precede all work")
             if reporter and any(line.startswith(("        env:", "        continue-on-error:")) for line in step):
                 errors.append(prefix + "reporter cannot override environment or ignore failure")
             checkout = any(re.fullmatch(r"\s*(?:- )?uses: actions/checkout@[0-9a-f]{40}", line) for line in step)
             if checkout:
-                following = parts[index + 1] if index + 1 < len(parts) else []
+                following_index = index + (2 if local_reporter and index == 0 else 1)
+                following = parts[following_index] if following_index < len(parts) else []
                 condition = [line for line in step if line.startswith("        if:")]
                 following_condition = [line for line in following if line.startswith("        if:")]
                 source_directory = next((line.strip().split(": ", 1)[1]
                                          for line in step if line.startswith("          path: ")), ".")
-                if ("        uses: " + MACHINE_REPORTER_REFERENCE not in following or
+                if local_reporter and index != 0 and not (
+                        source_directory == "trusted" or
+                        re.fullmatch(r"integration/external/[A-Za-z0-9_-]+", source_directory)):
+                    errors.append(prefix + "checkout must not replace the isolated pinned reporter")
+                if ("        uses: " + reporter_reference not in following or
                         "          mode: source" not in following or
                         "          source-directory: " + source_directory not in following or
                         condition != following_condition):
