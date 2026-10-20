@@ -13,7 +13,7 @@ source-free GitHub runner broker were removed in commit
 [retirement record](../ci-github-hosted-runners.md) links historical material,
 not current setup or validation commands.
 
-The issues open on 2026-08-31 were copied to `buster14a/buster` on GitHub as
+The issues open on 2026-08-31 were copied to `buster14a/buster-legacy` on GitHub as
 part of the migration. Numbers did not survive the copy, so historical
 references in the topic guides, code comments, and commit messages may name a
 **Forgejo** number: resolve those through `docs/issue-migration-map.md`, or

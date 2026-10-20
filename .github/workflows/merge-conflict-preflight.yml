@@ -47,7 +47,7 @@ jobs:
     timeout-minutes: ${{ github.event_name == 'merge_group' && 310 || 20 }}
     steps:
       - name: Machine specifications
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           requested-runner: >-
             ubuntu-latest
@@ -63,7 +63,7 @@ jobs:
           persist-credentials: false
       - name: Record actual checkout identity
         if: ${{ github.event_name == 'push' }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: .
@@ -77,7 +77,7 @@ jobs:
           persist-credentials: false
       - name: Record actual checkout identity 2
         if: ${{ github.event_name != 'push' }}
-        uses: buster14a/buster/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
+        uses: buster14a/buster-legacy/.github/actions/machine-specifications@a36422384d0334a53d4be73bc306b97ccdba4768
         with:
           mode: source
           source-directory: .

@@ -318,7 +318,7 @@ hoists calls (then `c_ir_prepare_calls_discover`), one lowers parenthesized cont
 groups (`c_ir_prepare_control_expressions_step`) — and either one runs an
 operand that only a taken branch should run. Only the call prepass had that
 rule. The fix gave both one shared token scan. Since
-[#4059](https://github.com/buster14a/buster/issues/4059) both prepasses read
+[#4059](https://github.com/buster14a/buster-legacy/issues/4059) both prepasses read
 the syntax tree instead (`c_ir_tree_calls_discover`,
 `c_ir_tree_control_groups`), and neither enters a lazy operand's node
 ([Hoisting from the tree](../frontend/ast.md#hoisting-from-the-tree)). A call argument is where this was

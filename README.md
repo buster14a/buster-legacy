@@ -1,4 +1,16 @@
-# Buster
+# Buster legacy
+
+This is the maintained previous implementation of Buster, formerly hosted at
+`buster14a/buster`. Its canonical repository is now
+[`buster14a/buster-legacy`](https://github.com/buster14a/buster-legacy), GitHub
+repository ID `1071732997`. Existing history, issues, pull requests and ongoing
+maintenance remain here; the repository has not been archived.
+
+The current compiler is [`buster14a/buster`](https://github.com/buster14a/buster),
+ID `1421805693`, formerly `buster-fast`. The two repositories have separate
+histories and issue numbers. Old `buster14a/buster` links now select the current
+compiler: change historical links and Git remotes to `buster-legacy` explicitly.
+Published links outside this repository cannot all be repaired.
 
 Buster is a personal monorepo. The headless C compiler and toolchain are the
 maintained product. Shared GUI/media libraries and mobile-hosting source remain
@@ -19,7 +31,7 @@ packaged examples or mobile application host. See the
 | What can the compiler do? | [Compiler and toolchain](docs/projects/compiler.md) |
 | How do I build and test? | [Build guide](docs/agents/build.md) and [tests/CI](docs/agents/testing.md) |
 | How are PRs and merge groups validated? | [GitHub CI and no-code admission](docs/ci-github-actions.md) |
-| What should change next? | [GitHub issues](https://github.com/buster14a/buster/issues) and [project/feature tracking](docs/project-tracking.md) |
+| What should change next? | [GitHub issues](https://github.com/buster14a/buster-legacy/issues) and [project/feature tracking](docs/project-tracking.md) |
 | How should an agent contribute? | [AGENTS.md](AGENTS.md) |
 
 Automatic CI classifies the complete PR or merge group. Only the reviewed files

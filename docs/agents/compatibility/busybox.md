@@ -130,7 +130,7 @@ actions were attempted. The native action inventory records target-C attempted/p
 matches candidate object names against a successful reference build, reporting
 required, attempted, passed, failed, not-attempted and unmatched actions.
 Full source/header closure and all applicable BusyBox upstream tests remain
-completion work under [#3179](https://github.com/buster14a/buster/issues/3179).
+completion work under [#3179](https://github.com/buster14a/buster-legacy/issues/3179).
 
 The obsolete branch/manual qualification workflow is removed. Whole-project
 integration belongs only to the single shared main-push per-OS owner described

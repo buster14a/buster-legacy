@@ -280,7 +280,7 @@ BUSTER_GLOBAL_LOCAL bool compiler_sampling_controller_attempt(Arena* arena, Stri
         S8("BQ_SAMPLING_BASE"), S8("BQ_SAMPLING_BASE_TREE"), S8("BQ_SAMPLING_CANDIDATE_REVISION"), S8("BQ_SAMPLING_TRUSTED_REVISION")};
     String8 candidate = string_equal(admitted.family, S8("aa")) ? plan.base :
         string_equal(admitted.family, S8("ab2")) ? plan.ab2_revision : plan.ab1_revision;
-    String8 values[] = {compiler_sampling_controller_fact(facts, S8("executor_run_id")), S8("1"), S8("buster14a/buster"),
+    String8 values[] = {compiler_sampling_controller_fact(facts, S8("executor_run_id")), S8("1"), S8("buster14a/buster-legacy"),
         compiler_sampling_controller_fact(facts, S8("trusted_revision")), compiler_sampling_controller_fact(facts, S8("request_run_id")),
         S8("1"), compiler_sampling_controller_fact(facts, S8("request_head")), admitted.phase,
         string_format(arena, S8("{u64}"), admitted.packet), admitted.family, admitted.freeze_revision, admitted.freeze_sha256,
@@ -906,7 +906,7 @@ BUSTER_GLOBAL_LOCAL ProcessResult compiler_sampling_controller_execute(Arena* ar
             controller.success = controller.success && owned.created && !owned.error.v &&
                 generate_path_kind(arena, controller.plan.source_root) == GENERATE_PATH_MISSING;
             String8 clone[] = {S8("clone"), S8("--no-checkout"), S8("--no-tags"),
-                S8("https://github.com/buster14a/buster.git"), controller.plan.source_root};
+                S8("https://github.com/buster14a/buster-legacy.git"), controller.plan.source_root};
             compiler_sampling_controller_phase(&controller, S8("clone-sources"),
                 compiler_sampling_controller_git(arena, (SliceString8)BUSTER_ARRAY_TO_SLICE(clone)), 120000000ull);
             String8 fetch[] = {S8("-C"), controller.plan.source_root, S8("fetch"), S8("--no-tags"),

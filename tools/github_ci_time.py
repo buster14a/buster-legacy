@@ -948,15 +948,22 @@ def compiler_benchmark_provenance(check, head_sha, repository, read_metadata):
     request_path = f"actions/runs/{request_id}/attempts/{request_attempt}"
     request = read_metadata(request_path)
 
+    def same_repository(record):
+        valid = isinstance(record, dict) and record.get("full_name") == repository
+        if repository == "buster14a/buster-legacy":
+            valid = (isinstance(record, dict) and record.get("id") == 1071732997 and
+                     record.get("full_name") in ("buster14a/buster", "buster14a/buster-legacy"))
+        return valid
+
     def exact_run(run, identity, attempt, path, origin):
         repo = run.get("repository") if isinstance(run, dict) else None
         head_repo = run.get("head_repository") if isinstance(run, dict) else None
         return (isinstance(run, dict) and type(run.get("id")) is int and run["id"] == identity and
                 type(run.get("run_attempt")) is int and run["run_attempt"] == attempt and
                 run.get("path") == path and run.get("event") == origin and
-                isinstance(repo, dict) and repo.get("full_name") == repository and
+                same_repository(repo) and
                 type(repo.get("id")) is int and repo["id"] > 0 and isinstance(head_repo, dict) and
-                head_repo.get("id") == repo["id"] and head_repo.get("full_name") == repository and
+                head_repo.get("id") == repo["id"] and same_repository(head_repo) and
                 isinstance(run.get("head_sha"), str) and re.fullmatch(r"[0-9a-f]{40}", run["head_sha"]) and
                 run.get("status") in ("queued", "waiting", "pending", "in_progress", "completed"))
 
@@ -971,6 +978,22 @@ def compiler_benchmark_provenance(check, head_sha, repository, read_metadata):
                 not isinstance(request.get(key), dict) or any(request[key].get(field) != value
                     for field, value in BENCHMARK_MAINTAINER.items()) for key in ("actor", "triggering_actor")):
             raise ValueError("Compiler benchmark pull request is not an authorized completed request")
+    if repository == "buster14a/buster-legacy":
+        # Old check summaries are immutable evidence. Resolve their names only
+        # after the run's original repository ID has been proved; retain the
+        # caller's check and every archived receipt byte unchanged.
+        def current_reference(value):
+            result = value
+            if isinstance(value, str):
+                result = value.replace("https://github.com/buster14a/buster/",
+                                       "https://github.com/buster14a/buster-legacy/")
+                result = result.replace("Repository `buster14a/buster`",
+                                        "Repository `buster14a/buster-legacy`")
+            return result
+
+        check = dict(check, details_url=current_reference(check.get("details_url")))
+        if isinstance(check.get("output"), dict):
+            check["output"] = dict(check["output"], summary=current_reference(check["output"].get("summary")))
     base_url = "https://github.com/" + repository + "/"
     details = check.get("details_url")
     publisher_link = re.fullmatch(re.escape(base_url) + r"actions/runs/([1-9][0-9]*)/attempts/" + str(bench_attempt),
@@ -2056,7 +2079,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
     gather = sub.add_parser("collect")
-    gather.add_argument("--repository", default="buster14a/buster")
+    gather.add_argument("--repository", default="buster14a/buster-legacy")
     gather.add_argument("--branch")
     gather.add_argument("--head-sha")
     gather.add_argument("--workflow", default=".github/workflows/ci.yml")
@@ -2076,7 +2099,7 @@ def main():
     report.add_argument("input")
     report.add_argument("--output")
     queue = sub.add_parser("queue-collect", help="Record runner assignment for every workflow in a window")
-    queue.add_argument("--repository", default="buster14a/buster")
+    queue.add_argument("--repository", default="buster14a/buster-legacy")
     queue.add_argument("--since", required=True)
     queue.add_argument("--until", required=True)
     queue.add_argument("--output", required=True)
@@ -2084,7 +2107,7 @@ def main():
     queue_report.add_argument("input")
     queue_report.add_argument("--output")
     change = sub.add_parser("step-change", help="Report-only rise in required merge_group job medians")
-    change.add_argument("--repository", default="buster14a/buster")
+    change.add_argument("--repository", default="buster14a/buster-legacy")
     change.add_argument("--workflow", default=".github/workflows/ci.yml")
     change.add_argument("--input", help="Offline step-change-input JSON instead of the REST API")
     change.add_argument("--window", type=int, default=STEP_CHANGE_WINDOW)

@@ -1622,7 +1622,7 @@ def main_owner_files(api: Api, files: dict[str, bytes], route: dict, receipt: di
             "--summary", route["evidence_root"] + ".native/main-summary.md",
             "--closure-policy", route["main_preparation_policy"], "--main-owned-phases",
             "--main-profile", route["main_profile"], "--closure-driver", ownership.get("driver_path"),
-            "--mode", "main", "--repository", "buster14a/buster", "--ref", "refs/heads/main",
+            "--mode", "main", "--repository", "buster14a/buster-legacy", "--ref", "refs/heads/main",
             "--pull", identity["pull"], "--pull-head", identity["pull_head"], "--base", identity["base"],
             "--base-tree", identity["base_tree"], "--head", identity["head"], "--head-tree", identity["head_tree"],
             "--trusted-revision", route["main_measurement_revision"], "--request-run-id", route["request_run"],
@@ -1660,7 +1660,7 @@ def main_owner_files(api: Api, files: dict[str, bytes], route: dict, receipt: di
             not {"self-hosted", "Linux", "X64", "buster-zen5", "ryzen-9700x"}.issubset(set(job["labels"])):
         raise ValueError("Main physical runner or original executor attempt provenance is malformed")
     accounting = sampling_job_accounting(job, entry + elapsed + native["duration_us"], 5400, job_name=COMPARE_JOBS["main"])
-    authority = {"repository": "buster14a/buster", "run_id": route["executor_run"],
+    authority = {"repository": "buster14a/buster-legacy", "run_id": route["executor_run"],
                  "executor": {"head_sha": route["main_policy_revision"], "run_attempt": int(route["executor_attempt"])}}
     platform = physical_clock_binding(authority, files, job, "main", COMPARE_JOBS["main"])
     if entry < platform["observed_pre_entry_us"]:
@@ -4664,7 +4664,7 @@ def preparation_authority(environment: dict) -> tuple[Api, dict]:
     import authorize as direct_authorize
     repository, head = environment.get("BQ_REPOSITORY", ""), environment.get("BQ_HEAD_COMMIT", "")
     request_id, run_id = environment.get("BQ_REQUEST_RUN_ID", ""), environment.get("BQ_RUN_ID", "")
-    if repository != "buster14a/buster" or not SHA.fullmatch(head) or \
+    if repository != "buster14a/buster-legacy" or not SHA.fullmatch(head) or \
             any(not DECIMAL.fullmatch(value) for value in (request_id, run_id)) or \
             environment.get("BQ_RUN_ATTEMPT") != "1" or environment.get("BQ_REQUEST_ATTEMPT") != "1" or \
             environment.get("GITHUB_RUN_ID") != run_id or environment.get("GITHUB_RUN_ATTEMPT") != "1" or \
@@ -5092,7 +5092,7 @@ def preparation_phase_proofs(authority: dict, files: dict[str, bytes], expected:
     git = ["git", "-c", "gc.auto=0", "-c", "maintenance.auto=false", "-c", "core.hooksPath=/dev/null"]
     commands = [
         ("trusted-harness-pin", git + ["-C", trusted_root, "rev-parse", "HEAD"]),
-        ("clone-preparation-source", git + ["clone", "--no-checkout", "--no-tags", "https://github.com/buster14a/buster.git", expected["root"]]),
+        ("clone-preparation-source", git + ["clone", "--no-checkout", "--no-tags", "https://github.com/buster14a/buster-legacy.git", expected["root"]]),
         ("fetch-preparation-pins", git + ["-C", expected["root"], "fetch", "--no-tags", "origin", expected["base"], expected["head"]]),
         ("baseline-tree", git + ["-C", expected["root"], "rev-parse", expected["base"] + "^{tree}"]),
         ("candidate-tree", git + ["-C", expected["root"], "rev-parse", expected["head"] + "^{tree}"]),
@@ -5375,7 +5375,7 @@ def physical_clock_data(environment: dict) -> int:
     repository, run_id, attempt = environment.get("GITHUB_REPOSITORY", ""), environment.get("GITHUB_RUN_ID", ""), environment.get("GITHUB_RUN_ATTEMPT", "")
     revision, runner = environment.get("GITHUB_SHA", ""), environment.get("RUNNER_NAME", "")
     request_id, head = environment.get("BQ_REQUEST_RUN_ID", ""), environment.get("BQ_HEAD_COMMIT", "")
-    if kind not in jobs or repository != "buster14a/buster" or not DECIMAL.fullmatch(run_id) or not DECIMAL.fullmatch(attempt) or int(attempt) < 1 or \
+    if kind not in jobs or repository != "buster14a/buster-legacy" or not DECIMAL.fullmatch(run_id) or not DECIMAL.fullmatch(attempt) or int(attempt) < 1 or \
             (kind != "main" and attempt != "1") or \
             not SHA.fullmatch(revision) or environment.get("GITHUB_JOB") != jobs[kind][0] or \
             not runner or any(ord(char) < 32 or ord(char) > 126 for char in runner) or \
@@ -5512,7 +5512,7 @@ def utility_authority(environment: dict) -> tuple[Api, dict]:
     import authorize as direct_authorize
     repository, head = environment.get("BQ_REPOSITORY", ""), environment.get("BQ_HEAD_COMMIT", "")
     request_id, run_id = environment.get("BQ_REQUEST_RUN_ID", ""), environment.get("BQ_RUN_ID", "")
-    if repository != "buster14a/buster" or not SHA.fullmatch(head) or \
+    if repository != "buster14a/buster-legacy" or not SHA.fullmatch(head) or \
             any(not DECIMAL.fullmatch(value) for value in (request_id, run_id)) or \
             environment.get("BQ_RUN_ATTEMPT") != "1" or environment.get("BQ_REQUEST_ATTEMPT") != "1" or \
             environment.get("GITHUB_RUN_ID") != run_id or environment.get("GITHUB_RUN_ATTEMPT") != "1" or \
@@ -5825,13 +5825,13 @@ def utility_phase_proofs(authority: dict, files: dict[str, bytes], host: dict, *
     commands = [
         ("trusted-harness-pin", git + ["-C", trusted_root, "rev-parse", "HEAD"]),
         ("trusted-harness-clean", git + ["-C", trusted_root, "diff", "--quiet", "--exit-code", "HEAD", "--"]),
-        ("clone-utility-source", git + ["clone", "--no-checkout", "--no-tags", "https://github.com/buster14a/buster.git", expected["root"]]),
+        ("clone-utility-source", git + ["clone", "--no-checkout", "--no-tags", "https://github.com/buster14a/buster-legacy.git", expected["root"]]),
         ("fetch-utility-pins", git + ["-C", expected["root"], "fetch", "--no-tags", "origin", expected["base"], expected["head"], plan["pull_head"]]),
         ("baseline-tree", git + ["-C", expected["root"], "rev-parse", expected["base"] + "^{tree}"]),
         ("candidate-tree", git + ["-C", expected["root"], "rev-parse", expected["head"] + "^{tree}"]),
         ("candidate-first-parent", git + ["-C", expected["root"], "rev-parse", expected["head"] + "^1"]),
         ("candidate-second-parent", git + ["-C", expected["root"], "rev-parse", expected["head"] + "^2"])]
-    identity = ["--mode", "main", "--repository", "buster14a/buster", "--ref", "refs/heads/main",
+    identity = ["--mode", "main", "--repository", "buster14a/buster-legacy", "--ref", "refs/heads/main",
                 "--pull", authority["pull"], "--pull-head", plan["pull_head"], "--base", expected["base"],
                 "--base-tree", expected["base_tree"], "--head", expected["head"], "--head-tree", expected["head_tree"],
                 "--trusted-revision", plan["trusted_revision"], "--request-run-id", authority["request_id"],

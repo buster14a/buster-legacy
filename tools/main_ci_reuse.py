@@ -31,7 +31,7 @@ import github_ci_time
 from merge_queue_admission import AdmissionError, GitHub, require
 from native_retirement_integration import APIReadError
 
-REPOSITORY = "buster14a/buster"
+REPOSITORY = "buster14a/buster-legacy"
 REPOSITORY_ID = 1071732997
 WORKFLOW_ID = 197051687
 WORKFLOW_PATH = ".github/workflows/ci.yml"

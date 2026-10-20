@@ -295,8 +295,8 @@ hosts execute its independent expected-value fixture.
 - Target selectors consume the shared canonical-IR facts in
   `machine_select.{c,h}` alongside their direct ABI and complex-lowering helpers;
   do not introduce a third permanent graph IR. The unused declarative selector
-  was removed in [#269](https://github.com/buster14a/buster/pull/269), resolving
-  [#42](https://github.com/buster14a/buster/issues/42).
+  was removed in [#269](https://github.com/buster14a/buster-legacy/pull/269), resolving
+  [#42](https://github.com/buster14a/buster-legacy/issues/42).
 - Both target selectors retain the prewarmed `MachineOpcodeRow` table and use
   its role membership to classify mutable virtual registers on emitted rows.
   Only definition slots and their actual use slots need inspection. A
@@ -320,7 +320,7 @@ hosts execute its independent expected-value fixture.
   re-reads full rows in layout order. A compact result-row projection that
   removed that re-read was measured with no 9700X gain and was not merged
   ([audit](../performance-audits/2026-10-10T170504Z.md),
-  [#132](https://github.com/buster14a/buster/issues/132)). Do not
+  [#132](https://github.com/buster14a/buster-legacy/issues/132)). Do not
   reintroduce it without selection-scoped hardware counters showing it pays
   for its walk cost; `machine_selection_test_classification_layout_order`
   pins the numbering any such projection must preserve.
@@ -621,7 +621,7 @@ hosts execute its independent expected-value fixture.
   it. On unity `ide.c` this removed 4k–5.5k spills and 6k–9.5k reloads in each
   mode and target, lowered boundary spills, boundary reloads, copies and code
   bytes, and added about 3k callee-saved saves (from about 1.0 to 1.5 per
-  function) ([#56 census](https://github.com/buster14a/buster/issues/56#issuecomment-6123628660)).
+  function) ([#56 census](https://github.com/buster14a/buster-legacy/issues/56#issuecomment-6123628660)).
   The layout interval over-approximates through a sibling arm's call and
   misses a loop-body call past the value's last textual use. Incoming argument
   and call-result captures still bind in their ABI register; moving them to a
@@ -636,7 +636,7 @@ hosts execute its independent expected-value fixture.
   `-march=native -g0`) this removed about 4.3k FAST and 2.8k QUALITY copies
   and 0.08% / 0.06% of `.text`. Boundary spills and reloads barely move,
   because they come from a value missing on some path, not from disagreement
-  ([#56 census](https://github.com/buster14a/buster/issues/56#issuecomment-6108071761)).
+  ([#56 census](https://github.com/buster14a/buster-legacy/issues/56#issuecomment-6108071761)).
 - A FAST/QUALITY fixed physical destination evicts its current owner without a
   store when that owner's last use is the same row and it does not escape its
   block (or that use lies below the loop floor): a dying value staged into an argument or return register is consumed
@@ -1138,7 +1138,7 @@ hosts execute its independent expected-value fixture.
   opcode numbers by appending new rows. The registered zero-count fixture
   covers every one-bit position and both frontend forms, with strict MIR
   object checks on all three desktop AArch64 targets and native-host execution.
-  Further i128 coverage is tracked in [#69](https://github.com/buster14a/buster/issues/69).
+  Further i128 coverage is tracked in [#69](https://github.com/buster14a/buster-legacy/issues/69).
 - ELF/Mach-O AArch64 fixed frames are not limited by the scaled callee-save offset.
   Above that offset's reach, the prologue and each epilogue derive the compact
   save-area base from X29 in reserved X16, then use small unsigned offsets.

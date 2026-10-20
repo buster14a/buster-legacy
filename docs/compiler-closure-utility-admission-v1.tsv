@@ -4,6 +4,6 @@ freeze_revision	-
 freeze_sha256	-
 protocol_sha256	-
 history_since	-
-repository	buster14a/buster
+repository	buster14a/buster-legacy
 owner_login	davidgmbb
 owner_id	39247043

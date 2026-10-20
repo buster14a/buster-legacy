@@ -21,7 +21,7 @@
 #define CM_FIELD 2048u
 #define CM_ROWS 32768u
 #define CM_BRANCH "ci-timing-history"
-#define CM_REPO "buster14a/buster"
+#define CM_REPO "buster14a/buster-legacy"
 #define CM_SCHEMA "buster-hosted-ci-execution-v1"
 #define CM_POLICY "hosted-ci-cohort-v1"
 #define CM_REPORTER "a36422384d0334a53d4be73bc306b97ccdba4768"

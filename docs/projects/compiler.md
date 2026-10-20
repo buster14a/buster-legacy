@@ -105,7 +105,7 @@ empty lists and repeated scope references, and refuses location expressions or
 model boundaries; external DWARF consumers and debugger observations remain
 separate validation gates.
 
-[#309](https://github.com/buster14a/buster/issues/309) owns the specialized backend
+[#309](https://github.com/buster14a/buster-legacy/issues/309) owns the specialized backend
 capability/conformance catalogue. Extend that work rather than implementing a
 second matrix here. See the [backend capability catalogue](../backend-capabilities.md).
 Implementation, evidence and advertised support are separate.

@@ -30,10 +30,10 @@ PSI = "some avg10=0.00 avg60=0.00 avg300=0.00 total=12\nfull avg10=0.00 avg60=0.
 
 def fixture_environment():
     name = {"Darwin": "macOS"}.get(platform.system(), platform.system())
-    result = {"BUSTER_CI_CHECKS_RESOURCES": "1", "GITHUB_REPOSITORY": "buster14a/buster",
+    result = {"BUSTER_CI_CHECKS_RESOURCES": "1", "GITHUB_REPOSITORY": "buster14a/buster-legacy",
               "GITHUB_RUN_ID": "123", "GITHUB_RUN_ATTEMPT": "1", "GITHUB_JOB": "test",
               "GITHUB_SHA": "a" * 40, "GITHUB_REF": resources.REFS[0], "GITHUB_EVENT_NAME": "workflow_dispatch",
-              "GITHUB_WORKFLOW_REF": "buster14a/buster/.github/workflows/ci.yml@" + resources.REFS[0],
+              "GITHUB_WORKFLOW_REF": "buster14a/buster-legacy/.github/workflows/ci.yml@" + resources.REFS[0],
               "GITHUB_WORKFLOW_SHA": "a" * 40, "RUNNER_ENVIRONMENT": "github-hosted",
               "RUNNER_NAME": "resource-control-fixture", "RUNNER_OS": name,
               "RUNNER_ARCH": "ARM64" if platform.machine().lower() in ("aarch64", "arm64") else "X64",

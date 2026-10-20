@@ -29,8 +29,8 @@ import sys
 import time
 
 SCHEMA = "buster-ci-checks-dispatch-inventory-v1"
-ENDPOINT = "https://api.github.com/repos/buster14a/buster/actions/workflows/ci.yml/runs"
-API_PATH = "repos/buster14a/buster/actions/workflows/ci.yml/runs"
+ENDPOINT = "https://api.github.com/repos/buster14a/buster-legacy/actions/workflows/ci.yml/runs"
+API_PATH = "repos/buster14a/buster-legacy/actions/workflows/ci.yml/runs"
 PER_PAGE = 100
 MAX_RUNS = 1000
 MAX_PAGE_BYTES = 16 * 1024 * 1024

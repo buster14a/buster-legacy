@@ -15,7 +15,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "bench_direct"))
 import compiler_publish as publisher
 
 OWNER = {"login": "davidgmbb", "id": 39247043}
-REPOSITORY = "buster14a/buster"
+REPOSITORY = "buster14a/buster-legacy"
+HISTORICAL_REPOSITORY = "buster14a/buster"
 REVISION, HEAD = "a" * 40, "b" * 40
 START = 1760000000000000
 
@@ -781,8 +782,8 @@ class UtilityCheckTests(unittest.TestCase):
             "buster-compiler-closure-utility-v1:" + "c" * 64 + ":utility:0:100:200:1")
         summary = publisher.utility_summary(authority)
         for line in ("Lifecycle protocol: closure-utility-terminal-native-v1.",
-                     "Request run 100 attempt 1: https://github.com/buster14a/buster/actions/runs/100/attempts/1",
-                     "Workflow run 200 attempt 1: https://github.com/buster14a/buster/actions/runs/200/attempts/1"):
+                     "Request run 100 attempt 1: https://github.com/buster14a/buster-legacy/actions/runs/100/attempts/1",
+                     "Workflow run 200 attempt 1: https://github.com/buster14a/buster-legacy/actions/runs/200/attempts/1"):
             self.assertEqual(summary.count(line), 1)
 
     def test_terminal_and_running_owned_checks_never_rewind(self):
@@ -1555,7 +1556,7 @@ def retained_transport(authority, kind):
     current["facts.tsv"] = encode(current_facts)
     original = dict(current, **{"facts.tsv": encode(original_facts)})
     current_sha, original_sha = (hashlib.sha256(records["facts.tsv"]).hexdigest() for records in (current, original))
-    proof = {"schema": "synthetic-reader-api-proof", "repository": REPOSITORY,
+    proof = {"schema": "synthetic-reader-api-proof", "repository": HISTORICAL_REPOSITORY,
              "policy_revision": executor["head_sha"], "request_run_id": str(request["id"]), "request_run_attempt": "1",
              "request_head": request["head_sha"], "executor_run_id": str(executor["id"]), "executor_run_attempt": "1",
              "executor_head": executor["head_sha"]}
@@ -1614,7 +1615,9 @@ class HistoricalSamplingDataTests(unittest.TestCase):
     def test_original_acquisition_uses_its_own_policy_and_facts(self):
         request = {"id": 100, "run_attempt": 1, "head_sha": HEAD}
         executor = execution()
-        executor.update(status="completed", conclusion="success")
+        executor.update(status="completed", conclusion="success",
+                        repository={"full_name": HISTORICAL_REPOSITORY},
+                        head_repository={"full_name": HISTORICAL_REPOSITORY})
         context = {"sha256": "c" * 64, "revision": "d" * 40, "phase": "pilot", "packet": 0}
         previous = {"phase": "acquire", "packet": "0", "campaign": context["sha256"],
                     "freeze_revision": context["revision"], "state": "complete",
@@ -1622,7 +1625,7 @@ class HistoricalSamplingDataTests(unittest.TestCase):
                     "request_run_id": "100", "executor_run_id": "200"}
         old = {"historical_review": True, "admitted": {"sampling_historical_valid": "true", "sampling_historical_execution_authority": "false",
                              "sampling_historical_qualification": "unqualified"},
-               "history": [], "request": request, "executor": executor, "repository": REPOSITORY,
+               "history": [], "request": request, "executor": executor, "repository": HISTORICAL_REPOSITORY,
                "head": HEAD, "request_id": "100", "run_id": "200", "acquisition_plan_bytes": b"original\n",
                "facts": {"pull_state": "closed", "policy": "original-acquisition"}}
         current = dict(old, history=[previous], facts={"pull_state": "open", "policy": "later"},
@@ -1745,7 +1748,7 @@ class HistoricalSamplingDataTests(unittest.TestCase):
 
 class CampaignRefusedTerminalObservationTests(unittest.TestCase):
     def diagnostic(self):
-        parsed = {"schema": "buster-compiler-historical-terminal-diagnostic-envelope-v1", "repository": REPOSITORY,
+        parsed = {"schema": "buster-compiler-historical-terminal-diagnostic-envelope-v1", "repository": HISTORICAL_REPOSITORY,
                   "kind": "sampling", "terminal_valid": False, "execution_authority": False, "qualification": "unqualified",
                   "api_observations": {"/actions/runs/100/attempts/1": {"id": 100, "head_sha": HEAD, "run_attempt": 1,
                                        "status": "completed", "conclusion": "cancelled"}}}
@@ -1767,7 +1770,7 @@ class CampaignRefusedTerminalObservationTests(unittest.TestCase):
                 return dict(original)
         api, diagnostic = ObservedApi(), {}
         with self.assertRaises(ValueError):
-            authorize.review_terminal_authority(api, REPOSITORY, original, None, "sampling", diagnostic=diagnostic)
+            authorize.review_terminal_authority(api, HISTORICAL_REPOSITORY, original, None, "sampling", diagnostic=diagnostic)
         self.assertEqual(api.calls, ["/actions/runs/100/attempts/1", "/actions/runs/100"])
         retained = publisher.campaign_retain_terminal_observation(diagnostic)
         self.assertEqual(retained["api_observations"], {path: original for path in api.calls})
@@ -1850,7 +1853,7 @@ class CampaignTerminalDataTests(unittest.TestCase):
                      "freeze_revision": native["sampling_freeze_revision" if prefix == "sampling" else prefix + "_plan_revision"],
                      "freeze_sha256": proof["freeze_sha256"], "parent_freeze_revision": "-", "parent_freeze_sha256": proof.get("parent_freeze_sha256", "-"),
                      "acquisition_sha256": proof.get("acquisition_sha256", "-"), "history_since": "-"}
-        envelope = publisher.campaign_json({"schema": "buster-compiler-historical-terminal-api-envelope-v1", "repository": REPOSITORY,
+        envelope = publisher.campaign_json({"schema": "buster-compiler-historical-terminal-api-envelope-v1", "repository": HISTORICAL_REPOSITORY,
             "kind": prefix, "request_run": authority["request_id"], "executor_run": authority["run_id"], "context_revision": context,
             "api_observations": observations, "native_api_proof": proof, "review_context_selection": selection,
             "artifact_inventory_selection": artifact_selection}, max_bytes=publisher.CAMPAIGN_REPLAY_LIMIT)
@@ -2086,7 +2089,7 @@ class CampaignFactsDataTests(unittest.TestCase):
             admitted.update(sampling_policy_revision="e" * 40, sampling_campaign_parent="f" * 64,
                             sampling_phase=phase, sampling_packet=str(packet), sampling_family=plan["family"])
         request, executor = {"id": index + 100, "run_attempt": 1, "head_sha": HEAD}, {"id": index + 200, "run_attempt": 1, "head_sha": "e" * 40}
-        authority = {"historical_review": True, "repository": REPOSITORY, "admitted": admitted,
+        authority = {"historical_review": True, "repository": HISTORICAL_REPOSITORY, "admitted": admitted,
                      "request_id": str(request["id"]), "run_id": str(executor["id"]), "request": request,
                      "executor": executor, "freeze": {"campaign_parent": "f" * 64},
                      "facts": {"pull_state": "closed"}}

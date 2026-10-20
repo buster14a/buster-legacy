@@ -181,9 +181,9 @@ def guard(env):
     require(os.environ.get("BUSTER_CI_CHECKS_RESOURCES") == "1", "resource observer is not opted in")
     require(env["GITHUB_EVENT_NAME"] == "workflow_dispatch" and env["GITHUB_REF"] in REFS,
             "resource observer requires an exact prospective dispatch ref")
-    require(env["GITHUB_REPOSITORY"] == "buster14a/buster" and
+    require(env["GITHUB_REPOSITORY"] == "buster14a/buster-legacy" and
             env["RUNNER_ENVIRONMENT"] == "github-hosted", "unexpected repository/runner environment")
-    require(env["GITHUB_WORKFLOW_REF"] == "buster14a/buster/.github/workflows/ci.yml@" + env["GITHUB_REF"]
+    require(env["GITHUB_WORKFLOW_REF"] == "buster14a/buster-legacy/.github/workflows/ci.yml@" + env["GITHUB_REF"]
             and env["GITHUB_WORKFLOW_SHA"] == env["GITHUB_SHA"], "workflow source/ref mismatch")
     require(env["RUNNER_NAME"] != "unknown" and env["RUNNER_OS"] in ("Linux", "Windows", "macOS")
             and env["RUNNER_ARCH"] in ("X64", "ARM64"), "missing runner identity")

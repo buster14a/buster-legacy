@@ -1,6 +1,6 @@
 # Semantic validation without canonical IR
 
-[Frontend index](../frontend.md) · [Issue #292](https://github.com/buster14a/buster/issues/292)
+[Frontend index](../frontend.md) · [Issue #292](https://github.com/buster14a/buster-legacy/issues/292)
 
 `c_analyze_semantics_only` completes the semantic model and the source constraints
 that previously depended on lowering. The driver uses its diagnostics and
@@ -65,7 +65,7 @@ lowering. `c_test_offsetof_typed_refusals` pins semantic refusal in all four
 expression contexts; the driver diagnostic-equivalence matrix covers those
 boundaries alongside cast-truncated indices, scoped enumerators and valid
 unevaluated operands. This addresses the constant-designator validation residual
-of [#1570](https://github.com/buster14a/buster/issues/1570); shared parser/lowering
+of [#1570](https://github.com/buster14a/buster-legacy/issues/1570); shared parser/lowering
 member authority and nonconstant-index validation remain separate work.
 
 The iterative `c_parse_expression_place_range` helper follows only the

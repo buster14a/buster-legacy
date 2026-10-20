@@ -1,6 +1,6 @@
 # Clang test corpus
 
-[Compatibility index](../compatibility.md) · [Campaign #2280](https://github.com/buster14a/buster/issues/2280)
+[Compatibility index](../compatibility.md) · [Campaign #2280](https://github.com/buster14a/buster-legacy/issues/2280)
 
 The native build-driver command consumes a separate external LLVM checkout.
 It never copies or patches upstream test sources into Buster. C remains the
@@ -98,7 +98,7 @@ remain failed. Compilers run sequentially and both observations are retained.
 
 The `--driver` mode is the first slice of the Driver, Options, PCH, Modules,
 ClangScanDeps and VFS families
-([#2291](https://github.com/buster14a/buster/issues/2291)). It catalogues
+([#2291](https://github.com/buster14a/buster-legacy/issues/2291)). It catalogues
 eight pristine `clang/test/Driver` tests with eleven RUN lines. Each fixture's
 blob is verified, and every original RUN line, with lit `\` continuations
 joined, must match its catalogue entry exactly. Each RUN maps explicitly to
@@ -128,12 +128,12 @@ Both make the mode fail.
 | --- | ---: | --- | --- |
 | `preprocess-multiple.c` | 1 | pass | — |
 | `std-trigraph-override.c` | 2 | pass | — |
-| `nostdlibinc.c` | 1 | refuses target `x86_64-unknown-unknown` | [#3421](https://github.com/buster14a/buster/issues/3421) |
-| `redundant-args.c` | 1 | refuses target `x86_64-apple-darwin11` | [#3421](https://github.com/buster14a/buster/issues/3421) |
+| `nostdlibinc.c` | 1 | refuses target `x86_64-unknown-unknown` | [#3421](https://github.com/buster14a/buster-legacy/issues/3421) |
+| `redundant-args.c` | 1 | refuses target `x86_64-apple-darwin11` | [#3421](https://github.com/buster14a/buster-legacy/issues/3421) |
 | `working-directory-and-abs.c` | 1 | pass | — |
 | `print-target-triple.c` | 1 | pass | — |
-| `dumpmachine.c` | 3 | prints `x86_64-linux-gnu`; prints `i386-linux-gnu` for `-m32` (upstream expects `i386-redhat-linux`); refuses `xxx-pc-freebsd` | [#3421](https://github.com/buster14a/buster/issues/3421) |
-| `mg.c` | 1 | refuses `-M` | [#2293](https://github.com/buster14a/buster/issues/2293) |
+| `dumpmachine.c` | 3 | prints `x86_64-linux-gnu`; prints `i386-linux-gnu` for `-m32` (upstream expects `i386-redhat-linux`); refuses `xxx-pc-freebsd` | [#3421](https://github.com/buster14a/buster-legacy/issues/3421) |
+| `mg.c` | 1 | refuses `-M` | [#2293](https://github.com/buster14a/buster-legacy/issues/2293) |
 
 Each RUN retains per-compiler `.argv`, stdout, stderr and a receipt with
 process status, prefix, check count, expectation, issue and verdict, plus
@@ -210,8 +210,8 @@ pinned generated metadata. With it, the stock-header gate passes for the whole
 header at `-march=znver5` and the downstream baseline, runtime and object gates
 run.
 
-This is a family slice of [#2405](https://github.com/buster14a/buster/issues/2405)
-and [#2290](https://github.com/buster14a/buster/issues/2290), not the exhaustive
+This is a family slice of [#2405](https://github.com/buster14a/buster-legacy/issues/2405)
+and [#2290](https://github.com/buster14a/buster-legacy/issues/2290), not the exhaustive
 public-API census, a general immediate-domain oracle, or a completed Zen 5
 support claim. The original 31,192-leaf corpus ledger remains unchanged and
 does not count these first-party controls as upstream test executions. The

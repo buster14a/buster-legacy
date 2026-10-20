@@ -347,7 +347,7 @@ class PhysicalPreentryReservationTests(unittest.TestCase):
     def environment(self):
         return {"PATH": "/usr/bin:/bin", "BQ_RUN_ID": "200", "BQ_REQUEST_RUN_ID": "100",
                 "GITHUB_RUN_ID": "200", "GITHUB_RUN_ATTEMPT": "1", "BQ_HEAD_COMMIT": "a" * 40,
-                "GITHUB_SHA": "b" * 40, "GITHUB_REPOSITORY": "buster14a/buster",
+                "GITHUB_SHA": "b" * 40, "GITHUB_REPOSITORY": "buster14a/buster-legacy",
                 "GITHUB_JOB": "utility"}
 
     def record(self, root):

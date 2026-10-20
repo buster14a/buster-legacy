@@ -1,6 +1,6 @@
 # Git local-operation qualification
 
-[Harness index](../compatibility.md) · [#3180](https://github.com/buster14a/buster/issues/3180)
+[Harness index](../compatibility.md) · [#3180](https://github.com/buster14a/buster-legacy/issues/3180)
 
 ## Pin and configuration
 
@@ -149,7 +149,7 @@ Build-census success alone does not satisfy #3180. Qualification still needs:
 - The useful developer workflow, affected checks and self-host preservation.
 
 The normal dependency-enabled build needs the driver contract tracked in
-[#2302](https://github.com/buster14a/buster/issues/2302). Retain `-MF/-MQ/-MMD/-MP`
+[#2302](https://github.com/buster14a/buster-legacy/issues/2302). Retain `-MF/-MQ/-MMD/-MP`
 when retesting; removing them cannot qualify this incremental-build configuration.
 
 Report reduced compiler failures to existing driver/frontend/ABI/backend

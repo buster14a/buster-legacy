@@ -100,12 +100,12 @@ BUSTER_GLOBAL_LOCAL bool compiler_sampling_packet_fixture_expected(Arena* arena,
         o.trusted_revision, frozen.prepared_sha256, frozen.baseline_bytes, frozen.baseline_bytes);
     String8 expected = string_format(arena,
         S8("{{\"diagnostic_fixture\":true,\"actual_approved_host\":false,\"trusted\":{{"
-           "\"authenticated\":true,\"request\":{{\"repository\":\"buster14a/buster\",\"actor\":\"davidgmbb\",\"owner\":\"davidgmbb\","
+           "\"authenticated\":true,\"request\":{{\"repository\":\"buster14a/buster-legacy\",\"actor\":\"davidgmbb\",\"owner\":\"davidgmbb\","
            "\"selector\":\"profile: compiler-main-sampling-pilot-v1\",\"request_run_id\":\"998\","
            "\"request_head\":\"{S8}\",\"freeze_revision\":\"{S8}\",\"phase\":\"pilot\",\"packet\":0,"
            "\"campaign\":\"{S8}\",\"acquisition_campaign\":\"{S8}\",\"acquisition_revision\":\"{S8}\","
            "\"pilot_campaign\":\"{S8}\",\"pilot_revision\":\"{S8}\"}},"
-           "\"executor\":{{\"repository\":\"buster14a/buster\",\"request_run_id\":\"998\",\"run_id\":\"1001\","
+           "\"executor\":{{\"repository\":\"buster14a/buster-legacy\",\"request_run_id\":\"998\",\"run_id\":\"1001\","
            "\"run_attempt\":\"1\",\"cpu_model\":\"AMD Ryzen 7 9700X 8-Core Processor\","
            "\"physical_packet_wall_us\":null,\"actions_job_occupancy_us\":null,\"queue_delay_seconds\":null}},"
            "\"identity\":{S8},\"binaries\":{{"

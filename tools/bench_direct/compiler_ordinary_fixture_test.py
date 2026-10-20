@@ -383,7 +383,7 @@ class ActualOrdinaryMeasure(unittest.TestCase):
         # addCleanup exports data before removing the private temporary roots.
 
     def identity(self, mode="pull"):
-        return {"mode": mode, "repository": "buster14a/buster", "ref": "refs/pull/1/head" if mode == "pull" else "refs/heads/main",
+        return {"mode": mode, "repository": "buster14a/buster-legacy", "ref": "refs/pull/1/head" if mode == "pull" else "refs/heads/main",
                 "pull": "1", "pull_head": self.fixture["head"], "base": self.fixture["base"],
                 "base_tree": self.fixture["base_tree"], "head": self.fixture["head"],
                 "head_tree": self.fixture["head_tree"], "trusted_revision": self.trusted_revision,

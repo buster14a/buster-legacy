@@ -179,7 +179,7 @@ BUSTER_GLOBAL_LOCAL CompilerPreparationAdmission compiler_preparation_admission_
         compiler_sampling_hex(config[PREPARATION_CONFIG_FREEZE_SHA], 64) &&
         compiler_sampling_hex(config[PREPARATION_CONFIG_PROTOCOL_SHA], 64) &&
         compiler_sampling_admission_timestamp(config[PREPARATION_CONFIG_HISTORY_SINCE]) &&
-        string_equal(config[PREPARATION_CONFIG_REPOSITORY], S8("buster14a/buster")) &&
+        string_equal(config[PREPARATION_CONFIG_REPOSITORY], S8("buster14a/buster-legacy")) &&
         string_equal(config[PREPARATION_CONFIG_OWNER_LOGIN], S8("davidgmbb")) &&
         string_equal(config[PREPARATION_CONFIG_OWNER_ID], S8("39247043"));
     CompilerPreparationPlan plan = valid ? compiler_preparation_plan_parse(plan_text) : (CompilerPreparationPlan){0};

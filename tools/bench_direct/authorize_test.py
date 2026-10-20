@@ -19,7 +19,7 @@ import authorize  # noqa: E402
 import compiler_receipt  # noqa: E402
 import workflow_policy_test as policy  # noqa: E402
 
-REPOSITORY = "buster14a/buster"
+REPOSITORY = "buster14a/buster-legacy"
 HEAD = "a" * 40
 BASE = "b" * 40
 OWNER = {"login": "davidgmbb", "id": 39247043}
@@ -1177,14 +1177,14 @@ class UtilityTrustedAncestryTest(unittest.TestCase):
             paths.append(path)
             return reply
         with mock.patch.object(authorize, "fetch", side_effect=read):
-            authorize.utility_trusted_ancestry("buster14a/buster", "token", plan, self.POLICY)
+            authorize.utility_trusted_ancestry("buster14a/buster-legacy", "token", plan, self.POLICY)
         return paths
 
     def test_ancestor_or_identical_revision_is_accepted(self):
         for status in ("identical", "ahead"):
             with self.subTest(status=status):
                 paths = self.check("trusted_revision\t" + "a" * 40 + "\n", {"status": status})
-                self.assertEqual(paths, ["/repos/buster14a/buster/compare/" + "a" * 40 + "..." + self.POLICY])
+                self.assertEqual(paths, ["/repos/buster14a/buster-legacy/compare/" + "a" * 40 + "..." + self.POLICY])
 
     def test_off_main_or_unavailable_revision_is_refused(self):
         for reply in ({"status": "diverged"}, {"status": "behind"}, {}, None, []):

@@ -285,7 +285,7 @@ class DataContract(unittest.TestCase):
             candidate = root / "candidate"
             candidate.mkdir()
             work, evidence = root / "work", root / "evidence"
-            values = {"mode": "main", "repository": "buster14a/buster", "ref": "refs/heads/main", "pull": "1",
+            values = {"mode": "main", "repository": "buster14a/buster-legacy", "ref": "refs/heads/main", "pull": "1",
                 "pull_head": "a" * 40, "base": "b" * 40, "base_tree": "c" * 40, "head": "a" * 40,
                 "head_tree": "d" * 40, "trusted_revision": "e" * 40, "request_run_id": "1", "run_id": "1", "run_attempt": "1"}
             argv = ["--candidate", str(candidate), "--lab", str(Path(__file__).resolve()),

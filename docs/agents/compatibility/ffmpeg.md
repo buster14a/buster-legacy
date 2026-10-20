@@ -1,6 +1,6 @@
 # FFmpeg compatibility
 
-[Harness index](../compatibility.md) · Initial harness: [#3177](https://github.com/buster14a/buster/issues/3177) · Optimized profile: [#4078](https://github.com/buster14a/buster/issues/4078).
+[Harness index](../compatibility.md) · Initial harness: [#3177](https://github.com/buster14a/buster-legacy/issues/3177) · Optimized profile: [#4078](https://github.com/buster14a/buster-legacy/issues/4078).
 
 The native `test_ffmpeg` action provides matched Linux x86-64 portable and
 assembly-enabled software profiles. A passing run is a bounded configuration,
@@ -266,8 +266,8 @@ not guaranteed headroom. Deadline exhaustion remains an incomplete failure.
 ## First hosted GNU17/NASM evidence
 
 At main `609573f1ec21563598d826b3e90204fc7f33e0e9`,
-[run 38749896680](https://github.com/buster14a/buster/actions/runs/38749896680)
-retained [FFmpeg artifact 11983916554](https://github.com/buster14a/buster/actions/runs/38749896680/artifacts/11983916554).
+[run 38749896680](https://github.com/buster14a/buster-legacy/actions/runs/38749896680)
+retained [FFmpeg artifact 11983916554](https://github.com/buster14a/buster-legacy/actions/runs/38749896680/artifacts/11983916554).
 The unchanged FFmpeg pin was pristine before and after all three profiles.
 
 | Profile | Independent Clang reference | Buster candidate | Matched census |
@@ -285,14 +285,14 @@ matched on both sides, and all 18 external SIMD feature macros were present.
 The Buster floor refused missing `HAVE_MMXEXT_INLINE` and `HAVE_SSSE3_INLINE`:
 the actual `pmaxub %mm0, %mm1` and `pabsw %xmm0, %xmm0` probes reached unsupported
 operand-reference/literal-register handling. These belong to
-[#4077](https://github.com/buster14a/buster/issues/4077#issuecomment-6195206454);
+[#4077](https://github.com/buster14a/buster-legacy/issues/4077#issuecomment-6195206454);
 no required feature or object was removed to obtain a pass.
 
 Both portable configurations still differ from the reference in MM_EMPTY,
 EBP availability, inline-asm direct/local/nonlocal-label support, GNU symver
 and the V4L2 structure probe. Actual intrinsic-use ownership remains
-[#2405](https://github.com/buster14a/buster/issues/2405); the unreduced V4L2
-diagnostic remains recorded on [#3177](https://github.com/buster14a/buster/issues/3177#issuecomment-6193036184).
+[#2405](https://github.com/buster14a/buster-legacy/issues/2405); the unreduced V4L2
+diagnostic remains recorded on [#3177](https://github.com/buster14a/buster-legacy/issues/3177#issuecomment-6193036184).
 The original #4296 arity diagnostic is absent from the retained C17 action,
 which now stops at the deliberate ISO callback-conversion policy. The named
 GNU17 portable action compiles pristine `tests/checkasm/h264qpel.c` and attempts

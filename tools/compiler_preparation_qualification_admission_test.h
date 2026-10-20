@@ -51,7 +51,7 @@ BUSTER_GLOBAL_LOCAL bool compiler_preparation_admission_self_test(Arena* arena)
     String8 config_names[] = {S8("schema"), S8("state"), S8("freeze_revision"), S8("freeze_sha256"),
         S8("protocol_sha256"), S8("history_since"), S8("repository"), S8("owner_login"), S8("owner_id")};
     String8 config_values[] = {S8("buster-compiler-preparation-admission-v1"), S8("qualify"), a40, plan_sha, a,
-        S8("2026-10-09T00:00:00Z"), S8("buster14a/buster"), S8("davidgmbb"), S8("39247043")};
+        S8("2026-10-09T00:00:00Z"), S8("buster14a/buster-legacy"), S8("davidgmbb"), S8("39247043")};
     String8 marker = string_format(arena,
         S8("profile: compiler-baseline-closure-qualification-v1 packet: 0 freeze: {S8}"), a40);
     String8 fact_names[] = {S8("schema"), S8("repository"), S8("request_run_id"), S8("request_run_attempt"),
@@ -59,10 +59,10 @@ BUSTER_GLOBAL_LOCAL bool compiler_preparation_admission_self_test(Arena* arena)
         S8("owner_login"), S8("owner_id"), S8("actor_login"), S8("actor_id"), S8("triggering_login"), S8("triggering_id"),
         S8("pull_author_login"), S8("pull_author_id"), S8("request_repository"), S8("request_head_repository"),
         S8("pull_repository"), S8("pull_state"), S8("parent_count"), S8("fresh_parent_0"), S8("fresh_parent_1")};
-    String8 fact_values[] = {S8("buster-main-sampling-github-facts-v1"), S8("buster14a/buster"), S8("10000"), S8("1"),
+    String8 fact_values[] = {S8("buster-main-sampling-github-facts-v1"), S8("buster14a/buster-legacy"), S8("10000"), S8("1"),
         S8("20000"), S8("1"), b40, f40, S8("davidgmbb"), S8("39247043"), S8("davidgmbb"), S8("39247043"),
-        S8("davidgmbb"), S8("39247043"), S8("davidgmbb"), S8("39247043"), S8("buster14a/buster"),
-        S8("buster14a/buster"), S8("buster14a/buster"), S8("open"), S8("1"), marker, S8("-")};
+        S8("davidgmbb"), S8("39247043"), S8("davidgmbb"), S8("39247043"), S8("buster14a/buster-legacy"),
+        S8("buster14a/buster-legacy"), S8("buster14a/buster-legacy"), S8("open"), S8("1"), marker, S8("-")};
     SliceString8 config_keys = (SliceString8)BUSTER_ARRAY_TO_SLICE(config_names);
     SliceString8 config_fields = (SliceString8)BUSTER_ARRAY_TO_SLICE(config_values);
     SliceString8 fact_keys = (SliceString8)BUSTER_ARRAY_TO_SLICE(fact_names);

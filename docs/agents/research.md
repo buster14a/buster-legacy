@@ -27,11 +27,11 @@ Do not force a false state. If even the immediate gate is genuinely unknown, lea
 Useful queries include:
 
 ```text
-repo:buster14a/buster is:issue is:open label:"status/needs-reproduction"
-repo:buster14a/buster is:issue is:open label:"status/needs-census"
-repo:buster14a/buster is:issue is:open label:"status/ready-implementation"
-repo:buster14a/buster is:issue label:"status/measured-neutral"
-repo:buster14a/buster is:issue label:"status/completed"
+repo:buster14a/buster-legacy is:issue is:open label:"status/needs-reproduction"
+repo:buster14a/buster-legacy is:issue is:open label:"status/needs-census"
+repo:buster14a/buster-legacy is:issue is:open label:"status/ready-implementation"
+repo:buster14a/buster-legacy is:issue label:"status/measured-neutral"
+repo:buster14a/buster-legacy is:issue label:"status/completed"
 ```
 
 ## Current-state comments and transitions

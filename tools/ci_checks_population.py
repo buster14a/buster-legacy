@@ -189,7 +189,9 @@ def dispatch_inventory(root, reference, published, attempts):
     value = qualification.phases.read(manifest_path)
     require(set(value) == {"schema", "endpoint", "event", "created_after", "per_page", "collected_at", "pages"} and
             value["schema"] == "buster-ci-checks-dispatch-inventory-v1" and
-            value["endpoint"] == "https://api.github.com/repos/buster14a/buster/actions/workflows/ci.yml/runs" and
+            value["endpoint"] in (
+                "https://api.github.com/repos/buster14a/buster/actions/workflows/ci.yml/runs",
+                "https://api.github.com/repos/buster14a/buster-legacy/actions/workflows/ci.yml/runs") and
             value["event"] == "workflow_dispatch" and value["per_page"] == 100 and
             github.timestamp(value["created_after"]) == published, "unknown dispatch inventory scope")
     collected = github.timestamp(value["collected_at"])

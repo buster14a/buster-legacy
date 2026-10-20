@@ -5,7 +5,7 @@ body:
     attributes:
       value: |
         Search existing issues and PRs first. Reuse the owning issue rather than duplicating a task per consumer.
-        Area IDs and documentation live in [PROJECTS.md](https://github.com/buster14a/buster/blob/main/PROJECTS.md).
+        Area IDs and documentation live in [PROJECTS.md](https://github.com/buster14a/buster-legacy/blob/main/PROJECTS.md).
         This form records a proposal, not a priority or implementation commitment. Agents using the API can use the same structure.
   - type: input
     id: area

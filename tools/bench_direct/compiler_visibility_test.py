@@ -31,7 +31,7 @@ import compiler_publish  # noqa: E402
 import compiler_receipt  # noqa: E402
 from compiler_test import BINARIES, EXPECTED, archive, corpus, machine_bytes, receipt, summary  # noqa: E402
 
-REPO = "buster14a/buster"
+REPO = "buster14a/buster-legacy"
 HEAD, TRUSTED, PARENT, OLDER = "a" * 40, "9" * 40, "b" * 40, "c" * 40
 BOT = {"login": "github-actions[bot]", "id": 41898282, "type": "Bot"}
 HUMAN = {"login": "davidgmbb", "id": 39247043, "type": "User"}

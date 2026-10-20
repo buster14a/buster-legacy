@@ -216,7 +216,7 @@ captures (#2741).
   parsing, so the report states how much of the run lies outside it.
 - Native-backend retirement has a separate maintainer-approved
   [performance contract](../native-retirement-performance-contract.md). Its
-  [October 3 decision](https://github.com/buster14a/buster/issues/36#issuecomment-5969534074)
+  [October 3 decision](https://github.com/buster14a/buster-legacy/issues/36#issuecomment-5969534074)
   moves #512 acceptance to the [direct lab gate below](#native-retirement-gate-512),
   with four allocator-mode cells and one generated-runtime cell. The following
   service binding/replay instructions retain the historical service contract.
@@ -988,7 +988,7 @@ Only a separate `alert` job holds `issues: write`, alongside `contents: read`
 and `actions: read`. It runs only when all of these hold:
 
 - the measured verdict is `regression`;
-- the repository is `buster14a/buster`;
+- the repository is `buster14a/buster-legacy`;
 - the ref is `refs/heads/main`;
 - the event is the macOS schedule or dispatch, or a Windows dispatch;
 - `demonstrate_regression` is not set.
@@ -2000,7 +2000,7 @@ archived compilers supporting `none`, `mir-stack`, `fast` and `quality`;
 the current compiler accepts only FAST and QUALITY. Use `uarch_lab.py compare`
 for current compiler measurements, and `report` for retained retirement results.
 
-The [maintainer decision](https://github.com/buster14a/buster/issues/36#issuecomment-5969534074)
+The [maintainer decision](https://github.com/buster14a/buster-legacy/issues/36#issuecomment-5969534074)
 defines five required cells: a stage-1 self-host compile in each of `none`,
 `mir-stack`, `fast` and `quality`, then the generated-runtime cell. The latter
 executes the two stage-1 compilers produced by the `fast` cell, compiling the

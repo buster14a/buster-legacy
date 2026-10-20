@@ -412,7 +412,7 @@ negative-zero rows preserve finite-boundary and per-literal rounding behavior.
   data, so this slice does not establish support for the complete helper
   family. The broader Linux and FFmpeg census, including enabled and
   preprocessed cells, remains pending; companion Linux mechanism accounting
-  is in [PR #4093](https://github.com/buster14a/buster/pull/4093).
+  is in [PR #4093](https://github.com/buster14a/buster-legacy/pull/4093).
 - **A module-level `__asm__` block emits into the module's text through
   `codegen_emit_global_assembly` in `codegen.c`.** It interprets the
   directives itself — `.text`, `.byte`, `.p2align`, and the symbol directives
