@@ -4008,16 +4008,21 @@ class HarnessTest(unittest.TestCase):
         good = directory / "good.json"
         good.write_text('{"a": 1}')
         self.assertEqual(compiler_compare.read_exported_json(good), ({"a": 1}, ""))
-        deep = directory / "deep.json"
-        deep.write_text("[" * 100000 + "]" * 100000)
+        (directory / "malformed.json").write_text('{"a":')
         (directory / "binary.json").write_bytes(b"\xff\xfe")
         (directory / "link.json").symlink_to(good)
         (directory / "folder.json").mkdir()
-        for name in ("deep.json", "binary.json", "link.json", "folder.json", "absent.json"):
+        for name in ("malformed.json", "binary.json", "link.json", "folder.json", "absent.json"):
             with self.subTest(name=name):
                 document, problem = compiler_compare.read_exported_json(directory / name)
                 self.assertEqual(document, None)
                 self.assertTrue(problem)
+        # Valid deeply nested JSON is accepted by some decoder builds. Exercise
+        # the exception contract directly rather than assuming a nesting limit.
+        with mock.patch.object(compiler_compare.json, "loads", side_effect=RecursionError("decoder nesting")):
+            document, problem = compiler_compare.read_exported_json(good)
+        self.assertIsNone(document)
+        self.assertEqual(problem, "decoder nesting")
         with mock.patch.object(compiler_compare, "EVIDENCE_MEMBER_LIMIT", 4):
             document, problem = compiler_compare.read_exported_json(good)
         self.assertEqual(document, None)
